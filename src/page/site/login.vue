@@ -59,7 +59,6 @@ const session = sessionStore();
 
 function doLogin() {
   sessionService.login(email.value, password.value, makeLoginToken.value).then(success => {
-      console.log();
       if (success) {
           router.push(path && path.startsWith('/') ? path : '/');
       }

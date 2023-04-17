@@ -7,8 +7,6 @@ export class BoardInfo {
     public writeTopicRoles = ["ROOT"] as string[];
 
     public canWriteTopic(user: Session): boolean {
-        console.log(user);
-        console.log(this);
         return user.isLogin && user.hasRole(...this.writeTopicRoles);
     }
 

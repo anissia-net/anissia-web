@@ -4,8 +4,8 @@
     line-height: 1.8 !important;
 
 
-     > *:first-child { margin-top: 0 !important; }
-     > *:last-child { margin-bottom: 0 !important; }
+    > *:first-child { margin-top: 0 !important; }
+    > *:last-child { margin-bottom: 0 !important; }
 
     h1, h2, h3, h4, h5, h6 {
         margin: 20px 0 10px; padding: 0; font-weight: bold; -webkit-font-smoothing: antialiased;
@@ -25,11 +25,7 @@
     h6 tt, h6 code { font-size: inherit; }
 
     h1 { font-size: 28px; }
-    h2 {
-        font-size: 24px;
-        html.light & { border-bottom: 1px solid #ccc; }
-        html.dark & { border-bottom: 1px solid #4a4a4a; }
-    }
+    h2 { font-size: 24px; }
     h3 { font-size: 18px; }
     h4 { font-size: 16px; }
     h5 { font-size: 14px; }
@@ -52,6 +48,7 @@
     h1 p, h2 p, h3 p, h4 p, h5 p, h6 p { margin-top: 0; }
     li p.first { display: inline-block; }
     li { margin:2px 0; }
+    a { word-wrap: break-word; word-break: break-all; overflow-wrap: anywhere; }
 
     ul { list-style-type: disc; }
     ol { list-style-type: decimal; }
@@ -100,7 +97,9 @@
     table tr th :last-child, table tr td :last-child { margin-bottom: 0; }
 
     img {
-        max-width: 100%; box-sizing: border-box;
+        max-width: 90%; box-sizing: border-box;
+        html.light & { border: 5px solid #eee; }
+        html.dark & { border: 5px solid #111; }
     }
 
     code, tt {
@@ -112,10 +111,10 @@
     }
 
     pre {
-        font-size: 13px; line-height: 19px; overflow: auto; padding: 6px 10px;
+        font-size: 15px; line-height: 1.6; overflow: auto; padding: 6px 10px;
 
-        html.light & { background-color: #eee; }
-        html.dark & { background-color: #1e1e1e; }
+        html.light & { background-color: #eee; color:#555 }
+        html.dark & { background-color: #0e0f14; color:#a1a5a9 }
     }
     pre code, pre tt { background-color: transparent; border: none; }
 }

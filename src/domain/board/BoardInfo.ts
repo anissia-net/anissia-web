@@ -1,0 +1,22 @@
+import Session from "../session/Session";
+
+export class BoardInfo {
+    public name = '';
+    public ticker = '';
+    public writePostRoles = ["ROOT"] as string[];
+    public writeTopicRoles = ["ROOT"] as string[];
+
+    public canWriteTopic(user: Session): boolean {
+        console.log(user);
+        console.log(this);
+        return user.isLogin && user.hasRole(...this.writeTopicRoles);
+    }
+
+    public canWritePost(user: Session): boolean {
+        return user.isLogin && user.hasRole(...this.writePostRoles);
+    }
+
+    public static assign(e: any): BoardInfo {
+        return Object.assign(new BoardInfo(), e);
+    }
+}

@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+::-webkit-scrollbar { width:8px; height:8px }
+
+html.dark {
+    ::-webkit-scrollbar-track{ background-color:#111 }
+    ::-webkit-scrollbar-thumb{ background-color:rgba(100, 100, 100, 0.5) }
+    ::-webkit-scrollbar-thumb:hover{ background-color:rgba(140, 140, 140, 0.5) }
+}
+
+html.light {
+    ::-webkit-scrollbar-track{ background-color:#ccc }
+    ::-webkit-scrollbar-thumb{ background-color:rgba(130, 130, 130, 0.3) }
+    ::-webkit-scrollbar-thumb:hover{ background-color:rgba(80, 80, 80, 0.4); }
+}
+
+html {
+    overflow-y:scroll;
+    &.light {
+        ::-webkit-scrollbar-track{ background-color:#fafafa }
+        ::-webkit-scrollbar-thumb{ background-color:rgba(0, 0, 0, 0.2) }
+        ::-webkit-scrollbar-thumb:hover{ background-color:rgba(0, 0, 0, 0.4) }
+        ::selection { background: #eee; color: #007cd8; }
+    }
+    &.dark {
+        ::-webkit-scrollbar-track{ background-color:#222 }
+        ::-webkit-scrollbar-thumb{ background-color:rgba(255, 255, 255, 0.2) }
+        ::-webkit-scrollbar-thumb:hover{ background-color:rgba(255, 255, 255, 0.4) }
+        ::selection { background: #1e1e1eb0; color: #a7975c; }
+    }
+}
+
+.as-a-color {
+    a {
+        transition: color .3s;
+        html.light & { color:#159; &:hover { color:#3af } }
+        html.dark & { color:#29e; &:hover { color:#5bf } }
+    }
+}
+
+.as-border {
+    @apply
+    bg-white bg-blue-100 dark:bg-zinc-900/30
+    border-zinc-300 dark:border-zinc-800/70
+}
+
+.as-input-none {
+    @apply outline-none resize-none border-none bg-transparent
+}
+
+.as-input-text {
+    @apply rounded-[3px] outline-none resize-none block w-full text-sm shadow-sm border
+    bg-[#f8f8f8] border-zinc-200/80 placeholder-[#888f99]
+    dark:bg-[#0a0a0a] dark:border-zinc-800/80 dark:placeholder-gray-500;
+    &:hover {
+        @apply border-zinc-400/50 dark:border-zinc-800
+    }
+}
+
+.as-input-btn {
+    @apply rounded-[3px] px-4 text-sm border shadow-sm cursor-pointer
+    bg-white border-zinc-300
+    dark:bg-black dark:border-zinc-700/80;
+    &:hover {
+        @apply border-zinc-400 dark:border-zinc-600/80
+    }
+}
+
+.as-box {
+    @apply rounded-[3px] shadow-sm border
+    bg-white border-zinc-200
+    dark:bg-black dark:border-zinc-800/80;
+    &:hover {
+        @apply border-zinc-300 dark:border-zinc-800
+    }
+}
+
+.as-tag {
+    @apply rounded-[2px] shadow-sm inline-block text-xs border
+    bg-[#e6edf3] border-[#e6edf3] text-[#595f6e]
+    dark:bg-[#171a24] dark:border-[#171a24] dark:text-[#eee];
+    &:hover {
+        @apply
+        border-[#c6cdd3]
+        dark:border-[#35363a]
+    }
+}
+
+.as-tag-xs {
+    @apply as-tag px-[5px] py-[3px]
+}
+
+

@@ -1,0 +1,122 @@
+.md-view {
+
+    font-size: 14px;
+    line-height: 1.8 !important;
+
+
+     > *:first-child { margin-top: 0 !important; }
+     > *:last-child { margin-bottom: 0 !important; }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 20px 0 10px; padding: 0; font-weight: bold; -webkit-font-smoothing: antialiased;
+        cursor: text; position: relative;
+        html.light & { color:#484848 }
+        html.dark & { color:#ccc }
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2,
+    h3:first-child, h4:first-child, h5:first-child, h6:first-child { margin-top: 0; padding-top: 0; }
+
+    h1 tt, h1 code { font-size: inherit; }
+    h2 tt, h2 code { font-size: inherit; }
+    h3 tt, h3 code { font-size: inherit; }
+    h4 tt, h4 code { font-size: inherit; }
+    h5 tt, h5 code { font-size: inherit; }
+    h6 tt, h6 code { font-size: inherit; }
+
+    h1 { font-size: 28px; }
+    h2 {
+        font-size: 24px;
+        html.light & { border-bottom: 1px solid #ccc; }
+        html.dark & { border-bottom: 1px solid #4a4a4a; }
+    }
+    h3 { font-size: 18px; }
+    h4 { font-size: 16px; }
+    h5 { font-size: 14px; }
+    h6 { font-size: 14px; }
+
+    p, blockquote, table, pre { margin: 15px 0; }
+    hr {
+        border: 0 none; padding: 0;
+        html.light & { border-top:4px solid #ccc; }
+        html.dark & { border-top:4px solid #222; }
+    }
+
+    body > h2:first-child { margin-top: 0; padding-top: 0; }
+    body > h1:first-child { margin-top: 0; padding-top: 0; }
+    body > h1:first-child + h2 { margin-top: 0; padding-top: 0; }
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child { margin-top: 0; padding-top: 0; }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 { margin-top: 0; padding-top: 0; }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p { margin-top: 0; }
+    li p.first { display: inline-block; }
+    li { margin:2px 0; }
+
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    ul, ol { padding-left: 28px; }
+    ul :first-child, ol :first-child { margin-top: 0; }
+    ul :last-child, ol :last-child { margin-bottom: 0; }
+
+    dl { padding: 0; }
+    dl dt { font-size: 14px; font-weight: bold; font-style: italic; padding: 0; margin: 15px 0 5px; }
+    dl dt:first-child { padding: 0; }
+    dl dt > :first-child { margin-top: 0; }
+    dl dt > :last-child { margin-bottom: 0; }
+    dl dd { margin: 0 0 15px; padding: 0 15px; }
+    dl dd > :first-child { margin-top: 0; }
+    dl dd > :last-child { margin-bottom: 0; }
+
+    blockquote {
+        padding: 0 15px;
+        html.light & { border-left: 4px solid #b96767; }
+        html.dark & { border-left: 4px solid #a57070; }
+    }
+    blockquote > :first-child { margin-top: 0; }
+    blockquote > :last-child { margin-bottom: 0; }
+
+    table {
+        padding: 0; border-spacing: 0; border-collapse: collapse;
+        tr, th { border: 0; }
+        th {
+            html.light & { background: #f9fafb; }
+            html.dark & { background: #141414; }
+        }
+        td {
+            border-style: solid; border-width: 0 0 1px 0;
+            html.light & { background: #ffffff; border-color: #e5e7eb; }
+            html.dark & { background: #161616; border-color: #252525; }
+        }
+    }
+    table tr { margin: 0; padding: 0; }
+    table tr:nth-child(2n) {
+        html.light & { background-color: #f8f8f8; }
+        html.dark & { background-color: #222; }
+    }
+    table tr th { font-weight: bold; text-align: left; font-size: 12px; margin: 0; padding: 8px 13px; }
+    table tr td { text-align: left; margin: 0; font-size:13px; padding: 12px 13px; }
+    table tr th :first-child, table tr td :first-child { margin-top: 0; }
+    table tr th :last-child, table tr td :last-child { margin-bottom: 0; }
+
+    img {
+        max-width: 100%; box-sizing: border-box;
+    }
+
+    code, tt {
+        margin: 0 2px; padding: 0 5px; white-space: pre-wrap;
+    }
+    pre code {
+        margin: 0; padding: 0; white-space: pre-wrap; border: none; tab-size:4;
+        word-wrap: break-word; word-break: break-all; overflow-wrap: anywhere;
+    }
+
+    pre {
+        font-size: 13px; line-height: 19px; overflow: auto; padding: 6px 10px;
+
+        html.light & { background-color: #eee; }
+        html.dark & { background-color: #1e1e1e; }
+    }
+    pre code, pre tt { background-color: transparent; border: none; }
+}
+

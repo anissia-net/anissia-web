@@ -67,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import {computed, nextTick, onUnmounted, Ref, ref} from "vue";
+import {computed, nextTick, onMounted, onUnmounted, Ref, ref} from "vue";
 import PageData from "../../common/PageData";
 import {onBeforeRouteUpdate, useRouter} from "vue-router";
 import scrollLoader from "scroll-loader";
@@ -186,6 +186,19 @@ function doDelete(post: Post) {
   }
 }
 
+function onKeyup(event: KeyboardEvent) {
+    const post = view?.value?.posts?.[0];
+    switch (event.key) {
+        case 'e':
+        {
+            if (post && post.canEdit(user.value) && !post.isEditMode) {
+                post.isEditMode = true;
+                window.scrollTo(0, 0);
+            }
+        }
+    }
+}
+
 init();
 load();
 
@@ -197,8 +210,12 @@ onBeforeRouteUpdate((to, from, next) => {
 
 onUnmounted(() => {
   sl.destroy();
+  document.removeEventListener('keyup', onKeyup, true);
 });
 
+onMounted(() => {
+    document.addEventListener('keyup', onKeyup, true);
+});
 </script>
 
 <style>

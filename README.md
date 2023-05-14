@@ -6,6 +6,10 @@
 ## 준비과정
 1. node.js 설치
     * [https://nodejs.org](https://nodejs.org)
+    ``` shell
+    # windows powershell 은 아래 추가 명령 입력
+    Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+    ```
 1. yarn 설치
    ``` shell
    npm install --global yarn

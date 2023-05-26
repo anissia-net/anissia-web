@@ -76,8 +76,69 @@
         <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <input type="text" id="default-search" autocomplete="off" class="p-3 pl-9 as-input-text" placeholder="애니메이션 검색 : 검색어 #장르 @제작자 /완결"  v-model="query" @click="autocorrectOn = true" @keydown="keyAutocorrect" @keyup="loadAutocorrect">
+        <input type="text" id="default-search" autocomplete="off" class="p-3 pl-9 as-input-text" placeholder="애니검색 #장르 @제작자 /완결 /도움말"  v-model="query" @click="autocorrectOn = true" @keydown="keyAutocorrect" @keyup="loadAutocorrect">
         <button type="button" @click="searchAnime()" class="as-input-btn absolute px-4 py-1.5 right-2 bottom-1.5">검색</button>
+      </div>
+
+      <div v-if="searchHelpOn">
+        <div class="font-bold pt-4"><i class="fa-solid fa-circle-question"></i> 검색 도움말</div>
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+
+          <div>
+            <div class="pt-5 opacity-80 text-sm"><i class="fa-solid fa-list"></i> 키워드 검색 (AND 조건)</div>
+            <div class="pl-0">
+              <div class="pt-3 font-bold"><i class="fa-solid fa-magnifying-glass mr-1"></i> 비밥 카우</div>
+              <div class="pt-2 text-sm">
+                단어중 "비밥" "카우" 포함시 검색됩니다.<br/>
+                검색결과) 카우보이비밥
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="pt-5 opacity-80 text-sm"><i class="fa-solid fa-list"></i> 띄어쓰기</div>
+            <div class="pl-0">
+              <div class="pt-3 font-bold"><i class="fa-solid fa-magnifying-glass mr-1"></i> 체인소 맨</div>
+              <div class="pt-2 text-sm">
+                단어중 "체인소" "맨" 포함시 검색됩니다.<br/>
+                검색결과) 체인소 맨
+              </div>
+              <div class="pt-3 font-bold"><i class="fa-solid fa-magnifying-glass mr-1"></i> 체인소맨</div>
+              <div class="pt-2 text-sm">
+                단어중 "체인소맨"이 포함시 검색됩니다.<br/>
+                즉, 검색어 2에서는 "체인소 맨"이 검색되지 않습니다.
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="pt-5 opacity-80 text-sm"><i class="fa-solid fa-list"></i> 장르검색 (AND 조건)</div>
+            <div class="pl-0">
+              <div class="pt-3 font-bold"><i class="fa-solid fa-magnifying-glass mr-1"></i> #판타지 #모험</div>
+              <div class="pt-2 text-sm">판타지이면서 동시에 모험인 장르를 검색합니다.</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="pt-5 opacity-80 text-sm"><i class="fa-solid fa-list"></i> 자막제작자 검색 (OR 조건)</div>
+            <div class="pl-0">
+              <div class="pt-3 font-bold"><i class="fa-solid fa-magnifying-glass mr-1"></i> @철수 @영희</div>
+              <div class="pt-2 text-sm">자막제작자가 철수이거나 영희인 경우 모두를 검색합니다.</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="pt-5 opacity-80 text-sm"><i class="fa-solid fa-list"></i> 완결 작품만 검색 (최신순)</div>
+            <div class="pl-0">
+              <div class="pt-3 font-bold"><i class="fa-solid fa-magnifying-glass mr-1"></i> /완결</div>
+              <div class="pt-2 text-sm">
+                완결된 작품만 검색됩니다.<br/>
+                자동으로 최신순으로 정렬됩니다.
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       <div v-if="autocorrectOn && autocorrect.length">
@@ -143,6 +204,7 @@ const page = ref(0);
 const query = ref<string>(new Locate().getParameter('q', '') as string);
 const autocorrect = ref([]) as Ref<AnimeAutocorrect[]>;
 const autocorrectOn = ref(false);
+const searchHelpOn = ref(false);
 const autocorrectIndex = ref(-1);
 let autocorrectQuery = '';
 const router = useRouter();
@@ -192,7 +254,14 @@ function loadList() {
 function searchAnime() {
   page.value = 0;
   autocorrectOn.value = false;
-  router.push(`/anime?q=${encodeURIComponent(query.value)}`);
+  const q = query.value;
+  if (q.indexOf('/도움말') != -1) {
+    searchHelpOn.value = true;
+    query.value = query.value.split('/도움말').join('').trim();
+    return;
+  }
+  searchHelpOn.value = false;
+  router.push(`/anime?q=${encodeURIComponent(q)}`);
 }
 
 function loadAutocorrect(event: KeyboardEvent) {

@@ -115,7 +115,7 @@
               <div class="pt-3 font-bold"><i class="fa-solid fa-magnifying-glass mr-1"></i> 체인소맨</div>
               <div class="pt-2 text-sm">
                 단어중 "체인소맨"이 포함시 검색됩니다.<br/>
-                <a href="https://gs.saro.me/lab?topicId=436">형태소 분석기</a>가 "체인소맨"을 "체인소 맨"으로 분해하지 못할 경우 "체인소 맨"이 검색되지 않습니다.<br/>
+                형태소 분석기가 "체인소맨"을 "체인소 맨"으로 분해하지 못할 경우 "체인소 맨"이 검색되지 않습니다.<br/>
                 쉽게 말해서 띄어쓰기를 최대한 하여 검색하는 것을 추천합니다.
               </div>
             </div>

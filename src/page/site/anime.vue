@@ -80,8 +80,11 @@
         <button type="button" @click="searchAnime()" class="as-input-btn absolute px-4 py-1.5 right-2 bottom-1.5">검색</button>
       </div>
 
-      <div v-if="searchHelpOn">
-        <div class="font-bold pt-4"><i class="fa-solid fa-circle-question"></i> 검색 도움말</div>
+      <div v-if="searchHelpOn" class="as-a-color px-2 py-4">
+        <div class="font-bold pt-4">
+          <span @click="searchHelpOn = false" class="float-right cursor-pointer"><i class="fa-solid fa-x"></i> 닫기</span>
+          <router-link to="/notice?topicNo=141"><i class="fa-solid fa-circle-question mr-1"></i> 애니메이션 검색 도움말</router-link>
+        </div>
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
 
           <div>
@@ -103,13 +106,21 @@
                 단어중 "체인소" "맨" 포함시 검색됩니다.<br/>
                 검색결과) 체인소 맨
               </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="pt-5 opacity-80 text-sm"><i class="fa-solid fa-list"></i> 형태소</div>
+            <div class="pl-0">
               <div class="pt-3 font-bold"><i class="fa-solid fa-magnifying-glass mr-1"></i> 체인소맨</div>
               <div class="pt-2 text-sm">
                 단어중 "체인소맨"이 포함시 검색됩니다.<br/>
-                즉, 검색어 2에서는 "체인소 맨"이 검색되지 않습니다.
+                <a href="https://gs.saro.me/lab?topicId=436">형태소 분석기</a>가 "체인소맨"을 "체인소 맨"으로 분해하지 못할 경우 "체인소 맨"이 검색되지 않습니다.<br/>
+                쉽게 말해서 띄어쓰기를 최대한 하여 검색하는 것을 추천합니다.
               </div>
             </div>
           </div>
+
 
           <div>
             <div class="pt-5 opacity-80 text-sm"><i class="fa-solid fa-list"></i> 장르검색 (AND 조건)</div>

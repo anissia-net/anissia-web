@@ -24,7 +24,7 @@
         <textarea ref="contentElement" v-model="content" @input="onInputContent" @keydown.tab="keydownTab" @keydown.enter="keydownEnter" placeholder="내용" class="p-2 as-input-text"></textarea>
       </div>
       <div class="box-border anissia-md-edit" :class="({'w-[50%] pl-1 float-right': (mode == 'both'), 'hidden': (mode == 'edit')})">
-        <div class="md-view as-a-color p-2 as-box" ref="previewElement" v-html="contentHtml"></div>
+        <div class="md-view as-a-color p-2 as-box overflow-auto" ref="previewElement" v-html="contentHtml"></div>
       </div>
     </div>
     <div class="overflow-auto mb-8">

@@ -106,7 +106,8 @@
               <div class="pt-3 font-bold"><i class="fa-solid fa-magnifying-glass mr-1"></i> 체인소맨</div>
               <div class="pt-2 text-sm">
                 단어중 "체인소맨"이 포함시 검색됩니다.<br/>
-                즉, 검색어 2에서는 "체인소 맨"이 검색되지 않습니다.
+                "체인소 맨"이 검색되지 않습니다.<br/>
+                (검색엔진 사전에 걸렸을 경우 검색될 수 있습니다.)
               </div>
             </div>
           </div>

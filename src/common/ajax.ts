@@ -12,7 +12,7 @@ class Ajax {
     if (!this.ajaxState) {
       this.ajaxState = ajaxStateStore();
     }
-    const toId = setTimeout(() => this.ajaxState.setLoading(), 500);
+    const toId = setTimeout(() => this.ajaxState.setLoading(), 1500);
     if (!options) {
       options = {};
     }

@@ -5,7 +5,7 @@
     <div v-if="anime" class="mt-3 mb-10">
       <div v-if="anime.animeNo != 0">
         <div class="font-bold text-xl">{{anime.subject}}</div>
-        <div class="text-sm mt-1">{{anime.originalSubject}}</div>
+        <div class="text-sm mt-1" lang="ja">{{anime.originalSubject}}</div>
 
         <table class="mt-6 text-sm text-left text-gray-800 dark:text-gray-100 border-t border-gray-200 dark:border-zinc-800">
           <tbody>
@@ -172,7 +172,7 @@
             <div>
               <router-link :to="toAnimeViewUrl(node.animeNo)">
                 <div class="text-md font-bold text-gray-800 dark:text-zinc-300">{{node.subject}}</div>
-                <div class="text-sm mt-1" v-if="node.originalSubject">{{node.originalSubject}}</div>
+                <div class="text-sm mt-1" lang="ja" v-if="node.originalSubject">{{node.originalSubject}}</div>
               </router-link>
             </div>
             <div class="mt-1 space-x-1 space-y-2 text-gray-800 dark:text-zinc-300">

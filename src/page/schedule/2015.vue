@@ -173,7 +173,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 @keyframes sc2015-popup {
   from { background-color: rgba(0, 0, 0, 0); } to { background-color: rgba(0, 0, 0, .3); }
 }
@@ -188,7 +187,7 @@ onBeforeUnmount(() => {
 #sc2015 .title svg:hover { opacity: 1; transform: rotate(22deg); }
 #sc2015 .nav th { height: 40px; cursor: pointer; transition: background-color 0.2s, color 0.2s; }
 #sc2015 .main { position: fixed; right:0; bottom:0; left:0; overflow-y:auto }
-#sc2015 .list { font-size:16px; font-family: "Noto Sans KR", "Malgun Gothic", "Dotum"; }
+#sc2015 .list { font-size:16px; }
 #sc2015 .list td { height: 48px; line-height: 1.8; padding:0; transition: background-color 0.2s, color 0.2s; }
 #sc2015 .list td.tod { width:64px; text-align: center; }
 #sc2015 .list td.genres { text-align: right; padding-right:14px; }

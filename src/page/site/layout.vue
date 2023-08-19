@@ -153,9 +153,6 @@ onUnmounted(() => {
 </script>
 
 <style>
-@import url(@fortawesome/fontawesome-free/css/all.min.css);
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-body { font-family: "Noto Sans KR", "Malgun Gothic", "Dotum"; }
 .as-fa-spin {
   animation: fa-spin 4s infinite linear !important;
 }

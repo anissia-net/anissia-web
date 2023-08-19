@@ -107,7 +107,7 @@
             <input type="number" v-model="asd.htmlHeight" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white shadow-sm" maxlength="3" />
           </div>
           <label class="sub-title">HTML 코드</label>
-          <textarea readonly :value="htmlCode" class="p-2 h-[120px] md:h-[162px] as-input-text !text-[12px]"></textarea>
+          <textarea readonly :value="htmlCode" class="p-2 h-[120px] md:h-[162px] as-input-text !text-[12px] font-mono"></textarea>
           <div class="mt-3">
             <button @click="doCopyClipboard(htmlCode)" class="w-full p-2 as-input-btn font-semibold !text-[15px]">
               <i class="fa-regular fa-copy"></i>&nbsp; 복사하기
@@ -150,7 +150,7 @@
             <span class="ml-3 text-sm font-medium text-gray-900 dark:text-zinc-300">스크롤 사용여부</span>
           </label>
           <label class="sub-title">HTML 코드</label>
-          <textarea readonly :value="imgCode" class="p-2 h-[88px] md:h-[162px]  as-input-text !text-[12px]"></textarea>
+          <textarea readonly :value="imgCode" class="p-2 h-[88px] md:h-[162px]  as-input-text !text-[12px] font-mono"></textarea>
           <div class="mt-3">
             <button @click="doCopyClipboard(imgCode)" class="w-full p-2 as-input-btn font-semibold !text-[15px]">
               <i class="fa-regular fa-copy"></i>&nbsp; 복사하기

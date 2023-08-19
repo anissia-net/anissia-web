@@ -21,7 +21,7 @@
             <tr class="border-b dark:border-zinc-800">
               <th class="py-4 px-6 w-[20%] text-zinc-500 dark:text-zinc-300">원제</th>
               <td class="py-4 px-6">
-                <input type="text" v-model="anime.originalSubject" name="originalSubject" placeholder="원제" class="p-2.5 as-input-text">
+                <input type="text" v-model="anime.originalSubject" name="originalSubject" placeholder="원제" class="p-2.5 as-input-text" lang="ja">
               </td>
             </tr>
             <tr class="border-b dark:border-zinc-800">
@@ -191,12 +191,12 @@
             <div>
               <router-link v-if="!node.agendaNo" :to="toAnimeViewUrl(node.animeNo)">
                 <div class="text-md font-bold text-gray-800 dark:text-zinc-300">{{node.subject}}</div>
-                <div class="text-sm mt-1" v-if="node.originalSubject">{{node.originalSubject}}</div>
+                <div class="text-sm mt-1" lang="ja" v-if="node.originalSubject">{{node.originalSubject}}</div>
               </router-link>
               <div v-else>
                 <input type="button" value="복원" @click="doRecover(node)" class="float-right text-white bg-rose-700 hover:bg-rose-800 outline-none font-medium rounded-md text-sm px-4 py-2 dark:bg-red-800 dark:hover:bg-red-700" />
                 <div class="text-md font-bold text-gray-800 dark:text-zinc-300">{{node.subject}}</div>
-                <div class="text-sm mt-1" v-if="node.originalSubject">{{node.originalSubject}}</div>
+                <div class="text-sm mt-1" lang="ja" v-if="node.originalSubject">{{node.originalSubject}}</div>
               </div>
             </div>
             <div class="mt-1 space-x-1 space-y-2 text-gray-800 dark:text-zinc-300">

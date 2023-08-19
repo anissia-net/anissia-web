@@ -1,7 +1,20 @@
+@import url(@fortawesome/fontawesome-free/css/all.min.css);
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ::-webkit-scrollbar { width:8px; height:8px }
+
+@layer components {
+    :root {
+        --font-family-sans: "Noto Sans KR", "Noto Sans JP", "Malgun Gothic", "Dotum", sans-serif;
+    }
+
+    :lang(ja) {
+        --font-family-sans: "Noto Sans JP", sans-serif;
+        font-family: var(--font-family-sans);
+    }
+}
 
 html.dark {
     ::-webkit-scrollbar-track{ background-color:#111 }

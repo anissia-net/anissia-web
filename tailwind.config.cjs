@@ -8,6 +8,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 'sans': ['var(--font-family-sans)'],
+                'serif': ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+                'mono': ['SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
             },
         },
     },

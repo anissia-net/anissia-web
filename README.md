@@ -16,7 +16,7 @@
    ```
    ``` shell
    yarn -v
-   # yarn은 3.x 버전을 사용해야 합니다.
+   # 3.x 이상 버전이 설치되었는지 확인합니다.
    ```
 1. IDE 설치
     * IDE는 상관없으나 **WebStorm** 혹은 **Visual Studio Code (무료)** 추천

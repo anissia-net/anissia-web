@@ -98,7 +98,7 @@ onBeforeUnmount(() => {
 #sc2009 {
   position: absolute; top:0; right:0; bottom:0; left:0; background-color: #444;
   background-image: url('/src/page/schedule/2009/bg.jpg'); background-repeat: no-repeat;
-  font-family: "Malgun Gothic", "Dotum"; min-width:530px; box-sizing: border-box;
+  font-family: "Malgun Gothic", "Dotum", sans-serif; min-width:530px; box-sizing: border-box;
   ::-webkit-scrollbar{ width:0; height:0 }
   a { text-decoration: none }
   > * { position: absolute; }

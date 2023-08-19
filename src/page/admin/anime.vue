@@ -119,9 +119,9 @@
               </td>
             </tr>
             <tr class="border-b dark:border-zinc-800">
-              <th class="py-4 px-6 w-[20%] text-zinc-500 dark:text-zinc-300">트위터</th>
+              <th class="py-4 px-6 w-[20%] text-zinc-500 dark:text-zinc-300">X</th>
               <td class="py-4 px-6">
-                <input type="text" v-model="anime.twitter" name="twitter" placeholder="트위터" class="p-2.5 as-input-text">
+                <input type="text" v-model="anime.twitter" name="twitter" placeholder="X" class="p-2.5 as-input-text">
               </td>
             </tr>
             <tr class="border-b dark:border-zinc-800">
@@ -203,7 +203,7 @@
               <span class="as-tag-xs" v-for="tag in node.tags" :key="tag">{{tag}}</span>
               <span class="as-tag-xs" v-for="tag in node.genres.split(/,/g)" :key="tag"><router-link :to="`/admin/anime?q=%23${encodeURIComponent(tag)}`">{{tag}}</router-link></span>
               <span class="as-tag-xs" v-if="node.website"><a :href="node.website" target="_blank" class="fas fa-home"></a></span>
-              <span class="as-tag-xs" v-if="node.twitter"><a :href="node.twitter" target="_blank" class="fa-brands fa-twitter"></a></span>
+              <span class="as-tag-xs" v-if="node.twitter"><a :href="node.twitter" target="_blank" class="fa-brands fa-x-twitter"></a></span>
               <span class="as-tag-xs" v-if="node.captionCount"><span class="fas fa-closed-captioning">&nbsp; {{node.captionCount}}</span></span>
             </div>
           </div>

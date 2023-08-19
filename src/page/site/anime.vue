@@ -32,7 +32,7 @@
             <td class="py-4 px-6 break-all"><a :href="anime.website" target="_blank">{{anime.website}}</a></td>
           </tr>
           <tr v-if="anime.twitter" class="border-b border-gray-200 dark:border-zinc-800">
-            <th class="py-4 px-6 font-medium text-gray-900 bg-gray-50 dark:text-white dark:bg-zinc-900/50">트위터</th>
+            <th class="py-4 px-6 font-medium text-gray-900 bg-gray-50 dark:text-white dark:bg-zinc-900/50">X</th>
             <td class="py-4 px-6 break-all"><a :href="anime.twitter" target="_blank">{{anime.twitter}}</a></td>
           </tr>
           </tbody>
@@ -179,7 +179,7 @@
               <span class="as-tag-xs" v-for="tag in node.tags" :key="tag">{{tag}}</span>
               <span class="as-tag-xs" v-for="tag in node.genres.split(/,/g)" :key="tag"><router-link :to="`/anime?q=%23${encodeURIComponent(tag)}`">{{tag}}</router-link></span>
               <span class="as-tag-xs" v-if="node.website"><a :href="node.website" target="_blank" class="fas fa-home"></a></span>
-              <span class="as-tag-xs" v-if="node.twitter"><a :href="node.twitter" target="_blank" class="fa-brands fa-twitter"></a></span>
+              <span class="as-tag-xs" v-if="node.twitter"><a :href="node.twitter" target="_blank" class="fa-brands fa-x-twitter"></a></span>
               <span class="as-tag-xs" v-if="node.captionCount"><span class="fas fa-closed-captioning">&nbsp; {{node.captionCount}}</span></span>
             </div>
           </div>

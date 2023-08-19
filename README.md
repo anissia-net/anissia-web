@@ -14,6 +14,10 @@
    ``` shell
    npm install --global yarn
    ```
+   ``` shell
+   yarn -v
+   # yarn은 3.x 버전을 사용해야 합니다.
+   ```
 1. IDE 설치
     * IDE는 상관없으나 **WebStorm** 혹은 **Visual Studio Code (무료)** 추천
     * **Visual Studio Code (무료)**

@@ -7,7 +7,7 @@
 ## 준비과정
 IDE 혹은 텍스트 에디터 설치하고 node.js와 yarn을 컴퓨터에 설치해야 합니다.
 1. IDE 내지 텍스트 에디터 설치
-    * 무슨 IDE나 에디터를 써도 상관없긴 하나 IDE는 **WebStorm**, 웹스톰 라이선스 비용이 부담되거나 텍스트 에디터를 사용할 경우 **Visual Studio Code (무료)** 추천
+    * 아무 IDE나 에디터를 써도 상관없긴 하나 IDE는 **WebStorm**, 웹스톰 라이선스 비용이 부담되거나 텍스트 에디터를 사용할 경우 **Visual Studio Code (무료)** 추천
     * **Visual Studio Code (무료)**
         * https://code.visualstudio.com
         * 확장도구(extensions)도 설치
@@ -18,7 +18,7 @@ IDE 혹은 텍스트 에디터 설치하고 node.js와 yarn을 컴퓨터에 설�
 1. node.js를 [공식 홈페이지](https://nodejs.org/ko)에서 제공하는 인스톨러를 통해 설치하거나, NVM, NVM for Windows, NVS 등의 버전 관리자를 통해 설치하세요. 버전 관리자를 사용하는 방식이 추천(특히, 여러 프로젝트를 작업하는 경우)됩니다.
 1. 아래에 제시된 방법 중 하나를 선택하여 yarn을 설치합니다.
 ### corepack을 통한 yarn 설치(yarn 측이 권장)
-yarn 공식 홈페이지 에서는 corepack을 통해 yarn을 설치하도록 안내하고 있습니다.(https://v3.yarnpkg.com/getting-started/install) 아직까지도 yarn classic을 사용하는 프로젝트가 많기 때문에(마스토돈 등의 해외 유명 오픈소스도 yarn classic을 사용하는 케이스 있음), 다른 yarn 프로젝트와 함께 작업할 생각이 있는 경우 corepack을 통해서 설치하는 것이 좋습니다
+yarn 공식 홈페이지에서는 corepack을 통해 yarn을 설치하도록 안내하고 있습니다.(https://v3.yarnpkg.com/getting-started/install) 아직까지도 yarn 클래식(1.x)을 사용하는 프로젝트가 많기 때문에(마스토돈 등의 해외 유명 오픈소스도 yarn 클래식을 사용하는 케이스 있음), 다른 yarn 프로젝트와 함께 작업할 생각이 있는 경우 corepack을 통해서 설치하는 것이 좋습니다
 
 
  1. corepack을 활성화 하거나 설치합니다.
@@ -38,7 +38,7 @@ yarn 공식 홈페이지 에서는 corepack을 통해 yarn을 설치하도록 �
 ### corepack을 거치지 않고 직접 yarn 설치
    ``` shell
    npm install --global yarn
-   #윈도우 환경에서 node.js를 인스토러를 통하여 윈도우 전역에 노드를 설치(인스톨러를 통해 설치시, 일반적으로 전역으로 설치됩니다)했을 경우, 관리자 권한으로 터미널(CMD, 파워셀 등)을 실행하여야 합니다.
+   #윈도우 환경에서 node.js를 인스톨러를 통하여 윈도우 전역에 노드를 설치(인스톨러를 통해 설치시, 일반적으로 전역으로 설치됩니다)했을 경우, 관리자 권한으로 터미널(CMD, 파워쉘 등)을 실행하여야 합니다.
    ```
    ``` shell
    yarn -v

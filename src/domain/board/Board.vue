@@ -70,9 +70,9 @@
 import {computed, nextTick, onMounted, onUnmounted, Ref, ref} from "vue";
 import PageData from "../../common/PageData";
 import {onBeforeRouteUpdate, useRouter} from "vue-router";
-import scrollLoader from "scroll-loader";
+import { ScrollLoader } from "raon";
 import {sessionStore} from "../session/sessionStore";
-import {Locate} from "../../common/Locate";
+import {Locate} from "raon";
 import boardRemote from "./remote/boardRemote";
 import {BoardInfo} from "./BoardInfo";
 import {Topic} from "./Topic";
@@ -93,7 +93,7 @@ const router = useRouter();
 const session = sessionStore();
 const user = computed(() => session.user);
 
-const sl = scrollLoader().onNeedNextPage(() => {
+const sl = new ScrollLoader().onNeedNextPage(() => {
   page.value++;
   loadList();
 });

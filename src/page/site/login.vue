@@ -45,7 +45,7 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import sessionService from "../../domain/session/remote/sessionService";
-import {Locate} from "../../common/Locate";
+import {Locate} from "raon";
 import {useRouter} from "vue-router";
 import {sessionStore} from "../../domain/session/sessionStore";
 

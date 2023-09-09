@@ -205,8 +205,8 @@ import Anime from "../../domain/anime/Anime";
 import animeRemote from "../../domain/anime/remote/animeRemote";
 import AnimeAutocorrect from "../../domain/anime/AnimeAutocorrect";
 import {onBeforeRouteUpdate, useRouter} from "vue-router";
-import {Locate} from "../../common/Locate";
-import scrollLoader from "scroll-loader";
+import {Locate} from "raon";
+import { ScrollLoader } from "raon";
 
 const list = ref(PageData.empty().notLoaded()) as Ref<PageData<Anime>>;
 const anime = ref(null) as Ref<Anime|null>;
@@ -220,7 +220,7 @@ const autocorrectIndex = ref(-1);
 let autocorrectQuery = '';
 const router = useRouter();
 
-const sl = scrollLoader().onNeedNextPage(() => {
+const sl = new ScrollLoader().onNeedNextPage(() => {
   page.value++;
   loadList();
 });

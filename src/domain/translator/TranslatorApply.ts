@@ -1,5 +1,6 @@
 import {TranslatorApplyPoll} from "./TranslatorApplyPoll";
 import anissia from "../../common/anissia";
+import {DateFormat} from "raon";
 
 export class TranslatorApply {
     public applyNo = 0;
@@ -15,7 +16,7 @@ export class TranslatorApply {
     }
 
     public get regDtFullText(): string {
-        return anissia.dateFormat(new Date(this.regTime * 1000), "yyyy-MM-dd HH:mm:ss");
+        return DateFormat.parseByUnixTime(this.regTime).format("yyyy-MM-dd HH:mm:ss");
     }
 
     public get resultText(): string {

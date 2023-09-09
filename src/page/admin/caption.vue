@@ -45,12 +45,12 @@
 
 <script setup lang="ts">
 import {nextTick, Ref, ref} from "vue";
-import scrollLoader from "scroll-loader";
+import {DateFormat, ScrollLoader} from "raon";
 import PageData from "../../common/PageData";
 import animeRemote from "../../domain/anime/remote/animeRemote";
 import AnimeCaption from "../../domain/anime/AnimeCaption";
 import {onBeforeRouteUpdate} from "vue-router";
-import {Locate} from "../../common/Locate";
+import {Locate} from "raon";
 import anissia from "../../common/anissia";
 import toast from "../../common/toast";
 
@@ -59,7 +59,7 @@ const page = ref(0);
 const state = ref(0);
 const list = ref(PageData.empty().notLoaded()) as Ref<PageData<AnimeCaption>>;
 
-const sl = scrollLoader().onNeedNextPage(() => {
+const sl = new ScrollLoader().onNeedNextPage(() => {
   page.value++;
   load();
 });
@@ -92,7 +92,7 @@ function moveEpisode(caption: AnimeCaption, isUp: boolean) {
 }
 
 function setNow(caption: AnimeCaption) {
-  caption.updDt = anissia.dateFormat(new Date(), "yyyy-MM-ddTHH:mm");
+  caption.updDt = new DateFormat().format("yyyy-MM-dd HH:mm");
 }
 
 function doSave(caption: AnimeCaption) {

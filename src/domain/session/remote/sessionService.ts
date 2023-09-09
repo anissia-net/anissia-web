@@ -4,7 +4,7 @@ import sessionRemote from "./sessionRemote";
 import LoginInfo from "../LoginInfo";
 import Result from "../../../common/Result";
 import {Router} from "vue-router";
-import {Locate} from "../../../common/Locate";
+import {Locate} from "raon";
 
 class SessionService {
 

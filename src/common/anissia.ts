@@ -1,5 +1,4 @@
-import {DateFormat} from "./DateFormat";
-import {LocationQuery} from "vue-router";
+import {DateFormat, ko} from "raon";
 
 class Anissia {
     /**
@@ -65,71 +64,17 @@ class Anissia {
         return '';
     }
 
-    public ymdOrDynamicAgo(date: string|number): string {
-        return this.formatOrDynamicAgo(date, 'yyyy-MM-dd');
-    }
-
-    public toParams(query: LocationQuery, name: string): string[] {
-        const pa = query[name];
-        if (!pa) {
-            return [];
-        } else if (typeof pa == 'string') {
-            return [pa];
-        } else {
-            return pa as string[];
-        }
-    }
-
-    public dateFormat(date: Date, format: string): string {
-        let rv = format;
-        rv = rv.replace(/yyyy/g, date.getFullYear().toString());
-        rv = rv.replace(/MM/g, ("0" + (date.getMonth() + 1)).slice(-2));
-        rv = rv.replace(/dd/g, ("0" + date.getDate()).slice(-2));
-        rv = rv.replace(/HH/g, ("0" + date.getHours()).slice(-2));
-        rv = rv.replace(/mm/g, ("0" + date.getMinutes()).slice(-2));
-        rv = rv.replace(/ss/g, ("0" + date.getSeconds()).slice(-2));
-        rv = rv.replace(/zzz/g, ("00" + date.getMilliseconds()).slice(-3));
-        return rv;
-    }
-
-    public toParam(query: LocationQuery, name: string, defaultValue: string|null = null): string|null {
-        return this.toParams(query, name)[0] || defaultValue;
-    }
-
-    public formatOrDynamicAgo(inputDate: string|number, format: string): string {
-        let date;
+    public ymdOrDynamicAgo(inputDate: string|number): string {
+        let dateFormat;
         if (typeof inputDate === 'string') {
-            date = new DateFormat().parseIsoDate(inputDate).toDate();
+            dateFormat = DateFormat.parseByFormat(inputDate, "yyyy-MM-ddTHH:mm:ss");
         } else if (typeof inputDate === 'number') {
-            date = new Date(inputDate);
+            dateFormat = DateFormat.parseByTimeMillis(inputDate);
         } else {
             return '';
         }
-
-        let time = Math.floor(date.getTime() / 1000);
-        let now = Math.floor(new Date().getTime() / 1000);
-        if (time > now) {
-            return '방금전';
-        }
-        if ((time + 60) > now) { // in 60 seconds
-            return `${now - time}초 전`;
-        }
-        now = Math.floor(now / 60);
-        time = Math.floor(time / 60);
-        if ((time + 60) > now) { // in 60 minutes
-            return `${now - time}분 전`;
-        }
-        now = Math.floor(now / 60);
-        time = Math.floor(time / 60);
-        if ((time + 24) > now) { // in 24 hours
-            return `${now - time}시간 전`;
-        }
-        now = Math.floor(now / 24);
-        time = Math.floor(time / 24);
-        if ((time + 30) > now) { // in 24 hours
-            return `${now - time}일 전`;
-        }
-        return new DateFormat(date).format(format);
+        const ago = dateFormat.ago;
+        return ago.unitIndex < 4 ? ko.toDateAgo(ago) : dateFormat.format('yyyy-MM-dd');
     }
     
     public fieldToText(field: string): string {
@@ -200,10 +145,6 @@ class Anissia {
         const div = document.createElement('div');
         div.innerText = text;
         return div.innerHTML;
-    }
-
-    public src(src: string): string {
-        return new URL(src, import.meta.url).href;
     }
 }
 

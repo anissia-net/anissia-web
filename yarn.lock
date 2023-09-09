@@ -619,7 +619,7 @@ __metadata:
     postcss: ^8.4.28
     postcss-import: ^15.1.0
     postcss-nested: ^6.0.1
-    scroll-loader: ^1.0.5
+    raon: ^1.0.0
     tailwindcss: ^3.3.3
     typescript: ^5.1.6
     vite: ^4.4.9
@@ -2438,6 +2438,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"raon@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "raon@npm:1.0.0"
+  checksum: 80e28031b4eb042fe4921063950ddc7c1f561367ff724051e81b18540fafbc866bdd6a54b5e67f0f5153ffcafc15f35d5e4a3e88b09fa64377c380b0202c25bb
+  languageName: node
+  linkType: hard
+
 "read-cache@npm:^1.0.0":
   version: 1.0.0
   resolution: "read-cache@npm:1.0.0"
@@ -2585,13 +2592,6 @@ __metadata:
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
   checksum: cab8f25ae6f1434abee8d80023d7e72b598cf1327164ddab31003c51215526801e40b66c5e65d658a0af1e9d6478cadcb4c745f4bd6751f97d8644786c0978b0
-  languageName: node
-  linkType: hard
-
-"scroll-loader@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "scroll-loader@npm:1.0.5"
-  checksum: 1b4b2a7690bf9332a079796dd6577a76b9bfbee82328b5a5fd12c7605bb22cef478059f1e970d965bf884dd6fe4d079a64c7ee28b32b6419e414a761bf865e4e
   languageName: node
   linkType: hard
 

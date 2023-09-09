@@ -59,7 +59,7 @@
 
 <script setup lang="ts">
 import {nextTick, onUnmounted, Ref, ref} from "vue";
-import scrollLoader from "scroll-loader";
+import { ScrollLoader } from "raon";
 import activePanelRemote from "./remote/activePanelRemote";
 import PageData from "../../common/PageData";
 import ActivePanelListItem from "./ActivePanelListItem";
@@ -72,7 +72,7 @@ const props = defineProps({
 });
 
 const page = ref(0);
-const sl = scrollLoader();
+const sl = new ScrollLoader();
 const list = ref(PageData.empty()) as Ref<PageData<ActivePanelListItem>>;
 const query = ref('');
 const openHelp = ref(false);

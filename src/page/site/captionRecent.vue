@@ -29,12 +29,12 @@ import {nextTick, onUnmounted, Ref, ref} from "vue";
 import AnimeCaption from "../../domain/anime/AnimeCaption";
 import animeRemote from "../../domain/anime/remote/animeRemote";
 import PageData from "../../common/PageData";
-import scrollLoader from "scroll-loader";
+import { ScrollLoader } from "raon";
 
 const page = ref(0);
 const list = ref(PageData.empty()) as Ref<PageData<AnimeCaption>>;
 
-const sl = scrollLoader().onNeedNextPage(() => {
+const sl = new ScrollLoader().onNeedNextPage(() => {
   page.value++;
   loadList();
 });

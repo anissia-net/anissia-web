@@ -134,9 +134,9 @@
 import {computed, nextTick, onUnmounted, Ref, ref} from "vue";
 import PageData from "../../common/PageData";
 import {onBeforeRouteUpdate, useRouter} from "vue-router";
-import scrollLoader from "scroll-loader";
+import { ScrollLoader } from "raon";
 import {TranslatorApply} from "../../domain/translator/TranslatorApply";
-import {Locate} from "../../common/Locate";
+import {Locate} from "raon";
 import translatorRemote from "../../domain/translator/remote/translatorRemote";
 import {sessionStore} from "../../domain/session/sessionStore";
 import Session from "../../domain/session/Session";
@@ -149,7 +149,7 @@ const view = ref(null) as Ref<TranslatorApply|null>;
 const page = ref(0);
 const router = useRouter();
 
-const sl = scrollLoader().onNeedNextPage(() => {
+const sl = new ScrollLoader().onNeedNextPage(() => {
   page.value++;
   loadList();
 });

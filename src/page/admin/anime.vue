@@ -230,8 +230,8 @@ import Anime from "../../domain/anime/Anime";
 import animeRemote from "../../domain/anime/remote/animeRemote";
 import AnimeAutocorrect from "../../domain/anime/AnimeAutocorrect";
 import {onBeforeRouteUpdate, useRouter} from "vue-router";
-import {Locate} from "../../common/Locate";
-import scrollLoader from "scroll-loader";
+import {Locate} from "raon";
+import { ScrollLoader } from "raon";
 import anissia from "../../common/anissia";
 import toast from "../../common/toast";
 
@@ -251,7 +251,7 @@ const dateTypeList = ref(['YMD', 'YM', 'Y', 'N/A']);
 const genres = ref([]) as Ref<string[]>;
 const state = ref('list');
 
-const sl = scrollLoader().onNeedNextPage(() => {
+const sl = new ScrollLoader().onNeedNextPage(() => {
   page.value++;
   loadList();
 });

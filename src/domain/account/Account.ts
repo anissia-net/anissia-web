@@ -14,6 +14,6 @@ export class Account {
     }
 
     public get regDtText(): string {
-        return anissia.ymdOrDynamicAgo(this.regTime * 1000);
+        return anissia.ymdOrDynamicAgo(this.regTime);
     }
 }

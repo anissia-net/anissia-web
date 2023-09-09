@@ -12,7 +12,7 @@ export class TranslatorApply {
     public website = "";
 
     public get regDtText(): string {
-        return anissia.ymdOrDynamicAgo(this.regTime * 1000);
+        return anissia.ymdOrDynamicAgo(this.regTime);
     }
 
     public get regDtFullText(): string {

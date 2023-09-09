@@ -69,7 +69,7 @@ class Anissia {
         if (typeof inputDate === 'string') {
             dateFormat = DateFormat.parseByFormat(inputDate, "yyyy-MM-ddTHH:mm:ss");
         } else if (typeof inputDate === 'number') {
-            dateFormat = DateFormat.parseByTimeMillis(inputDate);
+            dateFormat = DateFormat.parseByUnixTime(inputDate);
         } else {
             return '';
         }

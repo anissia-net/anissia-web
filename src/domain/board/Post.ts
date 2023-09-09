@@ -45,11 +45,11 @@ export class Post {
     }
 
     public get regDtText(): string {
-        return anissia.ymdOrDynamicAgo(this.regTime * 1000);
+        return anissia.ymdOrDynamicAgo(this.regTime);
     }
 
     public get updDtText(): string {
-        return anissia.ymdOrDynamicAgo(this.updTime * 1000);
+        return anissia.ymdOrDynamicAgo(this.updTime);
     }
 
     public get contentHtml(): string {

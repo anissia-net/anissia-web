@@ -8,7 +8,7 @@ export class TranslatorApplyPoll {
     public vote = 0;
 
     public get regDtText(): string {
-        return anissia.ymdOrDynamicAgo(this.regTime * 1000);
+        return anissia.ymdOrDynamicAgo(this.regTime);
     }
 
     public static assign(obj: any): TranslatorApplyPoll {

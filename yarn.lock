@@ -619,7 +619,7 @@ __metadata:
     postcss: ^8.4.28
     postcss-import: ^15.1.0
     postcss-nested: ^6.0.1
-    raon: ^1.0.0
+    raon: ^1.0.2
     tailwindcss: ^3.3.3
     typescript: ^5.1.6
     vite: ^4.4.9
@@ -2438,10 +2438,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"raon@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "raon@npm:1.0.0"
-  checksum: 80e28031b4eb042fe4921063950ddc7c1f561367ff724051e81b18540fafbc866bdd6a54b5e67f0f5153ffcafc15f35d5e4a3e88b09fa64377c380b0202c25bb
+"raon@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "raon@npm:1.0.2"
+  checksum: e151d1a3e1552dfbfc3f522774507329a7d342c0c384d795ac2e5d8c36310a8b9807ea0fa85a8cc8a0d24dee697819d757f89e75c1d5723f3a2d51ff299f605d
   languageName: node
   linkType: hard
 

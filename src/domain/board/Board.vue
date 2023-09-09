@@ -191,7 +191,7 @@ function onKeyup(event: KeyboardEvent) {
     switch (event.key) {
         case 'e':
         {
-            if (post && post.canEdit(user.value) && !post.isEditMode) {
+            if (post && post.canEdit(user.value) && !post.isEditMode && ['TEXTAREA', 'INPUT'].indexOf(event.target?.['tagName']) == -1) {
                 post.isEditMode = true;
                 window.scrollTo(0, 0);
             }

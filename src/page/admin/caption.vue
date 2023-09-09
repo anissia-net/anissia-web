@@ -92,7 +92,7 @@ function moveEpisode(caption: AnimeCaption, isUp: boolean) {
 }
 
 function setNow(caption: AnimeCaption) {
-  caption.updDt = new DateFormat().format("yyyy-MM-dd HH:mm");
+  caption.updDt = new DateFormat().format("yyyy-MM-ddTHH:mm");
 }
 
 function doSave(caption: AnimeCaption) {

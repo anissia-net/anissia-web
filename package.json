@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",
-    "@types/markdown-it": "^13.0.0",
+    "@types/markdown-it": "^13.0.1",
     "autoprefixer": "^10.4.15",
     "markdown-it": "^13.0.1",
     "pinia": "^2.1.6",
-    "postcss": "^8.4.28",
+    "postcss": "^8.4.30",
     "postcss-nested": "^6.0.1",
-    "raon": "^1.0.2",
+    "raon": "^1.0.4",
     "tailwindcss": "^3.3.3",
     "vite-plugin-html": "^3.2.0",
     "vue": "^3.3.4",
@@ -25,11 +25,11 @@
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.3.1",
+    "@vitejs/plugin-vue": "^4.3.4",
     "postcss-import": "^15.1.0",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vue-tsc": "^1.8.8"
+    "vue-tsc": "^1.8.11"
   },
   "packageManager": "yarn@3.6.2"
 }

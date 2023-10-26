@@ -56,6 +56,8 @@ export default class ActivePanelListItem {
             return ActivePanelListItem.toHtml(this.data1);
         } else if (this.code == 'ANIME') {
             return ActivePanelListItem.toHtml(this.data1);
+        } else if (this.code == 'DEL') {
+            return ActivePanelListItem.toHtml(this.data1);
         } else {
             return '';
         }

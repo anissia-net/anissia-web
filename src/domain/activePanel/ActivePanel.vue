@@ -45,6 +45,26 @@
             </table>
           </div>
         </div>
+        <div v-else-if="node.code == 'DEL'">
+          <div>
+            <span v-html="node.html"></span>
+            <span v-if="!node.openDetail"> - <b @click="node.openDetail = true" class="cursor-pointer ml-1">자세히</b></span>
+          </div>
+          <div v-if="node.openDetail">
+            <table class="mt-3 text-sm text-left text-gray-800 dark:text-zinc-300">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[#191919] dark:text-zinc-300">
+              <tr>
+                <th scope="col" class="py-3 px-6">{{node.data2}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="bg-white border-b dark:bg-zinc-900/20 dark:border-zinc-900">
+                <td class="py-4 px-6 whitespace-pre-wrap">{{node.data3}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         <div v-else>
           {{node.code}} 는 지원하지 않는 활동 패널 코드입니다.
         </div>

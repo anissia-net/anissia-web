@@ -33,7 +33,7 @@ yarn 공식 홈페이지에서는 corepack을 통해 yarn을 설치하도록 안
  1. 그 후 cd 등의 명령어를 사용하여, 이 프로젝트가 위치한 폴더로 이동해(반드시 프로젝트가 위치한 폴더로 이동해야함) 아래의 명령어로 yarn 버전을 확인합니다. 3으로 시작하면 정상적으로 셋팅이 된 것입니다.
     ``` shell
     yarn -v
-    # 3.x 이상 버전이 설치되었는지 확인합니다.
+    # 4.x 이상 버전이 설치되었는지 확인합니다.
     ```
 ### corepack을 거치지 않고 직접 yarn 설치
    ``` shell
@@ -42,11 +42,18 @@ yarn 공식 홈페이지에서는 corepack을 통해 yarn을 설치하도록 안
    ```
    ``` shell
    yarn -v
-   # 3.x 이상 버전이 설치되었는지 확인합니다.
+   # 4.x 이상 버전이 설치되었는지 확인합니다.
    ```
 ## 의존성 설치
 IDE 혹은 터미널(반드시 cd 등의 명령어를 통해 프로젝트 폴더로 이동해야함)에서 다음 명령어 실행. Visual Studio Code 사용시 콘솔 기본값은 PowerShell 이 아닌 cmd 추천
    ``` shell
+   yarn install
+   ```
+
+## 프로젝트의 yarn 버전 업데이트 방법
+프로젝트 자체의 yarn버전 업데이트에 사용되며, 일반 실행시 실행하지마세요.
+   ``` shell
+   yarn set version stable
    yarn install
    ```
 

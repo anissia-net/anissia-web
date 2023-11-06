@@ -51,7 +51,7 @@ IDE 혹은 터미널(반드시 cd 등의 명령어를 통해 프로젝트 폴더
    ```
 
 ## 프로젝트의 yarn 버전 업데이트 방법
-프로젝트 자체의 yarn버전 업데이트에 사용되며, 일반 실행시 실행하지마세요.
+프로젝트 자체의 yarn 버전 업데이트 시에 만 사용합니다.
    ``` shell
    yarn set version stable
    yarn install

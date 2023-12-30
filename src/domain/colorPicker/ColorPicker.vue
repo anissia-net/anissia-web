@@ -19,6 +19,7 @@ function updateColor(e: any) {
 </script>
 
 <style>
+@import url('vue-accessible-color-picker/styles');
 .vacp-color-picker {
   border-radius: 3px; padding:8px;
   html.dark & {
@@ -29,6 +30,7 @@ function updateColor(e: any) {
     background: #fff !important; border:1px solid #ddd !important;
     input[type=text] { background: #fff !important; border:1px solid #ddd !important; color:#333 !important; }
   }
+
   button.vacp-copy-button,
   .vacp-range-input-label-text--hue,
   .vacp-color-input-label-text { display: none !important; }

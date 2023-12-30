@@ -210,13 +210,13 @@
           <p>macOS / Novang / 2021년</p>
         </div>
       </div>
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/3rd-android.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="https://play.google.com/store/apps/details?id=com.novang.anisched" target="_blank"><h5>AniSched</h5></a>
-          <p>Android / Novang / 2021년</p>
-        </div>
-      </div>
+<!--      <div class="info-box as-box">-->
+<!--        <div class="w-[50px]"><img class="w-full" src="./schedule/3rd-android.svg"/></div>-->
+<!--        <div class="flex-1 pl-4">-->
+<!--          <a href="https://play.google.com/store/apps/details?id=com.novang.anisched" target="_blank"><h5>AniSched</h5></a>-->
+<!--          <p>Android / Novang / 2021년</p>-->
+<!--        </div>-->
+<!--      </div>-->
       <div class="info-box as-box">
         <div class="w-[50px]"><img class="w-full" src="./schedule/3rd-android.svg"/></div>
         <div class="flex-1 pl-4">

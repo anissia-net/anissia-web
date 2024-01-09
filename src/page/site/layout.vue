@@ -77,6 +77,7 @@
       </div>
     </div>
 
+    <div v-if="showScaleBox" class="layout-popup-zoom">{{scale}}%</div>
   </div>
 
 
@@ -95,6 +96,7 @@ import '../../common/md.pcss';
 import image_error from "./layout/image_error.svg";
 import image_error_edit from "./layout/image_error_edit.svg";
 import {ajaxStateStore} from "../../common/ajaxStateStore";
+import {Zooms} from "raon";
 
 
 const router = useRouter();
@@ -140,6 +142,25 @@ function doCloseHeaderMenu(event: Event) {
   }
 }
 
+
+const scale = ref<number>(100);
+const showScaleBox = ref<boolean>(false);
+
+const zooms = new Zooms()
+.displayShowTime(300)
+.watch((s, end) => {
+  try {
+    document.body.style['zoom'] = s;
+    scale.value = (s * 100).toFixed(0);
+    showScaleBox.value = !end;
+    if (showScaleBox.value) {
+      navigator.vibrate(30);
+    }
+  } catch (e) {}
+});
+
+window['exZoom'] = (i) => { zooms.doZoom(i); }
+
 document.addEventListener('error', imageLoadError, true);
 
 onBeforeRouteUpdate((to, from, next) => {
@@ -152,8 +173,14 @@ onUnmounted(() => {
 
 </script>
 
-<style>
+<style lang="postcss">
 .as-fa-spin {
   animation: fa-spin 4s infinite linear !important;
+}
+.layout-popup-zoom {
+  @apply fixed top-0 left-0 right-0 bottom-0 z-[201]
+  backdrop-blur-[4px] bg-[#fff]/5 dark:bg-[#000]/5
+  pt-32 text-7xl text-center
+  text-zinc-800 dark:text-zinc-400
 }
 </style>

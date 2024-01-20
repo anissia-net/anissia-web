@@ -11,24 +11,24 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
     "@types/markdown-it": "^13.0.7",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.17",
     "markdown-it": "^14.0.0",
     "pinia": "^2.1.7",
     "postcss": "^8.4.33",
     "postcss-nested": "^6.0.1",
     "raon": "^1.0.8",
     "tailwindcss": "^3.4.1",
-    "vite-plugin-html": "^3.2.1",
-    "vue": "^3.4.7",
+    "vite-plugin-html": "^3.2.2",
+    "vue": "^3.4.15",
     "vue-accessible-color-picker": "^5.0.1",
     "vue-router": "^4.2.5",
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.2",
+    "@vitejs/plugin-vue": "^5.0.3",
     "postcss-import": "^16.0.0",
     "typescript": "^5.3.3",
-    "vite": "^5.0.11",
+    "vite": "^5.0.12",
     "vue-tsc": "^1.8.27"
   },
   "packageManager": "yarn@4.0.2"

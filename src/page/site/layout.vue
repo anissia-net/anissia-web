@@ -76,8 +76,6 @@
         </div>
       </div>
     </div>
-
-    <div v-if="showScaleBox" class="layout-popup-zoom">{{scale}}%</div>
   </div>
 
 
@@ -96,7 +94,6 @@ import '../../common/md.pcss';
 import image_error from "./layout/image_error.svg";
 import image_error_edit from "./layout/image_error_edit.svg";
 import {ajaxStateStore} from "../../common/ajaxStateStore";
-import {Zooms} from "raon";
 
 
 const router = useRouter();
@@ -141,25 +138,6 @@ function doCloseHeaderMenu(event: Event) {
     }
   }
 }
-
-
-const scale = ref<number>(100);
-const showScaleBox = ref<boolean>(false);
-
-const zooms = new Zooms()
-.displayShowTime(300)
-.watch((s, end) => {
-  try {
-    document.body.style['zoom'] = s;
-    scale.value = (s * 100).toFixed(0);
-    showScaleBox.value = !end;
-    if (showScaleBox.value) {
-      navigator.vibrate(30);
-    }
-  } catch (e) {}
-});
-
-window['exZoom'] = (i) => { zooms.doZoom(i); }
 
 document.addEventListener('error', imageLoadError, true);
 

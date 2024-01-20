@@ -144,7 +144,7 @@ const supportMembers = ref([
 ]) as unknown as SiteMember[];
 
 const supportGraphicMembers = ref([
-  new SiteMember('당무지', `2023 ~ ${nowYear}`, [`애니시아 아이콘`, `블로그||https://blog.naver.com/vip125`]),
+  new SiteMember('당무지', `2023 ~ ${nowYear}`, [`애니시아, 애니편성표 아이콘`, `블로그||https://blog.naver.com/vip125`]),
 ]) as unknown as SiteMember[];
 
 const prevMembers = ref([

@@ -144,7 +144,7 @@ const supportMembers = ref([
 ]) as unknown as SiteMember[];
 
 const supportGraphicMembers = ref([
-  new SiteMember('당무지', `2023 ~ ${nowYear}`, [`애니시아, 애니편성표 아이콘`, `블로그||https://blog.naver.com/vip125`]),
+  new SiteMember('당무지', `2023 ~ ${nowYear}`, [`애니시아 아이콘, 애니편성표 아이콘`, `블로그||https://blog.naver.com/vip125`]),
 ]) as unknown as SiteMember[];
 
 const prevMembers = ref([
@@ -159,6 +159,8 @@ const prevMembers = ref([
 ]) as unknown as SiteMember[];
 
 const siteHistory = ref([
+  new SiteHistory(`2024-02-23`, `테라시아 도메인 종료 (예정)`, `/notice?topicNo=198`),
+  new SiteHistory(`2024-01-20`, `애니시아 안드로이드 앱 출시 (심사중)`, `https://play.google.com/store/apps/dev?id=6556202027842431619`),
   new SiteHistory(`2023-04-16`, `백엔드 리팩토링`, `/notice?topicNo=134`),
   new SiteHistory(`2023-02-11`, `애니시아 아이콘 변경`),
   new SiteHistory(`2023-01-30`, `DNS 서버변경`, `/notice?topicNo=115`),

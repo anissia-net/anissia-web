@@ -2,7 +2,7 @@ import anissia from "../../common/anissia";
 
 export default class ActivePanelListItem {
 
-    public static codeAnimeChangedListFields = ['subject', 'originalSubject', 'status', 'week', 'time', 'genres', 'twitter', 'startDate', 'endDate', 'website'];
+    public static codeAnimeChangedListFields = ['subject', 'originalSubject', 'status', 'week', 'time', 'genres', 'twitter', 'startDate', 'endDate', 'website', 'note'];
 
     public apNo = 0;
     public code = '';
@@ -46,6 +46,9 @@ export default class ActivePanelListItem {
                     case 'week':
                         pv = anissia.toKoWeek(pv);
                         nv = anissia.toKoWeek(nv);
+                        break;
+                    case 'note': // 비공의 경우 pv를 제거한다 pv가 없으면 테이블의 셀을 병합하여 한줄로 출력된다.
+                        pv = '';
                 }
                 return {nm, pv, nv};
             });

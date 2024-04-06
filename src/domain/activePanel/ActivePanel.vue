@@ -38,8 +38,8 @@
               <tbody>
               <tr v-for="item in node.codeAnimeChangedList" :key="item.nm" class="bg-white border-b dark:bg-zinc-900/20 dark:border-zinc-900">
                 <th scope="row" class="py-4 px-6 font-medium text-gray-900 break-all dark:text-white">{{item.nm}}</th>
-                <td class="py-4 px-6 break-all" :class="({'opacity-30': (item.pv == '-')})">{{item.pv}}</td>
-                <td class="py-4 px-6 break-all">{{item.nv}}</td>
+                <td v-if="item.pv" class="py-4 px-6 break-all" :class="({'opacity-30': (item.pv == '-')})">{{item.pv}}</td>
+                <td :colspan="item.pv ? 1 : 2" class="py-4 px-6 break-all">{{item.nv}}</td>
               </tr>
               </tbody>
             </table>

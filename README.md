@@ -2,7 +2,7 @@
 - 애니시아 프론트엔드 WEB 입니다.
 - 주소 : [anissia.net](https://anissia.net)
 - 인프라 자원상 Admin 사이트를 포함합니다.
-- 패키지 관리자로 yarn 3.x를 사용합니다.
+- 패키지 관리자로 yarn 4.x를 사용합니다.
 
 ## 준비과정
 IDE 혹은 텍스트 에디터 설치하고 node.js와 yarn을 컴퓨터에 설치해야 합니다.

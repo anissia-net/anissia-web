@@ -89,6 +89,7 @@ class Anissia {
             case 'startDate' : return '시작일';
             case 'endDate' : return '종료일';
             case 'website' : return '웹사이트';
+            case 'note': return '비고';
         }
         return field;
     }

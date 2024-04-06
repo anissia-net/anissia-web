@@ -124,7 +124,7 @@
                 <input type="text" v-model="anime.twitter" name="twitter" placeholder="X" class="p-2.5 as-input-text">
               </td>
             </tr>
-            <tr class="border-b dark:border-zinc-800">
+            <tr v-if="anime.animeNo > 0" class="border-b dark:border-zinc-800">
               <th class="py-4 px-6 w-[20%] text-zinc-500 dark:text-zinc-300">비고</th>
               <td class="py-4 px-6">
                 <input type="text" v-model="anime.note" name="twitter" placeholder="비고" class="p-2.5 as-input-text">

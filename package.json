@@ -28,8 +28,8 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "postcss-import": "^16.1.0",
     "typescript": "^5.4.5",
-    "vite": "^5.2.10",
-    "vue-tsc": "^2.0.14"
+    "vite": "^5.2.11",
+    "vue-tsc": "^2.0.16"
   },
   "packageManager": "yarn@4.1.1"
 }

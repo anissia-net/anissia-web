@@ -21,7 +21,7 @@
     </div>
     <div class="mb-3 overflow-auto">
       <div class="box-border" :class="({'w-[50%] pr-1 float-left': (mode == 'both'), 'hidden': (mode == 'view')})">
-        <textarea ref="contentElement" v-model="content" @input="onInputContent" @keydown.tab="keydownTab" @keydown.enter="keydownEnter" placeholder="내용" class="p-2 as-input-text"></textarea>
+        <textarea ref="contentElement" v-model="content" @input="onInputContent" @keydown.tab="keydownTab" @keydown.enter="keydownEnter" :placeholder="props.placeholder" class="p-2 as-input-text"></textarea>
       </div>
       <div class="box-border anissia-md-edit" :class="({'w-[50%] pl-1 float-right': (mode == 'both'), 'hidden': (mode == 'edit')})">
         <div class="md-view as-a-color p-2 as-box overflow-auto" ref="previewElement" v-html="contentHtml"></div>
@@ -47,6 +47,7 @@ import toast from "../../common/toast";
 const props = defineProps({
   post: Post,
   ticker: String,
+  placeholder: String,
   reload: Function
 });
 

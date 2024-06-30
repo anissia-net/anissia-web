@@ -8,7 +8,7 @@
       <div v-if="view && view.topicNo != 0">
         <div v-for="node in view.posts" :key="node.postNo" class="mt-3">
           <div v-if="node.isEditMode">
-            <PostEditor :ticker="props.ticker" :placeholder="boardInfo.placeholder" :post="node" :reload="loadViewForce" />
+            <PostEditor :ticker="props.ticker" :placeholder="boardInfo.phTopic" :post="node" :reload="loadViewForce" />
           </div>
           <div v-else>
             <div v-if="node.root" class="text-2xl">{{node.topic}}</div>
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div v-if="boardInfo.canWritePost(user)">
-          <PostEditor :ticker="props.ticker" :post="newPost" :placeholder="boardInfo.placeholder" :reload="loadViewForce" />
+          <PostEditor :ticker="props.ticker" :post="newPost" :reload="loadViewForce" />
         </div>
       </div>
       <div v-else-if="loaded" class="text-center text-3xl py-32">
@@ -36,7 +36,7 @@
 
     <!-- new -->
     <div v-else-if="topicNo == 0">
-      <PostEditor :ticker="props.ticker" :post="newTopic" :placeholder="boardInfo.placeholder" :reload="loadViewForce" />
+      <PostEditor :ticker="props.ticker" :post="newTopic" :placeholder="boardInfo.phTopic" :reload="loadViewForce" />
     </div>
 
 

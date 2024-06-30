@@ -5,7 +5,7 @@ export class BoardInfo {
     public ticker = '';
     public writePostRoles = ["ROOT"] as string[];
     public writeTopicRoles = ["ROOT"] as string[];
-    public placeholder = '';
+    public phTopic = '';
 
     public canWriteTopic(user: Session): boolean {
         return user.isLogin && user.hasRole(...this.writeTopicRoles);

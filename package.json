@@ -15,7 +15,7 @@
     "markdown-it": "^14.1.0",
     "pinia": "^2.1.7",
     "postcss": "^8.4.39",
-    "postcss-nested": "^6.0.1",
+    "postcss-nested": "^6.2.0",
     "raon": "^1.0.8",
     "tailwindcss": "^3.4.6",
     "vite-plugin-html": "^3.2.2",
@@ -27,9 +27,9 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
     "postcss-import": "^16.1.0",
-    "typescript": "^5.5.3",
+    "typescript": "^5.5.4",
     "vite": "^5.3.4",
-    "vue-tsc": "^2.0.26"
+    "vue-tsc": "^2.0.28"
   },
   "packageManager": "yarn@4.3.1"
 }

@@ -10,26 +10,26 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
-    "@types/markdown-it": "^14.1.1",
+    "@types/markdown-it": "^14.1.2",
     "autoprefixer": "^10.4.19",
     "markdown-it": "^14.1.0",
-    "pinia": "^2.1.7",
-    "postcss": "^8.4.39",
+    "pinia": "^2.2.0",
+    "postcss": "^8.4.40",
     "postcss-nested": "^6.2.0",
     "raon": "^1.0.8",
-    "tailwindcss": "^3.4.6",
+    "tailwindcss": "^3.4.7",
     "vite-plugin-html": "^3.2.2",
-    "vue": "^3.4.33",
+    "vue": "^3.4.34",
     "vue-accessible-color-picker": "^5.0.1",
     "vue-router": "^4.4.0",
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue": "^5.1.1",
     "postcss-import": "^16.1.0",
     "typescript": "^5.5.4",
-    "vite": "^5.3.4",
-    "vue-tsc": "^2.0.28"
+    "vite": "^5.3.5",
+    "vue-tsc": "^2.0.29"
   },
   "packageManager": "yarn@4.3.1"
 }

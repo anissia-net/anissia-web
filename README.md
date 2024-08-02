@@ -7,8 +7,8 @@
 ## 준비과정
 IDE 혹은 텍스트 에디터 설치하고 node.js와 yarn을 컴퓨터에 설치해야 합니다.
 1. IDE 내지 텍스트 에디터 설치
-    * 아무 IDE나 에디터를 써도 상관없긴 하나 IDE는 **WebStorm**, 웹스톰 라이선스 비용이 부담되거나 텍스트 에디터를 사용할 경우 **Visual Studio Code (무료)** 추천
-    * **Visual Studio Code (무료)**
+    * IDE는 **Visual Studio Code (무료)**, **WebStorm (유료)** 추천
+    * **Visual Studio Code**
         * https://code.visualstudio.com
         * 확장도구(extensions)도 설치
             * [Vue VS Code Extension Pack](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-extensionpack)
@@ -16,40 +16,15 @@ IDE 혹은 텍스트 에디터 설치하고 node.js와 yarn을 컴퓨터에 설�
     * **WebStorm**
         * https://www.jetbrains.com/webstorm/
 1. node.js를 [공식 홈페이지](https://nodejs.org/ko)에서 제공하는 인스톨러를 통해 설치하거나, NVM, NVM for Windows, NVS 등의 버전 관리자를 통해 설치하세요. 버전 관리자를 사용하는 방식이 추천(특히, 여러 프로젝트를 작업하는 경우)됩니다.
-1. 아래에 제시된 방법 중 하나를 선택하여 yarn을 설치합니다.
-### corepack을 통한 yarn 설치(yarn 측이 권장)
-yarn 공식 홈페이지에서는 corepack을 통해 yarn을 설치하도록 안내하고 있습니다.(https://v3.yarnpkg.com/getting-started/install) 아직까지도 yarn 클래식(1.x)을 사용하는 프로젝트가 많기 때문에(마스토돈 등의 해외 유명 오픈소스도 yarn 클래식을 사용하는 케이스 있음), 다른 yarn 프로젝트와 함께 작업할 생각이 있는 경우 corepack을 통해서 설치하는 것이 좋습니다
-
-
- 1. corepack을 활성화 하거나 설치합니다.
-     * Node.js 버전이 16.10 버전 이상일 경우 아래의 명령어를 통해서 corepack을 활성화 합니다. 환경에 따라서 관리자 권한으로 터미널을 실행해야 할 수도 있습니다. 
-        ``` shell
-        corepack enable
-        ```
-    * Node.js 버전이 16.10 버전 미만일 경우 아래의 명령어를 통해서 corepack을 설치 합니다. 환경에 따라서(특히, 공식 홈페이지에서 제공하는 인스톨러를 통해 윈도우 전역에 설치한 경우) 관리자 권한으로 터미널을 실행해야 할 수도 있습니다.
-        ``` shell
-        npm i -g corepack
-        ```
- 1. 그 후 cd 등의 명령어를 사용하여, 이 프로젝트가 위치한 폴더로 이동해(반드시 프로젝트가 위치한 폴더로 이동해야함) 아래의 명령어로 yarn 버전을 확인합니다. 3으로 시작하면 정상적으로 셋팅이 된 것입니다.
-    ``` shell
-    yarn -v
-    # 4.x 이상 버전이 설치되었는지 확인합니다.
-    ```
-### corepack을 거치지 않고 직접 yarn 설치
-   ``` shell
-   npm install --global yarn
-   #윈도우 환경에서 node.js를 인스톨러를 통하여 윈도우 전역에 노드를 설치(인스톨러를 통해 설치시, 일반적으로 전역으로 설치됩니다)했을 경우, 관리자 권한으로 터미널(CMD, 파워쉘 등)을 실행하여야 합니다.
+1. yarn 설치
    ```
-   ``` shell
-   yarn -v
-   # 4.x 이상 버전이 설치되었는지 확인합니다.
+   npm install --global yarn
    ```
 ## 의존성 설치
 IDE 혹은 터미널(반드시 cd 등의 명령어를 통해 프로젝트 폴더로 이동해야함)에서 다음 명령어 실행. Visual Studio Code 사용시 콘솔 기본값은 PowerShell 이 아닌 cmd 추천
    ``` shell
    yarn install
    ```
-
 ## 프로젝트의 yarn 버전 업데이트 방법
 프로젝트 자체의 yarn 버전 업데이트 시에 만 사용합니다.
    ``` shell

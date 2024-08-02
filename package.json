@@ -19,13 +19,13 @@
     "raon": "^1.0.8",
     "tailwindcss": "^3.4.7",
     "vite-plugin-html": "^3.2.2",
-    "vue": "^3.4.34",
+    "vue": "^3.4.35",
     "vue-accessible-color-picker": "^5.0.1",
-    "vue-router": "^4.4.0",
+    "vue-router": "^4.4.2",
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.1",
+    "@vitejs/plugin-vue": "^5.1.2",
     "postcss-import": "^16.1.0",
     "typescript": "^5.5.4",
     "vite": "^5.3.5",

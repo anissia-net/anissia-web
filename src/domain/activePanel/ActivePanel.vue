@@ -18,7 +18,7 @@
     </div>
 
     <div>
-      <div v-for="(node, idx) in list.content" :key="node.apNo" class="py-3 px-1 text-sm leading-[1.8] border-b border-gray-300 dark:border-zinc-800 anissia-home-reduce-10">
+      <div v-for="(node, idx) in list.content" :key="node.apNo" class="py-3 px-1 text-sm break-all leading-[1.8] border-b border-gray-300 dark:border-zinc-800 anissia-home-reduce-10">
         <div class="float-right pl-4 inline-block opacity-60">{{node.regDtText}}</div>
         <div v-if="node.code == 'TEXT'" v-html="node.html" :class="({'opacity-50': !node.published})"></div>
         <div v-else-if="node.code == 'ANIME'">

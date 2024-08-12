@@ -6,6 +6,7 @@ import p500 from '../page/500.vue'
 
 import sc2015 from '../page/schedule/2015.vue'
 import sc2009 from '../page/schedule/2009.vue'
+import scwidget from '../page/schedule/widget.vue'
 
 import siteLayout from '../page/site/layout.vue'
 import home from '../page/site/home.vue'
@@ -50,6 +51,7 @@ const router = createRouter({
         children: [
           { path: '/', component: home, meta: { title: '애니시아' } },
           { path: '/schedule', component: schedule, meta: { title: '애니편성표 - 애니시아' } },
+          { path: '/schedule/widget', component: scwidget, meta: { title: '편성표 위젯 - 애니시아' } },
           { path: '/anime', component: anime, meta: { title: '애니정보 - 애니시아' } },
           { path: '/caption/recent', component: captionRecent, meta: { title: '최근자막 - 애니시아' } },
           { path: '/translator/apply', component: translatorApply, meta: { title: '자막제작자 신청 - 애니시아' } },

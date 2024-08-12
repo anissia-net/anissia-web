@@ -4,6 +4,7 @@ import p301 from '../page/301.vue'
 import p404 from '../page/404.vue'
 import p500 from '../page/500.vue'
 
+import sc2024 from '../page/schedule/2024.vue'
 import sc2015 from '../page/schedule/2015.vue'
 import sc2009 from '../page/schedule/2009.vue'
 
@@ -41,41 +42,42 @@ const router = createRouter({
     });
   },
   routes: [
-      // schedule
-      { path: '/schedule/2015', component: sc2015, meta: { title: '애니편성표' } },
-      { path: '/schedule/2009', component: sc2009, meta: { title: '애니편성표 2009' } },
-      // basic
-      {
-        path: '/', component: siteLayout,
-        children: [
-          { path: '/', component: home, meta: { title: '애니시아' } },
-          { path: '/schedule', component: schedule, meta: { title: '애니편성표 - 애니시아' } },
-          { path: '/anime', component: anime, meta: { title: '애니정보 - 애니시아' } },
-          { path: '/caption/recent', component: captionRecent, meta: { title: '최근자막 - 애니시아' } },
-          { path: '/translator/apply', component: translatorApply, meta: { title: '자막제작자 신청 - 애니시아' } },
-          { path: '/introduce', component: introduce, meta: { title: '소개 - 애니시아' } },
-          { path: '/notice', component: notice, meta: { title: '공지 - 애니시아' } },
-          { path: '/inquiry', component: inquiry, meta: { title: '질문/답변 - 애니시아' } },
-          { path: '/login', component: login, meta: { title: '로그인 - 애니시아' } },
-          { path: '/register/:token', component: register, meta: { title: '회원가입 - 애니시아' } },
-          { path: '/register', component: register, meta: { title: '회원가입 - 애니시아' } },
-          { path: '/recover', component: recover, meta: { title: '계정복구 - 애니시아' } },
-          { path: '/recover/:token', component: recover, meta: { title: '계정복구 - 애니시아' } },
-          { path: '/account', component: account, meta: { title: '계정관리 - 애니시아' } },
-          {
-            path: '/admin', component: adminLayout,
-            children: [
-              { path: '/admin', component: adminHome, meta: { title: '관리자 - 애니시아' } },
-              { path: '/admin/anime', component: adminAnime, meta: { title: '애니메이션관리 - 애니시아' } },
-              { path: '/admin/schedule', component: adminSchedule, meta: { title: '애니편성표 관리 - 애니시아' } },
-              { path: '/admin/caption', component: adminCaption, meta: { title: '자막 관리 - 애니시아' } },
-            ]
-          },
-          { path: '/anitime/:path(.*)', component: p301, meta: { title: '주소이전 - 애니시아' } },
-          { path: '/500', component: p500, meta: { title: '에러 예시 페이지 - 애니시아' } },
-          { path: '/:path(.*)', component: p404, meta: { title: '404 - 애니시아' } },
-        ]
-      },
+    // schedule
+    { path: '/schedule/2024', component: sc2024, meta: { title: '애니편성표 2024' } },
+    { path: '/schedule/2015', component: sc2015, meta: { title: '애니편성표 2015' } },
+    { path: '/schedule/2009', component: sc2009, meta: { title: '애니편성표 2009' } },
+    // basic
+    {
+      path: '/', component: siteLayout,
+      children: [
+        { path: '/', component: home, meta: { title: '애니시아' } },
+        { path: '/schedule', component: schedule, meta: { title: '애니편성표 - 애니시아' } },
+        { path: '/anime', component: anime, meta: { title: '애니정보 - 애니시아' } },
+        { path: '/caption/recent', component: captionRecent, meta: { title: '최근자막 - 애니시아' } },
+        { path: '/translator/apply', component: translatorApply, meta: { title: '자막제작자 신청 - 애니시아' } },
+        { path: '/introduce', component: introduce, meta: { title: '소개 - 애니시아' } },
+        { path: '/notice', component: notice, meta: { title: '공지 - 애니시아' } },
+        { path: '/inquiry', component: inquiry, meta: { title: '질문/답변 - 애니시아' } },
+        { path: '/login', component: login, meta: { title: '로그인 - 애니시아' } },
+        { path: '/register/:token', component: register, meta: { title: '회원가입 - 애니시아' } },
+        { path: '/register', component: register, meta: { title: '회원가입 - 애니시아' } },
+        { path: '/recover', component: recover, meta: { title: '계정복구 - 애니시아' } },
+        { path: '/recover/:token', component: recover, meta: { title: '계정복구 - 애니시아' } },
+        { path: '/account', component: account, meta: { title: '계정관리 - 애니시아' } },
+        {
+          path: '/admin', component: adminLayout,
+          children: [
+            { path: '/admin', component: adminHome, meta: { title: '관리자 - 애니시아' } },
+            { path: '/admin/anime', component: adminAnime, meta: { title: '애니메이션관리 - 애니시아' } },
+            { path: '/admin/schedule', component: adminSchedule, meta: { title: '애니편성표 관리 - 애니시아' } },
+            { path: '/admin/caption', component: adminCaption, meta: { title: '자막 관리 - 애니시아' } },
+          ]
+        },
+        { path: '/anitime/:path(.*)', component: p301, meta: { title: '주소이전 - 애니시아' } },
+        { path: '/500', component: p500, meta: { title: '에러 예시 페이지 - 애니시아' } },
+        { path: '/:path(.*)', component: p404, meta: { title: '404 - 애니시아' } },
+      ]
+    },
   ],
 });
 

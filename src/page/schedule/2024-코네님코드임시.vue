@@ -3,7 +3,6 @@
   <div :ref="e => containerRef = e" class="container m-auto px-4 pt-5 as-cp-close duration-300">
 
     <div class="md:flex md:space-x-6 justify-between">
-      <!--  -->
       <div class="md:flex-1 p-4 flex as-box">
         <div class="flex m-auto">
           <iframe v-if="asd.type === 'html'" :ref="e => htmlFrameRef = e" class="preview-border" src="/schedule/2015" :width="htmlMaxWidth" :height="asd.htmlHeight" @load="drawHtml"></iframe>
@@ -159,131 +158,6 @@
         </div>
 
       </div>
-    </div>
-
-    <div class="font-bold text-xl mt-5">애니 편성표</div>
-
-    <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/icon-schedule.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="/schedule/2024" target="_blank"><h5>애니편성표 (2024)</h5></a>
-          <p>애니편성표 카드모양버전??(이름 지어주세요)</p>
-        </div>
-      </div>
-
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/icon-schedule.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="/schedule/2015" target="_blank"><h5>애니편성표 (2015)</h5></a>
-          <p>현재 메인으로 사용되는 버전.</p>
-        </div>
-      </div>
-
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/icon-schedule.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="/schedule/2009" target="_blank"><h5>애니편성표 (2009)</h5></a>
-          <p>리메이크 클래식 버전.</p>
-        </div>
-      </div>
-
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/icon-time.svg"/></div>
-        <div class="flex-1 pl-4">
-          <router-link to="/introduce"><h5>애니시아 연혁</h5></router-link>
-          <p>애니시아 연혁소개</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="font-bold text-xl mt-5">서드파티</div>
-    <div class="mt-1 text-sm">
-      "애니시아 API" 를 통해 만들어진 프로그램입니다.<br/>
-      각 프로그램에 대한 문의는 해당 개발자/단체에 하셔야 합니다.
-    </div>
-
-    <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/3rd-ios.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="https://apps.apple.com/kr/app/aeni-pyeonseongpyo/id917536862" target="_blank"><h5>애니 편성표</h5></a>
-          <p>iOS / Young Ho Kim / 2014년</p>
-        </div>
-      </div>
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/3rd-ios.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="https://github.com/qkdxorjs1002/AniSched-Desktop#homebrew-macos-1011-%EC%9D%B4%EC%83%81" target="_blank"><h5>AniSched-Desktop</h5></a>
-          <p>macOS / Novang / 2021년</p>
-        </div>
-      </div>
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/3rd-android.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="https://play.google.com/store/apps/details?id=com.novang.anisched" target="_blank"><h5>AniSched</h5></a>
-          <p>Android / Novang / 2021년</p>
-        </div>
-      </div>
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/3rd-android.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="https://play.google.com/store/apps/details?id=anissia.android.schedule" target="_blank"><h5>애니 편성표</h5></a>
-          <p>Android / 애니시아 / 2021년</p>
-        </div>
-      </div>
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/3rd-windows.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="https://www.microsoft.com/store/apps/9PB5WSXN3TMN" target="_blank"><h5>AniSched</h5></a>
-          <p>Windows / Novang / 2015년</p>
-        </div>
-      </div>
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/3rd-chrome.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="https://chrome.google.com/webstore/detail/anisched/lkpfenhnbjcjekjihacpcoekgdclobdn" target="_blank"><h5>AniSched</h5></a>
-          <p>Chrome / Novang / 2015년</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="font-bold text-xl mt-5">소스코드 / API</div>
-
-    <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/3rd-api.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="https://github.com/anissia-net/document/blob/main/api_anime_schdule.md" target="_blank"><h5>API 가이드</h5></a>
-          <p>3rd party 애니편성표 앱 제작 가이드</p>
-        </div>
-      </div>
-
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/3rd-doc.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="https://github.com/anissia-net/document/blob/main/doc_anime_rank.md" target="_blank"><h5>랭킹 집계기준</h5></a>
-          <p>애니메이션 랭킹 집계기준 문서</p>
-        </div>
-      </div>
-
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/icon-code.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="https://github.com/anissia-net/anissia-web" target="_blank"><h5>프론트엔드</h5></a>
-          <p>Vue.js, Typescript</p>
-        </div>
-      </div>
-
-      <div class="info-box as-box">
-        <div class="w-[50px]"><img class="w-full" src="./schedule/icon-code.svg"/></div>
-        <div class="flex-1 pl-4">
-          <a href="https://github.com/anissia-net/anissia-core" target="_blank"><h5>백엔드</h5></a>
-          <p>Kotlin, Spring, JPA, QueryDSL, Elasticsearch</p>
-        </div>
-      </div>
-
     </div>
 
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div id="sc2015" @click="e => evtClickClosePopup(e)" :class="colorMode">
+  <div id="sc2024" @click="e => evtClickClosePopup(e)" :class="colorMode">
     <div class="title">
       <div class="title-main"><a href="/" target="_blank">애니<span class="mob-hide">메이션</span> 편성표</a></div>
       <div class="color-mode" v-if="isWeb">
@@ -102,7 +102,7 @@ function applyColorMode(mode: string|null) {
   if (mode == null) {
     if (isWeb.value) {
       try {
-        mode = (localStorage.getItem('schedule2015ColorMode') as string | null);
+        mode = (localStorage.getItem('schedule2024ColorMode') as string | null);
         colorMode.value = mode != null ? mode : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       } catch (e) {colorMode.value = 'light'; }
     } else {
@@ -110,7 +110,7 @@ function applyColorMode(mode: string|null) {
     }
   } else if (isWeb.value) {
     try {
-      localStorage.setItem('schedule2015ColorMode', (colorMode.value = mode));
+      localStorage.setItem('schedule2024ColorMode', (colorMode.value = mode));
     } catch (e) { colorMode.value = 'light'; }
   }
 }
@@ -121,7 +121,6 @@ onMounted(() => {
   getAnimeList(new Date().getDay());
   (window as any).colorMode = applyColorMode;
   window.addEventListener('keydown', evtKeyClosePopup, true);
-  const theme = location.hash.length > 1 ? location.hash : 'ffffff5987b6fffffff2f2f2497ba79cb3c7ffffffffffff555555f8f8f82474cecb3434000000000000777777111111777777111111c3b443070707999999000000cccccc3a7da3';
 
 });
 
@@ -131,5 +130,9 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-
+#sc2024 {
+  min-height: 100vh;
+  &.light { @apply bg-white text-black; }
+  &.dark { @apply bg-black text-white; }
+}
 </style>

@@ -17,7 +17,7 @@
 
       <!-- 내비게이션바 -->
       <div class="flex justify-between space-x-2 sm:space-x-3 md:space-x-4">
-        <div v-for="(week, idx) in weekList" @click="getAnimeList(idx)" class="flex-auto text-center font-bold text-md md:text-lg py-2 as-box" :class="({'text-gray-400 dark:text-gray-600': idx != weekNow})">{{week}}</div>
+        <div v-for="(week, idx) in weekList" @click="getAnimeList(idx)" class="flex-auto text-center font-bold text-md md:text-lg py-2 as-box cursor-pointer" :class="({'text-gray-400 dark:text-gray-600': idx != weekNow})">{{week}}</div>
       </div>
 
       <!-- 애니메이션 리스트 -->
@@ -51,7 +51,7 @@
 
       <!-- 팝업 -->
       <div class="fixed inset-0 backdrop-blur-sm bg-gray-800/10" v-if="animeNow != null">
-        <div class="w-[450px] mt-[150px] mb-0 mx-auto p-4 rounded-md shadow-lg text-base font-semibold text-center bg-zinc-50/90 dark:bg-zinc-900/90 text-gray-800 dark:text-zinc-300">
+        <div class="box w-[450px] mt-[150px] mb-0 mx-auto p-4 rounded-md shadow-lg text-base font-semibold text-center bg-zinc-50/90 dark:bg-zinc-900/90 text-gray-800 dark:text-zinc-300">
           <!-- 제목 -->
           <div>
             <a target="_blank" :href="animeNow.website">

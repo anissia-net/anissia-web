@@ -168,7 +168,7 @@
         <div class="w-[50px]"><img class="w-full" src="./schedule/icon-schedule.svg"/></div>
         <div class="flex-1 pl-4">
           <a href="/schedule/2024" target="_blank"><h5>애니편성표 (2024)</h5></a>
-          <p>애니편성표 카드모양버전??(이름 지어주세요)</p>
+          <p>반응형 테이블 버전(베타)</p>
         </div>
       </div>
 

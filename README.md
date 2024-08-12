@@ -51,6 +51,7 @@ IDE 혹은 터미널(반드시 cd 등의 명령어를 통해 프로젝트 폴더
         * 로그인-권한필요
         * 로컬의 경우 CORE 프로젝트에서 자동생성되는 **운영자** 계정으로 접근
     * 편성표 :
+        * 2024년 버전 : http://localhost:5173/schedule/2024
         * 2015년 버전 : http://localhost:5173/schedule/2015
         * 2009년 버전 : http://localhost:5173/schedule/2009
 

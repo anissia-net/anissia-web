@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-black text-zinc-800 dark:text-zinc-400 pb-10 container m-auto px-4 duration-300 min-h-screen py-0" @click="e => evtClickClosePopup(e)">
+  <div class="bg-white dark:bg-black text-zinc-800 dark:text-zinc-400 pb-10 m-auto px-1 sm:px-2 md:px-4 duration-300 min-h-screen py-0" @click="e => evtClickClosePopup(e)">
 
     <!-- 타이틀 -->
     <div class="title font-extralight h-16 text-center flex items-center">
@@ -23,7 +23,7 @@
     <div class="mt-4">
       <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <div v-for="(node, i) in animeList" class="p-4 as-box">
-          <div @click="getCaptionList(node);">
+          <div @click="getCaptionList(node);" class="cursor-pointer">
             <!-- 시간 -->
             <div v-if="node.scheduleTime != '-'" class="text-md font-bold text-blue-600 dark:text-blue-500">
               {{node.scheduleTime}}
@@ -114,26 +114,15 @@ import {onBeforeUnmount, onMounted, Ref, ref} from "vue";
 import theme from "../../common/theme";
 import AnimeCaption from "../../domain/anime/AnimeCaption";
 import Anime from "../../domain/anime/Anime";
-import anissia from "../../common/anissia";
 import animeRemote from "../../domain/anime/remote/animeRemote";
 import {ajaxStateStore} from "../../common/ajaxStateStore";
 
 const weekList = ref(['日', '月', '火', '水', '木', '金', '土', '外', '新']);
 const weekNow = ref(-1);
-const isWeb = ref(true);
 const animeList = ref([]) as Ref<Anime[]>;
 const animeNow = ref(null) as Ref<Anime|null>;
 const captionList = ref([]) as Ref<AnimeCaption[]>;
-const colorMode = ref('light');
-
 const ajaxState = ajaxStateStore();
-
-getAnimeList(new Date().getDay());
-
-// method
-function isPureWeek() {
-  return anissia.isPureWeek(weekNow.value);
-}
 
 function getAnimeList(week: number): void {
   weekNow.value = week;
@@ -161,4 +150,13 @@ function evtKeyClosePopup(event: KeyboardEvent) {
 function toggleTheme() {
   theme.toggle();
 }
+
+onMounted(() => {
+  getAnimeList(new Date().getDay());
+  window.addEventListener('keydown', evtKeyClosePopup, true);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', evtKeyClosePopup, true);
+});
 </script>

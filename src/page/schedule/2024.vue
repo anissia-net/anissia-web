@@ -27,12 +27,12 @@
             <div v-for="(node, i) in animeList" class="p-4 as-box">
               <div @click="getCaptionList(node);" class="cursor-pointer">
                 <!-- 시간 -->
-                <div v-if="node.scheduleTime != '-'" class="text-md font-bold text-blue-600 dark:text-blue-500">
+                <div v-if="node.scheduleTime != '-'" class="text-md font-bold text-ccl text-ccd">
                   {{node.scheduleTime}}
                 </div>
                 <div class="text-md mt-1 font-bold text-gray-800 dark:text-zinc-300">
                   <!-- 방영태그 -->
-                  <span v-if="node.subjectPrefix">[<b class="text-blue-600 dark:text-blue-500">{{node.subjectPrefix}}</b>] </span>
+                  <span v-if="node.subjectPrefix">[<b class="text-ccl text-ccl text-ccd">{{node.subjectPrefix}}</b>] </span>
                   <!-- 애니제목 -->
                   {{node.subject}}
                 </div>
@@ -131,11 +131,13 @@ const animeNow = ref(null) as Ref<Anime|null>;
 const captionList = ref([]) as Ref<AnimeCaption[]>;
 const ajaxState = ajaxStateStore();
 
+//애니메이션 정보
 function getAnimeList(week: number): void {
   weekNow.value = week;
   animeRemote.getScheduleAnimeList(week).then((list) => animeList.value = list);
 }
 
+//자막제작자 정보
 function getCaptionList(anime: Anime) {
   animeRemote.getAnimeCaptionList(anime.animeNo).then((list) => {
     captionList.value = list;
@@ -143,25 +145,43 @@ function getCaptionList(anime: Anime) {
   });
 }
 
+//팝업 관련
 function evtClickClosePopup(event: MouseEvent) {
   if (animeNow.value != null && (event.target as HTMLElement).closest('body,.box')?.tagName == 'BODY') {
     animeNow.value = null;
   }
 }
-
 function evtKeyClosePopup(event: KeyboardEvent) {
   if (animeNow.value !== null && event.key === 'Escape') {
     animeNow.value = null;
   }
 }
 
+//테마
 function toggleTheme() {
   theme.toggle();
 }
 
+// 커스텀 강조색상 URL 분석
+const urlParams = new URLSearchParams(window.location.search);
+const lightcolor = urlParams.get('lightcolor') || '2563eb';
+const darkcolor = urlParams.get('darkcolor') || '3b82f6';
+
 onMounted(() => {
   getAnimeList(new Date().getDay());
   window.addEventListener('keydown', evtKeyClosePopup, true);
+
+  // 커스텀 색상 지정 CSS
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .text-ccl {
+      color: #${lightcolor};
+    }
+    .text-ccd:is(.dark *) {
+      color: #${darkcolor};
+    }
+  `;
+  document.head.appendChild(style);
 });
 
 onBeforeUnmount(() => {

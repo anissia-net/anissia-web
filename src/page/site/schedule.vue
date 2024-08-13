@@ -6,7 +6,8 @@
       <!--  -->
       <div class="md:flex-1 p-4 flex as-box">
         <div class="flex m-auto">
-          <iframe v-if="asd.type === 'html'" :ref="e => htmlFrameRef = e" class="preview-border" src="/schedule/2015" :width="htmlMaxWidth" :height="asd.htmlHeight" @load="drawHtml"></iframe>
+          <iframe v-if="asd.type === 'vue'" :ref="e => htmlFrameRef = e" class="preview-border" src="/schedule/2024" :width="vueMaxWidth" :height="asd.vueHeight" @load="drawHtml"></iframe>
+          <iframe v-else-if="asd.type === 'html'" :ref="e => htmlFrameRef = e" class="preview-border" src="/schedule/2015" :width="htmlMaxWidth" :height="asd.htmlHeight" @load="drawHtml"></iframe>
           <div v-else-if="asd.type === 'img'" class="preview-img preview-border" :style="({width: `${imgMaxWidth}px`,height: `${imgHeight}px`, background: `#${asd.imgListBg}`, 'overflow-y': asd.imgScroll ? 'auto' : 'hidden'})">
             <div class="img-preview" ondragstart="return false" onselectstart="return false">
               <div class="img-title" :style="{background: `#${asd.imgTitleBg}`, color: `#${asd.imgTitle}`}">애니편성표</div>
@@ -20,12 +21,35 @@
       <div class="md:w-64">
         <label class="sub-title">소스타입</label>
         <div class="flex w-full justify-between rounded-md shadow-sm">
-          <button type="button" @click="setType('html')" class="flex-1 rounded-l-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'html' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+          <button type="button" @click="setType('vue')" class="flex-1 rounded-l-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'vue' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+            VUE
+          </button>
+          <button type="button" @click="setType('html')" class="flex-1 p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'html' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
             HTML
           </button>
           <button type="button" @click="setType('img')" class="flex-1 rounded-r-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'img' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
-            IMG (블로그)
+            IMG
           </button>
+        </div>
+        <div v-if="asd.type == 'vue'">
+          <label class="sub-title">모양</label>
+          <div class="flex items-center space-x-2 mb-2">
+            <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-left-right"></i></span>
+            <input type="range" v-model="asd.vueWidth" min="250" max="780" step="10" class="flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700">
+            <input type="text" v-model="asd.vueWidth" class="block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white" maxlength="3" />
+          </div>
+          <div class="flex items-center space-x-2 mb-2">
+            <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-up-down"></i></span>
+            <input type="range" v-model="asd.vueHeight" min="600" max="1200" step="1" class="flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700">
+            <input type="text" v-model="asd.vueHeight" class="block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white" maxlength="3" />
+          </div>
+          <label class="sub-title">HTML 코드</label>
+          <textarea readonly :value="vueCode" class="p-2 h-[88px] md:h-[162px]  as-input-text !text-[12px] font-mono"></textarea>
+          <div class="mt-3">
+            <button @click="doCopyClipboard(vueCode)" class="w-full p-2 as-input-btn font-semibold !text-[15px]">
+              <i class="fa-regular fa-copy"></i>&nbsp; 복사하기
+            </button>
+          </div>
         </div>
         <div v-if="asd.type == 'html'">
           <div class="select-none">
@@ -305,8 +329,10 @@ import toast from "../../common/toast";
 
 // anime schedule data
 const asd = ref({
-  // TYPE - html, img
-  type: 'html',
+  // TYPE - vue, html, img
+  type: 'vue',
+  // vue - size
+  vueWidth: 700, vueHeight: 800,
   // HTML - color - light mode
   htmlBgLight: 'ffffff', htmlTitleBgLight: '5987b6', htmlTitleLight: 'ffffff',
   htmlNavBgLight: 'f2f2f2', htmlNavLight: '497ba7', htmlNavActBgLight: '9cb3c7', htmlNavActLight: 'ffffff',
@@ -332,6 +358,10 @@ const asd = ref({
 });
 const maxWidth = ref(0);
 const containerRef = ref(null) as any;
+
+const vueMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.vueWidth));
+const vueCode = computed(() => `<iframe src="${location.origin + '/schedule/2024'}" width="${asd.value.vueWidth}" height="${asd.value.vueHeight}" frameborder="0"></iframe>`);
+
 const htmlFrameRef = ref(null) as any;
 const htmlMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.htmlWidth));
 const htmlCode = computed(() => `<iframe src="${location.origin + '/schedule/2015#' + htmlSrc.value}" width="${asd.value.htmlWidth}" height="${asd.value.htmlHeight}" frameborder="0"></iframe>`);
@@ -339,6 +369,7 @@ const htmlSrc = computed(() => asd.value.htmlBgLight + asd.value.htmlTitleBgLigh
     asd.value.htmlNavActLight + asd.value.htmlListBgLight + asd.value.htmlListLight + asd.value.htmlListActBgLight + asd.value.htmlListActLight + asd.value.htmlPrefixLight +
     asd.value.htmlBgDark + asd.value.htmlTitleBgDark + asd.value.htmlTitleDark + asd.value.htmlNavBgDark + asd.value.htmlNavDark + asd.value.htmlNavActBgDark +
     asd.value.htmlNavActDark + asd.value.htmlListBgDark + asd.value.htmlListDark + asd.value.htmlListActBgDark + asd.value.htmlListActDark + asd.value.htmlPrefixDark);
+
 const imgMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.imgWidth));
 const imgHeight = computed(() => 50 + (asd.value.imgSize * 20));
 const imgCode = computed(() => {

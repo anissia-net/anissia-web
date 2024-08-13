@@ -28,12 +28,28 @@
       </div>
     </div>
 
-    <div class="font-semibold text-xl mt-12">개발 지원</div>
+    <div class="font-semibold text-xl mt-12">개발 총괄</div>
     <div class="mt-1 text-sm leading-[1.8] as-a-color">
       테라시아(현 <a href="https://gs.saro.me">가리사니</a>)의 멤버로 애니시아 독립 이전에는 운영을 이후에는 지원을 하고 있습니다.
     </div>
     <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
       <div v-for="node in supportMembers" :key="node.key" class="p-4 as-box">
+        <div>
+          <div class="text-lg font-bold text-gray-800 dark:text-zinc-300">{{node.name}}</div>
+          <div class="text-sm mt-1" v-html="node.date"></div>
+        </div>
+        <div class="mt-1 space-x-1 space-y-2 text-gray-800 dark:text-zinc-300">
+          <span class="as-tag-xs" v-for="sn in node.tags" :key="sn.key">
+            <a :href="sn.link" v-if="sn.link">{{sn.text}} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <span v-else>{{sn.text}}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="font-semibold text-xl mt-12">개발 지원</div>
+    <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div v-for="node in supportDevelopmentMembers" :key="node.key" class="p-4 as-box">
         <div>
           <div class="text-lg font-bold text-gray-800 dark:text-zinc-300">{{node.name}}</div>
           <div class="text-sm mt-1" v-html="node.date"></div>
@@ -115,6 +131,7 @@
 import timetable_1_jpg from './introduce/timetable.1.jpg';
 import timetable_2_jpg from './introduce/timetable.2.jpg';
 import timetable_3_jpg from './introduce/timetable.3.jpg';
+import timetable_4_jpg from './introduce/timetable.4.jpg';
 import timetable_radio_jpg from './introduce/timetable-radio.jpg';
 import timetable_widget_1_jpg from './introduce/timetable-widget.1.jpg';
 import timetable_widget_2_jpg from './introduce/timetable-widget.2.jpg';
@@ -143,6 +160,10 @@ const supportMembers = ref([
   new SiteMember('박용서', `2007 ~ 2013: 개발운영 (애니시아 독립 전)<br/>2013 ~ ${nowYear}: 개발지원`, [`개발총괄`, `애니편성표`, `애니시아`, `시스템`, `API`, `디자인`, `기획`, `가리사니||https://gs.saro.me`, `GITHUB||https://github.com/ac-saro` ,`페이스북||https://www.facebook.com/j.saro.co`]),
 ]) as unknown as SiteMember[];
 
+const supportDevelopmentMembers = ref([
+  new SiteMember('코네 - CodeName393', `2024`, [`애니편성표`, `GITHUB||https://github.com/CodeName393` ,`블로그||https://codename393.tistory.com/`]),
+]) as unknown as SiteMember[];
+
 const supportGraphicMembers = ref([
   new SiteMember('당무지', `2023 ~ ${nowYear}`, [`애니시아 아이콘, 애니편성표 아이콘`, `블로그||https://blog.naver.com/vip125`]),
 ]) as unknown as SiteMember[];
@@ -159,6 +180,7 @@ const prevMembers = ref([
 ]) as unknown as SiteMember[];
 
 const siteHistory = ref([
+  new SiteHistory(`2024-08-13`, `편성표 디자인 리뉴얼`, `/notice?topicNo=248`),
   new SiteHistory(`2024-02-23`, `테라시아 도메인 종료`, `/notice?topicNo=198`),
   new SiteHistory(`2024-01-24`, `애니시아 안드로이드 앱 출시`, `https://play.google.com/store/apps/dev?id=6556202027842431619`),
   new SiteHistory(`2023-04-16`, `백엔드 리팩토링`, `/notice?topicNo=134`),
@@ -213,6 +235,7 @@ const gallery = ref([
   { src: timetable_1_jpg, file: 'timetable.1.jpg', title: `최초의 애니편성표 [2009년]`, desc: `애니시간표 -> 애니편성표 (기존 애니시간표는 자료소실)` },
   { src: timetable_2_jpg, file: 'timetable.2.jpg', title: `두번째 애니편성표 [2009년]`, desc: `이 디자인을 선호하는 사람이 많아 현재도 제공중` },
   { src: timetable_3_jpg, file: 'timetable.3.jpg', title: `세번째 애니편성표 [2015년]`, desc: `2020년에 다크모드가 추가됨 (정확히는 네번째로 2013년 부터 2015년 까지 존재한 편성표가 있음)` },
+  { src: timetable_4_jpg, file: 'timetable.4.jpg', title: `네번째 애니편성표 [2024년]`, desc: `애니시아 리뉴얼 디자인에 맞춘 tailwind를 사용한 반응형 테이블 버전의 편성표` },
   { src: timetable_radio_jpg, file: 'timetable-radio.jpg', title: `라디오 편성표 [2009년]`, desc: `라디오 편성표` },
   { src: timetable_widget_1_jpg, file: 'timetable-rank.1.jpg', title: `최초의 애니편성표 위젯 [2009년 1차]`, desc: `스크린샷이 없어 소스로 복원 [내용부분이 다를 수 있음]` },
   { src: timetable_widget_2_jpg, file: 'timetable-rank.2.jpg', title: `애니편성표 위젯 [2009년 2차]`, desc: `여러가지 배경 테마가 있음 (이때부터 커스텀의 시작)` },

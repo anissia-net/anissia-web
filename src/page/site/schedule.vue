@@ -6,7 +6,7 @@
       <!--  -->
       <div class="md:flex-1 p-4 flex as-box">
         <div class="flex m-auto">
-          <iframe v-if="asd.type === 'vue'" :ref="e => htmlFrameRef = e" class="preview-border" src="/schedule/2024" :width="vueMaxWidth" :height="asd.vueHeight" @load="drawHtml"></iframe>
+          <iframe v-if="asd.type === 'vue'" :ref="e => htmlFrameRef = e" class="preview-border" src="/schedule/2024" :width="vueMaxWidth" :height="asd.vueHeight" @load="drawVue"></iframe>
           <iframe v-else-if="asd.type === 'html'" :ref="e => htmlFrameRef = e" class="preview-border" src="/schedule/2015" :width="htmlMaxWidth" :height="asd.htmlHeight" @load="drawHtml"></iframe>
           <div v-else-if="asd.type === 'img'" class="preview-img preview-border" :style="({width: `${imgMaxWidth}px`,height: `${imgHeight}px`, background: `#${asd.imgListBg}`, 'overflow-y': asd.imgScroll ? 'auto' : 'hidden'})">
             <div class="img-preview" ondragstart="return false" onselectstart="return false">
@@ -32,6 +32,11 @@
           </button>
         </div>
         <div v-if="asd.type == 'vue'">
+          <label class="sub-title">강조색상</label>
+            <div class="flex space-x-2">
+              <div class="color-unit-box" @click="e => openCp(e, 'vueLight')" :style="`background:#${asd.vueLight}`"></div>
+              <div class="color-unit-box" @click="e => openCp(e, 'vueDark')" :style="`background:#${asd.vueDark}`"></div>
+            </div>
           <label class="sub-title">모양</label>
           <div class="flex items-center space-x-2 mb-2">
             <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-left-right"></i></span>
@@ -331,8 +336,8 @@ import toast from "../../common/toast";
 const asd = ref({
   // TYPE - vue, html, img
   type: 'vue',
-  // vue - size
-  vueWidth: 700, vueHeight: 800,
+  // vue - size, color
+  vueWidth: 700, vueHeight: 800, vueLight: '2563eb', vueDark: '3b82f6', 
   // HTML - color - light mode
   htmlBgLight: 'ffffff', htmlTitleBgLight: '5987b6', htmlTitleLight: 'ffffff',
   htmlNavBgLight: 'f2f2f2', htmlNavLight: '497ba7', htmlNavActBgLight: '9cb3c7', htmlNavActLight: 'ffffff',
@@ -360,7 +365,8 @@ const maxWidth = ref(0);
 const containerRef = ref(null) as any;
 
 const vueMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.vueWidth));
-const vueCode = computed(() => `<iframe src="${location.origin + '/schedule/2024'}" width="${asd.value.vueWidth}" height="${asd.value.vueHeight}" frameborder="0"></iframe>`);
+const vueCode = computed(() => `<iframe src="${location.origin + '/schedule/2024' + vueSrc.value}" width="${asd.value.vueWidth}" height="${asd.value.vueHeight}" frameborder="0"></iframe>`);
+const vueSrc = computed(() => '?lightcolor=' + asd.value.vueLight + '&darkcolor=' + asd.value.vueDark);
 
 const htmlFrameRef = ref(null) as any;
 const htmlMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.htmlWidth));
@@ -378,11 +384,19 @@ const imgCode = computed(() => {
   const api = (origin + '/api').replace('anissia.net/api', 'api.anissia.net');
   return `<div style="width:${asd.value.imgWidth}px;height:${imgHeight.value}px;background:#${asd.value.imgListBg};overflow-y:${asd.value.imgScroll ? 'auto' : 'hidden'}"><a href="${origin + '/schedule/2015'}" target="_blank"><img src="${api}/anime/schedule/svg/${asd.value.imgWidth}/${theme}"/></a></div>`;
 });
+
 function drawHtml() {
   if (asd.value.type == 'html') {
     htmlFrameRef.value.contentWindow.repaint(htmlSrc.value);
   }
 }
+
+function drawVue() {
+  if (asd.value.type == 'vue') {
+    htmlFrameRef.value.contentWindow.repaint(vueSrc.value);
+  }
+}
+
 function bindMaxWidth() {
   maxWidth.value = (containerRef.value.offsetWidth as number) - (matchMedia('(min-width: 768px)').matches ? 400 : 100);
 }

@@ -40,7 +40,7 @@
           <label class="sub-title">모양</label>
           <div class="flex items-center space-x-2 mb-2">
             <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-left-right"></i></span>
-            <input type="range" v-model="asd.vueWidth" min="250" max="780" step="10" class="flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700">
+            <input type="range" v-model="asd.vueWidth" min="250" max="900" step="10" class="flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700">
             <input type="text" v-model="asd.vueWidth" class="block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white" maxlength="3" />
           </div>
           <div class="flex items-center space-x-2 mb-2">

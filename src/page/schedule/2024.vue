@@ -27,12 +27,12 @@
             <div v-for="(node, i) in animeList" class="p-4 as-box">
               <div @click="getCaptionList(node);" class="cursor-pointer">
                 <!-- 시간 -->
-                <div v-if="node.scheduleTime != '-'" class="text-md font-bold text-ccl text-ccd">
+                <div v-if="node.scheduleTime != '-'" class="text-md font-bold text-cc">
                   {{node.scheduleTime}}
                 </div>
                 <div class="text-md mt-1 font-bold text-gray-800 dark:text-zinc-300">
                   <!-- 방영태그 -->
-                  <span v-if="node.subjectPrefix">[<b class="text-ccl text-ccd">{{node.subjectPrefix}}</b>] </span>
+                  <span v-if="node.subjectPrefix">[<b class="text-cc">{{node.subjectPrefix}}</b>] </span>
                   <!-- 애니제목 -->
                   {{node.subject}}
                 </div>
@@ -168,8 +168,8 @@ onMounted(() => {
       c = theme.match(/[0-9a-f]{6}/ig);
     }
     (document.getElementById('user-style') as any).innerHTML = `<style>
-        html.lieght #sc2024 .text-ccl { color: #${c[0]} }
-        html.dark #sc2024 .text-ccl { color: #${c[1]} }
+        html.light #sc2024 .text-cc { color: #${c[0]} }
+        html.dark #sc2024 .text-cc { color: #${c[1]} }
         </style>`;
   }))(theme);
 });

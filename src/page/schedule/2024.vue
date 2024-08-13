@@ -1,11 +1,11 @@
 <template>
-  <div class="duration-300 bg-white dark:bg-black">
+  <div id="sc2024" class="duration-300 bg-white dark:bg-black">
     <div class="container duration-300 pb-10 m-auto px-1 sm:px-2 md:px-4 min-h-screen py-0 text-zinc-800 dark:text-zinc-400" @click="e => evtClickClosePopup(e)">
 
       <!-- 타이틀 -->
       <div class="font-extralight h-16 text-center flex items-center">
         <div class="text-2xl leading-none flex-1 text-center pl-9"><a href="/" target="_blank"><span class="max-[250px]:hidden">애니</span><span class="max-[350px]:hidden">메이션</span> 편성표</a></div>
-        <button class="text-lg hover:text-sky-700 dark:hover:text-gray-200 px-4 py-2.5" @click="toggleTheme()">
+        <button class="text-lg hover:text-sky-700 dark:hover:text-gray-200 px-4 py-2.5" @click="toggleColorMode()">
         <span class="dark:hidden">
           <i class="fa-solid fa-sun"></i>
         </span>
@@ -111,6 +111,7 @@
         </div>
       </div>
     </div>
+    <div id="user-style"></div>
   </div>
 </template>
 
@@ -118,7 +119,7 @@
 <!-- 스크립트 -->
 <script setup lang="ts">
 import {onBeforeUnmount, onMounted, Ref, ref} from "vue";
-import theme from "../../common/theme";
+import colorMode from "../../common/theme";
 import AnimeCaption from "../../domain/anime/AnimeCaption";
 import Anime from "../../domain/anime/Anime";
 import animeRemote from "../../domain/anime/remote/animeRemote";
@@ -131,21 +132,16 @@ const animeNow = ref(null) as Ref<Anime|null>;
 const captionList = ref([]) as Ref<AnimeCaption[]>;
 const ajaxState = ajaxStateStore();
 
-//애니메이션 정보
 function getAnimeList(week: number): void {
   weekNow.value = week;
   animeRemote.getScheduleAnimeList(week).then((list) => animeList.value = list);
 }
-
-//자막제작자 정보
 function getCaptionList(anime: Anime) {
   animeRemote.getAnimeCaptionList(anime.animeNo).then((list) => {
     captionList.value = list;
     animeNow.value = anime;
   });
 }
-
-//팝업 관련
 function evtClickClosePopup(event: MouseEvent) {
   if (animeNow.value != null && (event.target as HTMLElement).closest('body,.box')?.tagName == 'BODY') {
     animeNow.value = null;
@@ -156,32 +152,27 @@ function evtKeyClosePopup(event: KeyboardEvent) {
     animeNow.value = null;
   }
 }
-
-//테마
-function toggleTheme() {
-  theme.toggle();
+function toggleColorMode() {
+  colorMode.toggle();
 }
-
-// 커스텀 강조색상 URL 분석
-const urlParams = new URLSearchParams(window.location.search);
-const lightcolor = urlParams.get('lightcolor') || '2563eb';
-const darkcolor = urlParams.get('darkcolor') || '3b82f6';
 
 onMounted(() => {
   getAnimeList(new Date().getDay());
   window.addEventListener('keydown', evtKeyClosePopup, true);
-
-  // 커스텀 색상 지정 CSS
-  const style = document.createElement('style');
-  style.innerHTML = `
-    .text-ccl {
-      color: #${lightcolor};
+  const theme = location.hash.length > 1 ? location.hash : '2563eb3b82f6';
+  // custom theme
+  ((window as any).repaint = ((colors: string) => {
+    console.log(colors);
+    let c: string[] = colors.match(/[0-9a-f]{6}/ig) || [];
+    // 16진수 색상 코드가 2개가 아닌 경우 기본값 사용
+    if (c.filter((e: string) => /^[0-9a-f]{6}$/i.test(e)).length != 2) {
+      c = theme.match(/[0-9a-f]{6}/ig);
     }
-    .text-ccd:is(.dark *) {
-      color: #${darkcolor};
-    }
-  `;
-  document.head.appendChild(style);
+    (document.getElementById('user-style') as any).innerHTML = `<style>
+        html.lieght #sc2024 .text-ccl { color: #${c[0]} }
+        html.dark #sc2024 .text-ccl { color: #${c[1]} }
+        </style>`;
+  }))(theme);
 });
 
 onBeforeUnmount(() => {
@@ -191,10 +182,8 @@ onBeforeUnmount(() => {
 
 <!-- 애니메이션 CSS -->
 <style>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s;
-}
-.fade-enter-from, .fade-leave-to {
-  opacity: 0;
+#sc2024 {
+  .fade-enter-active, .fade-leave-active { transition: opacity 0.3s; }
+  .fade-enter-from, .fade-leave-to { opacity: 0; }
 }
 </style>

@@ -162,7 +162,6 @@ onMounted(() => {
   const theme = location.hash.length > 1 ? location.hash : '2563eb3b82f6';
   // custom theme
   ((window as any).repaint = ((colors: string) => {
-    console.log(colors);
     let c: string[] = colors.match(/[0-9a-f]{6}/ig) || [];
     // 16진수 색상 코드가 2개가 아닌 경우 기본값 사용
     if (c.filter((e: string) => /^[0-9a-f]{6}$/i.test(e)).length != 2) {

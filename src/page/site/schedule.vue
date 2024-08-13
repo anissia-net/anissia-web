@@ -6,8 +6,7 @@
       <!--  -->
       <div class="md:flex-1 p-4 flex as-box">
         <div class="flex m-auto">
-          <iframe v-if="asd.type === 'vue'" :ref="e => htmlFrameRef = e" class="preview-border" src="/schedule/2024" :width="vueMaxWidth" :height="asd.vueHeight" @load="drawVue"></iframe>
-          <iframe v-else-if="asd.type === 'html'" :ref="e => htmlFrameRef = e" class="preview-border" src="/schedule/2015" :width="htmlMaxWidth" :height="asd.htmlHeight" @load="drawHtml"></iframe>
+          <iframe v-if="asd.type === 'html'" :ref="e => htmlFrameRef = e" class="preview-border" src="/schedule/2015" :width="htmlMaxWidth" :height="asd.htmlHeight" @load="drawHtml"></iframe>
           <div v-else-if="asd.type === 'img'" class="preview-img preview-border" :style="({width: `${imgMaxWidth}px`,height: `${imgHeight}px`, background: `#${asd.imgListBg}`, 'overflow-y': asd.imgScroll ? 'auto' : 'hidden'})">
             <div class="img-preview" ondragstart="return false" onselectstart="return false">
               <div class="img-title" :style="{background: `#${asd.imgTitleBg}`, color: `#${asd.imgTitle}`}">애니편성표</div>
@@ -21,40 +20,12 @@
       <div class="md:w-64">
         <label class="sub-title">소스타입</label>
         <div class="flex w-full justify-between rounded-md shadow-sm">
-          <button type="button" @click="setType('vue')" class="flex-1 rounded-l-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'vue' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
-            VUE
-          </button>
-          <button type="button" @click="setType('html')" class="flex-1 p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'html' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+          <button type="button" @click="setType('html')" class="flex-1 rounded-l-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'html' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
             HTML
           </button>
           <button type="button" @click="setType('img')" class="flex-1 rounded-r-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'img' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
-            IMG
+            IMG (블로그)
           </button>
-        </div>
-        <div v-if="asd.type == 'vue'">
-          <label class="sub-title">강조색상</label>
-            <div class="flex space-x-2">
-              <div class="color-unit-box" @click="e => openCp(e, 'vueLight')" :style="`background:#${asd.vueLight}`"></div>
-              <div class="color-unit-box" @click="e => openCp(e, 'vueDark')" :style="`background:#${asd.vueDark}`"></div>
-            </div>
-          <label class="sub-title">모양</label>
-          <div class="flex items-center space-x-2 mb-2">
-            <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-left-right"></i></span>
-            <input type="range" v-model="asd.vueWidth" min="250" max="900" step="10" class="flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700">
-            <input type="text" v-model="asd.vueWidth" class="block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white" maxlength="3" />
-          </div>
-          <div class="flex items-center space-x-2 mb-2">
-            <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-up-down"></i></span>
-            <input type="range" v-model="asd.vueHeight" min="600" max="1200" step="1" class="flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700">
-            <input type="text" v-model="asd.vueHeight" class="block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white" maxlength="3" />
-          </div>
-          <label class="sub-title">HTML 코드</label>
-          <textarea readonly :value="vueCode" class="p-2 h-[88px] md:h-[162px]  as-input-text !text-[12px] font-mono"></textarea>
-          <div class="mt-3">
-            <button @click="doCopyClipboard(vueCode)" class="w-full p-2 as-input-btn font-semibold !text-[15px]">
-              <i class="fa-regular fa-copy"></i>&nbsp; 복사하기
-            </button>
-          </div>
         </div>
         <div v-if="asd.type == 'html'">
           <div class="select-none">
@@ -197,7 +168,7 @@
         <div class="w-[50px]"><img class="w-full" src="./schedule/icon-schedule.svg"/></div>
         <div class="flex-1 pl-4">
           <a href="/schedule/2024" target="_blank"><h5>애니편성표 (2024)</h5></a>
-          <p>반응형 테이블 버전(베타)</p>
+          <p>애니편성표 카드 버전</p>
         </div>
       </div>
 
@@ -205,7 +176,7 @@
         <div class="w-[50px]"><img class="w-full" src="./schedule/icon-schedule.svg"/></div>
         <div class="flex-1 pl-4">
           <a href="/schedule/2015" target="_blank"><h5>애니편성표 (2015)</h5></a>
-          <p>현재 메인으로 사용되는 버전.</p>
+          <p>애니편성표 리스트 버전</p>
         </div>
       </div>
 
@@ -334,10 +305,8 @@ import toast from "../../common/toast";
 
 // anime schedule data
 const asd = ref({
-  // TYPE - vue, html, img
-  type: 'vue',
-  // vue - size, color
-  vueWidth: 700, vueHeight: 800, vueLight: '2563eb', vueDark: '3b82f6', 
+  // TYPE - html, img
+  type: 'html',
   // HTML - color - light mode
   htmlBgLight: 'ffffff', htmlTitleBgLight: '5987b6', htmlTitleLight: 'ffffff',
   htmlNavBgLight: 'f2f2f2', htmlNavLight: '497ba7', htmlNavActBgLight: '9cb3c7', htmlNavActLight: 'ffffff',
@@ -363,11 +332,6 @@ const asd = ref({
 });
 const maxWidth = ref(0);
 const containerRef = ref(null) as any;
-
-const vueMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.vueWidth));
-const vueCode = computed(() => `<iframe src="${location.origin + '/schedule/2024' + vueSrc.value}" width="${asd.value.vueWidth}" height="${asd.value.vueHeight}" frameborder="0"></iframe>`);
-const vueSrc = computed(() => '?lightcolor=' + asd.value.vueLight + '&darkcolor=' + asd.value.vueDark);
-
 const htmlFrameRef = ref(null) as any;
 const htmlMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.htmlWidth));
 const htmlCode = computed(() => `<iframe src="${location.origin + '/schedule/2015#' + htmlSrc.value}" width="${asd.value.htmlWidth}" height="${asd.value.htmlHeight}" frameborder="0"></iframe>`);
@@ -375,7 +339,6 @@ const htmlSrc = computed(() => asd.value.htmlBgLight + asd.value.htmlTitleBgLigh
     asd.value.htmlNavActLight + asd.value.htmlListBgLight + asd.value.htmlListLight + asd.value.htmlListActBgLight + asd.value.htmlListActLight + asd.value.htmlPrefixLight +
     asd.value.htmlBgDark + asd.value.htmlTitleBgDark + asd.value.htmlTitleDark + asd.value.htmlNavBgDark + asd.value.htmlNavDark + asd.value.htmlNavActBgDark +
     asd.value.htmlNavActDark + asd.value.htmlListBgDark + asd.value.htmlListDark + asd.value.htmlListActBgDark + asd.value.htmlListActDark + asd.value.htmlPrefixDark);
-
 const imgMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.imgWidth));
 const imgHeight = computed(() => 50 + (asd.value.imgSize * 20));
 const imgCode = computed(() => {
@@ -384,19 +347,11 @@ const imgCode = computed(() => {
   const api = (origin + '/api').replace('anissia.net/api', 'api.anissia.net');
   return `<div style="width:${asd.value.imgWidth}px;height:${imgHeight.value}px;background:#${asd.value.imgListBg};overflow-y:${asd.value.imgScroll ? 'auto' : 'hidden'}"><a href="${origin + '/schedule/2015'}" target="_blank"><img src="${api}/anime/schedule/svg/${asd.value.imgWidth}/${theme}"/></a></div>`;
 });
-
 function drawHtml() {
   if (asd.value.type == 'html') {
     htmlFrameRef.value.contentWindow.repaint(htmlSrc.value);
   }
 }
-
-function drawVue() {
-  if (asd.value.type == 'vue') {
-    htmlFrameRef.value.contentWindow.repaint(vueSrc.value);
-  }
-}
-
 function bindMaxWidth() {
   maxWidth.value = (containerRef.value.offsetWidth as number) - (matchMedia('(min-width: 768px)').matches ? 400 : 100);
 }

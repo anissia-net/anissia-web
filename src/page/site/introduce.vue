@@ -28,28 +28,12 @@
       </div>
     </div>
 
-    <div class="font-semibold text-xl mt-12">개발 총괄</div>
+    <div class="font-semibold text-xl mt-12">개발 지원</div>
     <div class="mt-1 text-sm leading-[1.8] as-a-color">
       테라시아(현 <a href="https://gs.saro.me">가리사니</a>)의 멤버로 애니시아 독립 이전에는 운영을 이후에는 지원을 하고 있습니다.
     </div>
     <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
       <div v-for="node in supportMembers" :key="node.key" class="p-4 as-box">
-        <div>
-          <div class="text-lg font-bold text-gray-800 dark:text-zinc-300">{{node.name}}</div>
-          <div class="text-sm mt-1" v-html="node.date"></div>
-        </div>
-        <div class="mt-1 space-x-1 space-y-2 text-gray-800 dark:text-zinc-300">
-          <span class="as-tag-xs" v-for="sn in node.tags" :key="sn.key">
-            <a :href="sn.link" v-if="sn.link">{{sn.text}} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            <span v-else>{{sn.text}}</span>
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <div class="font-semibold text-xl mt-12">개발 지원</div>
-    <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      <div v-for="node in supportDevelopmentMembers" :key="node.key" class="p-4 as-box">
         <div>
           <div class="text-lg font-bold text-gray-800 dark:text-zinc-300">{{node.name}}</div>
           <div class="text-sm mt-1" v-html="node.date"></div>
@@ -158,10 +142,7 @@ const adminMembers = ref([
 
 const supportMembers = ref([
   new SiteMember('박용서', `2007 ~ 2013: 개발운영 (애니시아 독립 전)<br/>2013 ~ ${nowYear}: 개발지원`, [`개발총괄`, `애니편성표`, `애니시아`, `시스템`, `API`, `디자인`, `기획`, `가리사니||https://gs.saro.me`, `GITHUB||https://github.com/ac-saro` ,`페이스북||https://www.facebook.com/j.saro.co`]),
-]) as unknown as SiteMember[];
-
-const supportDevelopmentMembers = ref([
-  new SiteMember('코네 - CodeName393', `2024`, [`애니편성표`, `GITHUB||https://github.com/CodeName393` ,`블로그||https://codename393.tistory.com/`]),
+  new SiteMember('코네', `2024`, [`애니편성표`, `GITHUB||https://github.com/CodeName393` ,`블로그||https://codename393.tistory.com/`]),
 ]) as unknown as SiteMember[];
 
 const supportGraphicMembers = ref([
@@ -180,7 +161,7 @@ const prevMembers = ref([
 ]) as unknown as SiteMember[];
 
 const siteHistory = ref([
-  new SiteHistory(`2024-08-13`, `편성표 디자인 리뉴얼`, `/notice?topicNo=248`),
+  new SiteHistory(`2024-08-13`, `애니편성표 2024 출시`, `/notice?topicNo=248`),
   new SiteHistory(`2024-02-23`, `테라시아 도메인 종료`, `/notice?topicNo=198`),
   new SiteHistory(`2024-01-24`, `애니시아 안드로이드 앱 출시`, `https://play.google.com/store/apps/dev?id=6556202027842431619`),
   new SiteHistory(`2023-04-16`, `백엔드 리팩토링`, `/notice?topicNo=134`),

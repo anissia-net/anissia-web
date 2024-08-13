@@ -32,7 +32,7 @@
                 </div>
                 <div class="text-md mt-1 font-bold text-gray-800 dark:text-zinc-300">
                   <!-- 방영태그 -->
-                  <span v-if="node.subjectPrefix">[<b class="text-ccl text-ccl text-ccd">{{node.subjectPrefix}}</b>] </span>
+                  <span v-if="node.subjectPrefix">[<b class="text-ccl text-ccd">{{node.subjectPrefix}}</b>] </span>
                   <!-- 애니제목 -->
                   {{node.subject}}
                 </div>

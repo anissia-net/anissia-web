@@ -11,6 +11,7 @@ import sc2009 from '../page/schedule/2009.vue'
 import siteLayout from '../page/site/layout.vue'
 import home from '../page/site/home.vue'
 import schedule from '../page/site/schedule.vue'
+import schedule2 from '../page/site/scheduleTest.vue'
 import anime from '../page/site/anime.vue'
 import translatorApply from '../page/site/translatorApply.vue'
 import captionRecent from '../page/site/captionRecent.vue'
@@ -52,6 +53,7 @@ const router = createRouter({
       children: [
         { path: '/', component: home, meta: { title: '애니시아' } },
         { path: '/schedule', component: schedule, meta: { title: '애니편성표 - 애니시아' } },
+        { path: '/schedule2', component: schedule, meta: { title: '애니편성표 - 애니시아' } },
         { path: '/anime', component: anime, meta: { title: '애니정보 - 애니시아' } },
         { path: '/caption/recent', component: captionRecent, meta: { title: '최근자막 - 애니시아' } },
         { path: '/translator/apply', component: translatorApply, meta: { title: '자막제작자 신청 - 애니시아' } },

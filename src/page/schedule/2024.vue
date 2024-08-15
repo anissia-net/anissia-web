@@ -1,5 +1,5 @@
 <template>
-  <div id="sc2024" class="duration-300 bg-white dark:bg-black">
+  <div id="sc2024" class="duration-300">
     <div class="container duration-300 pb-10 m-auto px-1 sm:px-2 md:px-4 min-h-screen py-0 text-zinc-800 dark:text-zinc-400" @click="e => evtClickClosePopup(e)">
 
       <!-- 타이틀 -->
@@ -154,10 +154,11 @@ function applyColorMode(mode: string|null) {
       mode = (localStorage.getItem('schedule2024ColorMode') as string | null) || 'light';
     } catch (e) { mode = 'light'; }
   }
+  console.log(mode);
   localStorage.setItem('schedule2024ColorMode', (colorMode.value = mode));
-  const bodyClass = document.documentElement.classList;
-  bodyClass.remove('light', 'dark');
-  bodyClass.add(colorMode.value);
+  const sc2024Classes = document.getElementById('sc2024')!!.classList;
+  sc2024Classes.remove('light', 'dark');
+  sc2024Classes.add(colorMode.value);
 }
 function toggleColorMode() {
   applyColorMode(colorMode.value == 'light' ? 'dark' : 'light');
@@ -168,17 +169,24 @@ onMounted(() => {
   getAnimeList(new Date().getDay());
   (window as any).colorMode = applyColorMode;
   window.addEventListener('keydown', evtKeyClosePopup, true);
-  const theme = location.hash.length > 1 ? location.hash : '2563eb3b82f6';
+  const theme = location.hash.length > 1 ? location.hash : 'ffffff2563eb0000003b82f6';
   // custom theme
   ((window as any).repaint = ((colors: string) => {
     let c: string[] = colors.match(/[0-9a-f]{6}/ig) || [];
-    // 16진수 색상 코드가 2개가 아닌 경우 기본값 사용
-    if (c.filter((e: string) => /^[0-9a-f]{6}$/i.test(e)).length != 2) {
+    // 16진수 색상 코드가 4개가 아닌 경우 기본값 사용
+    if (c.filter((e: string) => /^[0-9a-f]{6}$/i.test(e)).length != 4) {
       c = theme.match(/[0-9a-f]{6}/ig);
     }
+    let cardBgLight = c[0];
+    let cardBoldLight = c[1];
+    let cardBgDark = c[2];
+    let cardBoldDark = c[3];
+
     (document.getElementById('user-style') as any).innerHTML = `<style>
-        html.light #sc2024 .text-cc { color: #${c[0]} }
-        html.dark #sc2024 .text-cc { color: #${c[1]} }
+        #sc2024.light { background: #${cardBgLight} }
+        #sc2024.light .text-cc { color: #${cardBoldLight} }
+        #sc2024.dark { background: #${cardBgDark} }
+        #sc2024.dark .text-cc { color: #${cardBoldDark} }
         </style>`;
   }))(theme);
 });

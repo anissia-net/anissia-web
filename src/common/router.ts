@@ -53,7 +53,7 @@ const router = createRouter({
       children: [
         { path: '/', component: home, meta: { title: '애니시아' } },
         { path: '/schedule', component: schedule, meta: { title: '애니편성표 - 애니시아' } },
-        { path: '/schedule2', component: schedule, meta: { title: '애니편성표 - 애니시아' } },
+        { path: '/schedule2', component: schedule2, meta: { title: '애니편성표 - 애니시아' } },
         { path: '/anime', component: anime, meta: { title: '애니정보 - 애니시아' } },
         { path: '/caption/recent', component: captionRecent, meta: { title: '최근자막 - 애니시아' } },
         { path: '/translator/apply', component: translatorApply, meta: { title: '자막제작자 신청 - 애니시아' } },

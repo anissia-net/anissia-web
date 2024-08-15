@@ -6,7 +6,8 @@
       <!--  -->
       <div class="md:flex-1 p-4 flex as-box">
         <div class="flex m-auto">
-          <iframe v-if="asd.type === 'html'" :ref="e => htmlFrameRef = e" class="preview-border" src="/schedule/2015" :width="htmlMaxWidth" :height="asd.htmlHeight" @load="drawHtml"></iframe>
+          <iframe v-if="asd.type === 'card'" :ref="e => cardFrameRef = e" class="preview-border" src="/schedule/2024" :width="cardMaxWidth" :height="asd.cardHeight" @load="drawHtml"></iframe>
+          <iframe v-if="asd.type === 'list'" :ref="e => listFrameRef = e" class="preview-border" src="/schedule/2015" :width="listMaxWidth" :height="asd.listHeight" @load="drawHtml"></iframe>
           <div v-else-if="asd.type === 'img'" class="preview-img preview-border" :style="({width: `${imgMaxWidth}px`,height: `${imgHeight}px`, background: `#${asd.imgListBg}`, 'overflow-y': asd.imgScroll ? 'auto' : 'hidden'})">
             <div class="img-preview" ondragstart="return false" onselectstart="return false">
               <div class="img-title" :style="{background: `#${asd.imgTitleBg}`, color: `#${asd.imgTitle}`}">애니편성표</div>
@@ -18,98 +19,133 @@
       </div>
 
       <div class="md:w-64">
-        <label class="sub-title">소스타입</label>
-        <div class="flex w-full justify-between rounded-md shadow-sm">
-          <button type="button" @click="setType('html')" class="flex-1 rounded-l-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'html' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
-            HTML
+        <label class="sub-title">편성표 타입</label>
+        <div class="w-full rounded-md shadow-sm">
+          <button type="button" @click="setType('card')" class="w-full mt-2 rounded-l-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'card' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+            카드 타입
           </button>
-          <button type="button" @click="setType('img')" class="flex-1 rounded-r-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'img' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
-            IMG (블로그)
+          <button type="button" @click="setType('list')" class="w-full mt-2 rounded-l-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'list' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+            리스트 타입
+          </button>
+          <button type="button" @click="setType('img')" class="w-full mt-2 rounded-r-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'img' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+            이미지 (블로그)
           </button>
         </div>
-        <div v-if="asd.type == 'html'">
+        <div v-if="asd.type == 'card'">
           <div class="select-none">
             <label class="sub-title">배경</label>
             <div class="flex space-x-2">
-              <div class="color-unit-box" @click="e => openCp(e, 'htmlBgLight')" :style="`background:#${asd.htmlBgLight}`"></div>
-              <div class="color-unit-box" @click="e => openCp(e, 'htmlBgDark')" :style="`background:#${asd.htmlBgDark}`"></div>
+              <div class="color-unit-box" @click="e => openCp(e, 'cardBgLight')" :style="`background:#${asd.cardBgLight}`"></div>
+              <div class="color-unit-box" @click="e => openCp(e, 'cardBgDark')" :style="`background:#${asd.cardBgDark}`"></div>
             </div>
-            <label class="sub-title">타이틀 (배경 / 글자)</label>
+            <label class="sub-title">강조 (시간/날짜)</label>
             <div class="flex space-x-2">
-              <div class="flex color-unit-box">
-                <div @click="e => openCp(e, 'htmlTitleBgLight')" :style="`background:#${asd.htmlTitleBgLight}`"></div>
-                <div @click="e => openCp(e, 'htmlTitleLight')" :style="`background:#${asd.htmlTitleLight}`"></div>
-              </div>
-              <div class="flex color-unit-box">
-                <div @click="e => openCp(e, 'htmlTitleBgDark')" :style="`background:#${asd.htmlTitleBgDark}`"></div>
-                <div @click="e => openCp(e, 'htmlTitleDark')" :style="`background:#${asd.htmlTitleDark}`"></div>
-              </div>
-            </div>
-            <label class="sub-title">요일 (배경 / 글자)</label>
-            <div class="flex space-x-2">
-              <div class="flex color-unit-box">
-                <div @click="e => openCp(e, 'htmlNavBgLight')" :style="`background:#${asd.htmlNavBgLight}`"></div>
-                <div @click="e => openCp(e, 'htmlNavLight')" :style="`background:#${asd.htmlNavLight}`"></div>
-              </div>
-              <div class="flex color-unit-box">
-                <div @click="e => openCp(e, 'htmlNavBgDark')" :style="`background:#${asd.htmlNavBgDark}`"></div>
-                <div @click="e => openCp(e, 'htmlNavDark')" :style="`background:#${asd.htmlNavDark}`"></div>
-              </div>
-            </div>
-            <label class="sub-title">요일 (활성) (배경 / 글자)</label>
-            <div class="flex space-x-2">
-              <div class="flex color-unit-box">
-                <div @click="e => openCp(e, 'htmlNavActBgLight')" :style="`background:#${asd.htmlNavActBgLight}`"></div>
-                <div @click="e => openCp(e, 'htmlNavActLight')" :style="`background:#${asd.htmlNavActLight}`"></div>
-              </div>
-              <div class="flex color-unit-box">
-                <div @click="e => openCp(e, 'htmlNavActBgDark')" :style="`background:#${asd.htmlNavActBgDark}`"></div>
-                <div @click="e => openCp(e, 'htmlNavActDark')" :style="`background:#${asd.htmlNavActDark}`"></div>
-              </div>
-            </div>
-            <label class="sub-title">리스트 (배경 / 글자)</label>
-            <div class="flex space-x-2">
-              <div class="flex color-unit-box">
-                <div @click="e => openCp(e, 'htmlListBgLight')" :style="`background:#${asd.htmlListBgLight}`"></div>
-                <div @click="e => openCp(e, 'htmlListLight')" :style="`background:#${asd.htmlListLight}`"></div>
-              </div>
-              <div class="flex color-unit-box">
-                <div @click="e => openCp(e, 'htmlListBgDark')" :style="`background:#${asd.htmlListBgDark}`"></div>
-                <div @click="e => openCp(e, 'htmlListDark')" :style="`background:#${asd.htmlListDark}`"></div>
-              </div>
-            </div>
-            <label class="sub-title">리스트 (활성) (배경 / 글자)</label>
-            <div class="flex space-x-2">
-              <div class="flex color-unit-box">
-                <div @click="e => openCp(e, 'htmlListActBgLight')" :style="`background:#${asd.htmlListActBgLight}`"></div>
-                <div @click="e => openCp(e, 'htmlListActLight')" :style="`background:#${asd.htmlListActLight}`"></div>
-              </div>
-              <div class="flex color-unit-box">
-                <div @click="e => openCp(e, 'htmlListActBgDark')" :style="`background:#${asd.htmlListActBgDark}`"></div>
-                <div @click="e => openCp(e, 'htmlListActDark')" :style="`background:#${asd.htmlListActDark}`"></div>
-              </div>
-            </div>
-            <label class="sub-title">접두어 (글자)</label>
-            <div class="flex space-x-2">
-              <div class="color-unit-box" @click="e => openCp(e, 'htmlPrefixLight')" :style="`background:#${asd.htmlPrefixLight}`"></div>
-              <div class="color-unit-box" @click="e => openCp(e, 'htmlPrefixDark')" :style="`background:#${asd.htmlPrefixDark}`"></div>
+              <div class="color-unit-box" @click="e => openCp(e, 'cardBoldLight')" :style="`background:#${asd.cardBoldLight}`"></div>
+              <div class="color-unit-box" @click="e => openCp(e, 'cardBoldDark')" :style="`background:#${asd.cardBoldDark}`"></div>
             </div>
           </div>
           <label class="sub-title">모양</label>
           <div class="flex items-center space-x-2 mb-2">
             <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-left-right"></i></span>
-            <input type="range" v-model="asd.htmlWidth" min="180" max="900" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700 shadow-sm">
-            <input type="number" v-model="asd.htmlWidth" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white shadow-sm" maxlength="3" />
+            <input type="range" v-model="asd.cardWidth" min="180" max="900" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700 shadow-sm">
+            <input type="number" v-model="asd.cardWidth" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white shadow-sm" maxlength="3" />
           </div>
           <div class="flex items-center space-x-2 mb-2">
             <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-up-down"></i></span>
-            <input type="range" v-model="asd.htmlHeight" min="240" max="780" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700 shadow-sm">
-            <input type="number" v-model="asd.htmlHeight" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white shadow-sm" maxlength="3" />
+            <input type="range" v-model="asd.cardHeight" min="240" max="780" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700 shadow-sm">
+            <input type="number" v-model="asd.cardHeight" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white shadow-sm" maxlength="3" />
           </div>
           <label class="sub-title">HTML 코드</label>
-          <textarea readonly :value="htmlCode" class="p-2 h-[120px] md:h-[162px] as-input-text !text-[12px] font-mono"></textarea>
+          <textarea readonly :value="cardCode" class="p-2 h-[120px] md:h-[162px] as-input-text !text-[12px] font-mono"></textarea>
           <div class="mt-3">
-            <button @click="doCopyClipboard(htmlCode)" class="w-full p-2 as-input-btn font-semibold !text-[15px]">
+            <button @click="doCopyClipboard(cardCode)" class="w-full p-2 as-input-btn font-semibold !text-[15px]">
+              <i class="fa-regular fa-copy"></i>&nbsp; 복사하기
+            </button>
+          </div>
+        </div>
+        <div v-if="asd.type == 'list'">
+          <div class="select-none">
+            <label class="sub-title">배경</label>
+            <div class="flex space-x-2">
+              <div class="color-unit-box" @click="e => openCp(e, 'listBgLight')" :style="`background:#${asd.listBgLight}`"></div>
+              <div class="color-unit-box" @click="e => openCp(e, 'listBgDark')" :style="`background:#${asd.listBgDark}`"></div>
+            </div>
+            <label class="sub-title">타이틀 (배경 / 글자)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'listTitleBgLight')" :style="`background:#${asd.listTitleBgLight}`"></div>
+                <div @click="e => openCp(e, 'listTitleLight')" :style="`background:#${asd.listTitleLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'listTitleBgDark')" :style="`background:#${asd.listTitleBgDark}`"></div>
+                <div @click="e => openCp(e, 'listTitleDark')" :style="`background:#${asd.listTitleDark}`"></div>
+              </div>
+            </div>
+            <label class="sub-title">요일 (배경 / 글자)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'listNavBgLight')" :style="`background:#${asd.listNavBgLight}`"></div>
+                <div @click="e => openCp(e, 'listNavLight')" :style="`background:#${asd.listNavLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'listNavBgDark')" :style="`background:#${asd.listNavBgDark}`"></div>
+                <div @click="e => openCp(e, 'listNavDark')" :style="`background:#${asd.listNavDark}`"></div>
+              </div>
+            </div>
+            <label class="sub-title">요일 (활성) (배경 / 글자)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'listNavActBgLight')" :style="`background:#${asd.listNavActBgLight}`"></div>
+                <div @click="e => openCp(e, 'listNavActLight')" :style="`background:#${asd.listNavActLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'listNavActBgDark')" :style="`background:#${asd.listNavActBgDark}`"></div>
+                <div @click="e => openCp(e, 'listNavActDark')" :style="`background:#${asd.listNavActDark}`"></div>
+              </div>
+            </div>
+            <label class="sub-title">리스트 (배경 / 글자)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'listListBgLight')" :style="`background:#${asd.listListBgLight}`"></div>
+                <div @click="e => openCp(e, 'listListLight')" :style="`background:#${asd.listListLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'listListBgDark')" :style="`background:#${asd.listListBgDark}`"></div>
+                <div @click="e => openCp(e, 'listListDark')" :style="`background:#${asd.listListDark}`"></div>
+              </div>
+            </div>
+            <label class="sub-title">리스트 (활성) (배경 / 글자)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'listListActBgLight')" :style="`background:#${asd.listListActBgLight}`"></div>
+                <div @click="e => openCp(e, 'listListActLight')" :style="`background:#${asd.listListActLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'listListActBgDark')" :style="`background:#${asd.listListActBgDark}`"></div>
+                <div @click="e => openCp(e, 'listListActDark')" :style="`background:#${asd.listListActDark}`"></div>
+              </div>
+            </div>
+            <label class="sub-title">접두어 (글자)</label>
+            <div class="flex space-x-2">
+              <div class="color-unit-box" @click="e => openCp(e, 'listPrefixLight')" :style="`background:#${asd.listPrefixLight}`"></div>
+              <div class="color-unit-box" @click="e => openCp(e, 'listPrefixDark')" :style="`background:#${asd.listPrefixDark}`"></div>
+            </div>
+          </div>
+          <label class="sub-title">모양</label>
+          <div class="flex items-center space-x-2 mb-2">
+            <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-left-right"></i></span>
+            <input type="range" v-model="asd.listWidth" min="180" max="900" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700 shadow-sm">
+            <input type="number" v-model="asd.listWidth" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white shadow-sm" maxlength="3" />
+          </div>
+          <div class="flex items-center space-x-2 mb-2">
+            <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-up-down"></i></span>
+            <input type="range" v-model="asd.listHeight" min="240" max="780" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700 shadow-sm">
+            <input type="number" v-model="asd.listHeight" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white shadow-sm" maxlength="3" />
+          </div>
+          <label class="sub-title">HTML 코드</label>
+          <textarea readonly :value="listCode" class="p-2 h-[120px] md:h-[162px] as-input-text !text-[12px] font-mono"></textarea>
+          <div class="mt-3">
+            <button @click="doCopyClipboard(listCode)" class="w-full p-2 as-input-btn font-semibold !text-[15px]">
               <i class="fa-regular fa-copy"></i>&nbsp; 복사하기
             </button>
           </div>
@@ -305,20 +341,31 @@ import toast from "../../common/toast";
 
 // anime schedule data
 const asd = ref({
-  // TYPE - html, img
-  type: 'html',
-  // HTML - color - light mode
-  htmlBgLight: 'ffffff', htmlTitleBgLight: '5987b6', htmlTitleLight: 'ffffff',
-  htmlNavBgLight: 'f2f2f2', htmlNavLight: '497ba7', htmlNavActBgLight: '9cb3c7', htmlNavActLight: 'ffffff',
-  htmlListBgLight: 'ffffff', htmlListLight: '555555', htmlListActBgLight: 'f8f8f8', htmlListActLight: '2474ce',
-  htmlPrefixLight: 'cb3434',
-  // HTML - color - dark mode
-  htmlBgDark: '000000', htmlTitleBgDark: '000000', htmlTitleDark: '777777',
-  htmlNavBgDark: '111111', htmlNavDark: '777777', htmlNavActBgDark: '111111', htmlNavActDark: 'c3b443',
-  htmlListBgDark: '070707', htmlListDark: '999999', htmlListActBgDark: '000000', htmlListActDark: 'cccccc',
-  htmlPrefixDark: '3a7da3',
-  // HTML - size
-  htmlWidth: 650, htmlHeight: 400,
+  // TYPE - list, img
+  type: 'card',
+
+  // CARD - color - light mode
+  cardBgLight: 'ffffff',
+  cardBoldLight: 'cb3434',
+  // CARD - color - dark mode
+  cardBgDark: '000000',
+  cardBoldDark: '3a7da3',
+  // CARD - size
+  cardWidth: 800, cardHeight: 640,
+
+  // LIST - color - light mode
+  listBgLight: 'ffffff', listTitleBgLight: '5987b6', listTitleLight: 'ffffff',
+  listNavBgLight: 'f2f2f2', listNavLight: '497ba7', listNavActBgLight: '9cb3c7', listNavActLight: 'ffffff',
+  listListBgLight: 'ffffff', listListLight: '555555', listListActBgLight: 'f8f8f8', listListActLight: '2474ce',
+  listPrefixLight: 'cb3434',
+  // LIST - color - dark mode
+  listBgDark: '000000', listTitleBgDark: '000000', listTitleDark: '777777',
+  listNavBgDark: '111111', listNavDark: '777777', listNavActBgDark: '111111', listNavActDark: 'c3b443',
+  listListBgDark: '070707', listListDark: '999999', listListActBgDark: '000000', listListActDark: 'cccccc',
+  listPrefixDark: '3a7da3',
+  // LIST - size
+  listWidth: 650, listHeight: 400,
+
   // IMG - color
   imgTitleBg: '63a883', imgTitle: 'ffffff',
   imgYmdBg: 'd8d8d8', imgYmd: '000000',
@@ -330,15 +377,25 @@ const asd = ref({
   imgDataList: [] as string[],
   imgDataYmd: new DateFormat().format("yyyy년 MM월 dd일"),
 });
+
+const cardFrameRef = ref(null) as any;
+const cardMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.cardWidth));
+const cardCode = computed(() => `<iframe src="${location.origin + '/schedule/2024#' + cardSrc.value}" width="${asd.value.cardWidth}" height="${asd.value.cardHeight}" frameborder="0"></iframe>`);
+const cardSrc = computed(() =>
+    asd.value.cardBgLight + asd.value.cardBoldLight +
+    asd.value.cardBgDark + asd.value.cardBoldDark
+);
+
 const maxWidth = ref(0);
 const containerRef = ref(null) as any;
-const htmlFrameRef = ref(null) as any;
-const htmlMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.htmlWidth));
-const htmlCode = computed(() => `<iframe src="${location.origin + '/schedule/2015#' + htmlSrc.value}" width="${asd.value.htmlWidth}" height="${asd.value.htmlHeight}" frameborder="0"></iframe>`);
-const htmlSrc = computed(() => asd.value.htmlBgLight + asd.value.htmlTitleBgLight + asd.value.htmlTitleLight + asd.value.htmlNavBgLight + asd.value.htmlNavLight + asd.value.htmlNavActBgLight +
-    asd.value.htmlNavActLight + asd.value.htmlListBgLight + asd.value.htmlListLight + asd.value.htmlListActBgLight + asd.value.htmlListActLight + asd.value.htmlPrefixLight +
-    asd.value.htmlBgDark + asd.value.htmlTitleBgDark + asd.value.htmlTitleDark + asd.value.htmlNavBgDark + asd.value.htmlNavDark + asd.value.htmlNavActBgDark +
-    asd.value.htmlNavActDark + asd.value.htmlListBgDark + asd.value.htmlListDark + asd.value.htmlListActBgDark + asd.value.htmlListActDark + asd.value.htmlPrefixDark);
+const listFrameRef = ref(null) as any;
+const listMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.listWidth));
+const listCode = computed(() => `<iframe src="${location.origin + '/schedule/2015#' + listSrc.value}" width="${asd.value.listWidth}" height="${asd.value.listHeight}" frameborder="0"></iframe>`);
+const listSrc = computed(() => asd.value.listBgLight + asd.value.listTitleBgLight + asd.value.listTitleLight + asd.value.listNavBgLight + asd.value.listNavLight + asd.value.listNavActBgLight +
+    asd.value.listNavActLight + asd.value.listListBgLight + asd.value.listListLight + asd.value.listListActBgLight + asd.value.listListActLight + asd.value.listPrefixLight +
+    asd.value.listBgDark + asd.value.listTitleBgDark + asd.value.listTitleDark + asd.value.listNavBgDark + asd.value.listNavDark + asd.value.listNavActBgDark +
+    asd.value.listNavActDark + asd.value.listListBgDark + asd.value.listListDark + asd.value.listListActBgDark + asd.value.listListActDark + asd.value.listPrefixDark);
+
 const imgMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.imgWidth));
 const imgHeight = computed(() => 50 + (asd.value.imgSize * 20));
 const imgCode = computed(() => {
@@ -348,15 +405,21 @@ const imgCode = computed(() => {
   return `<div style="width:${asd.value.imgWidth}px;height:${imgHeight.value}px;background:#${asd.value.imgListBg};overflow-y:${asd.value.imgScroll ? 'auto' : 'hidden'}"><a href="${origin + '/schedule/2015'}" target="_blank"><img src="${api}/anime/schedule/svg/${asd.value.imgWidth}/${theme}"/></a></div>`;
 });
 function drawHtml() {
-  if (asd.value.type == 'html') {
-    htmlFrameRef.value.contentWindow.repaint(htmlSrc.value);
+  if (asd.value.type == 'card') {
+    cardFrameRef.value.contentWindow.repaint(cardSrc.value);
+  } else if (asd.value.type == 'list') {
+    listFrameRef.value.contentWindow.repaint(listSrc.value);
   }
 }
 function bindMaxWidth() {
   maxWidth.value = (containerRef.value.offsetWidth as number) - (matchMedia('(min-width: 768px)').matches ? 400 : 100);
 }
 function colorModeHtml(mode: string) {
-  htmlFrameRef.value.contentWindow.colorMode(mode);
+  if (asd.value.type == 'card') {
+    cardFrameRef.value.contentWindow.colorMode(mode);
+  } else if (asd.value.type == 'list') {
+    listFrameRef.value.contentWindow.colorMode(mode);
+  }
 }
 function setType(type: string) {
   asd.value.type = type;
@@ -389,7 +452,7 @@ function openCp(event: MouseEvent, target: string) {
   cpShow.value = true;
   cpTarget.value = target;
   cpColor.value = `#${(asd.value as any)[cpTarget.value]}`;
-  if (asd.value.type == 'html') {
+  if (['card', 'list'].indexOf(asd.value.type) != -1) {
     colorModeHtml(cpTarget.value.endsWith('Dark') ? 'dark' : 'light');
   }
 }

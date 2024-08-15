@@ -6,12 +6,8 @@
       <div class="font-extralight h-16 text-center flex items-center">
         <div class="text-2xl leading-none flex-1 text-center pl-9"><a href="/" target="_blank"><span class="max-[250px]:hidden">애니</span><span class="max-[350px]:hidden">메이션</span> 편성표</a></div>
         <button class="text-lg hover:text-sky-700 dark:hover:text-gray-200 px-4 py-2.5" @click="toggleColorMode()">
-        <span class="dark:hidden">
-          <i class="fa-solid fa-sun"></i>
-        </span>
-          <span class="hidden dark:inline">
-          <i class="fa-solid fa-moon"></i>
-        </span>
+          <span class="dark:hidden"><i class="fa-solid fa-sun"></i></span>
+          <span class="hidden dark:inline"><i class="fa-solid fa-moon"></i></span>
         </button>
       </div>
 
@@ -119,7 +115,6 @@
 <!-- 스크립트 -->
 <script setup lang="ts">
 import {onBeforeUnmount, onMounted, Ref, ref} from "vue";
-import colorMode from "../../common/theme";
 import AnimeCaption from "../../domain/anime/AnimeCaption";
 import Anime from "../../domain/anime/Anime";
 import animeRemote from "../../domain/anime/remote/animeRemote";
@@ -131,6 +126,7 @@ const animeList = ref([]) as Ref<Anime[]>;
 const animeNow = ref(null) as Ref<Anime|null>;
 const captionList = ref([]) as Ref<AnimeCaption[]>;
 const ajaxState = ajaxStateStore();
+const colorMode = ref('light');
 
 function getAnimeList(week: number): void {
   weekNow.value = week;
@@ -152,12 +148,25 @@ function evtKeyClosePopup(event: KeyboardEvent) {
     animeNow.value = null;
   }
 }
+function applyColorMode(mode: string|null) {
+  if (mode == null) {
+    try {
+      mode = (localStorage.getItem('schedule2024ColorMode') as string | null) || 'light';
+    } catch (e) { mode = 'light'; }
+  }
+  localStorage.setItem('schedule2024ColorMode', (colorMode.value = mode));
+  const bodyClass = document.documentElement.classList;
+  bodyClass.remove('light', 'dark');
+  bodyClass.add(colorMode.value);
+}
 function toggleColorMode() {
-  colorMode.toggle();
+  applyColorMode(colorMode.value == 'light' ? 'dark' : 'light');
 }
 
 onMounted(() => {
+  applyColorMode(null);
   getAnimeList(new Date().getDay());
+  (window as any).colorMode = applyColorMode;
   window.addEventListener('keydown', evtKeyClosePopup, true);
   const theme = location.hash.length > 1 ? location.hash : '2563eb3b82f6';
   // custom theme

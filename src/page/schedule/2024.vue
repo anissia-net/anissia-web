@@ -156,9 +156,12 @@ function applyColorMode(mode: string|null) {
   }
   console.log(mode);
   localStorage.setItem('schedule2024ColorMode', (colorMode.value = mode));
+  const bodyClasses = document.documentElement.classList;
   const sc2024Classes = document.getElementById('sc2024')!!.classList;
   sc2024Classes.remove('light', 'dark');
+  bodyClasses.remove('light', 'dark');
   sc2024Classes.add(colorMode.value);
+  bodyClasses.add(colorMode.value);
 }
 function toggleColorMode() {
   applyColorMode(colorMode.value == 'light' ? 'dark' : 'light');

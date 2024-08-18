@@ -1,47 +1,45 @@
 <template>
   <div id="sc2024" class="duration-300">
-    <div class="container duration-300 pb-10 m-auto px-1 sm:px-2 md:px-4 min-h-screen py-0 text-zinc-800 dark:text-zinc-400" @click="e => evtClickClosePopup(e)">
+    <div class="container duration-300 pb-10 m-auto px-1 sm:px-2 md:px-4 min-h-screen py-0" @click="e => evtClickClosePopup(e)">
 
       <!-- 타이틀 -->
       <div class="font-extralight h-16 text-center flex items-center">
-        <div class="text-2xl leading-none flex-1 text-center pl-9"><a href="/" target="_blank"><span class="max-[250px]:hidden">애니</span><span class="max-[350px]:hidden">메이션</span> 편성표</a></div>
-        <button class="text-lg hover:text-sky-700 dark:hover:text-gray-200 px-4 py-2.5" @click="toggleColorMode()">
+        <div class="text-2xl leading-none flex-1 pl-9 duration-300 title-text"><a href="/" target="_blank"><span class="max-[270px]:hidden">애니</span><span class="max-[350px]:hidden">메이션</span> 편성표</a></div>
+        <button class="text-lg px-4 py-2.5 duration-300 title-text" @click="toggleColorMode()">
           <span class="dark:hidden"><i class="fa-solid fa-sun"></i></span>
           <span class="hidden dark:inline"><i class="fa-solid fa-moon"></i></span>
         </button>
       </div>
 
       <!-- 내비게이션바 -->
-      <div class="flex justify-between space-x-2 sm:space-x-3 md:space-x-4">
-        <div v-for="(week, idx) in weekList" @click="getAnimeList(idx)" class="flex-auto text-center font-bold text-md md:text-lg py-2 as-box cursor-pointer" :class="({'text-gray-400 dark:text-gray-600': idx != weekNow})">{{week}}</div>
+      <div class="flex justify-between max-[350px]:space-x-0 space-x-2 sm:space-x-3 md:space-x-4">
+        <div v-for="(week, idx) in weekList" @click="getAnimeList(idx)" class="flex-auto duration-300 rounded-[3px] shadow-sm border text-center font-bold text-md md:text-lg py-2 cursor-pointer nav-box" :class="({'nav-box-pick': idx == weekNow})">{{week}}</div>
       </div>
 
       <!-- 애니메이션 리스트 -->
       <transition name="fade">
         <div class="mt-4" v-if="animeList.length">
           <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            <div v-for="(node, i) in animeList" class="p-4 as-box">
+            <div v-for="(node) in animeList" class="p-4 duration-300 rounded-[3px] shadow-sm border list-box">
               <div @click="getCaptionList(node);" class="cursor-pointer">
                 <!-- 시간 -->
-                <div v-if="node.scheduleTime != '-'" class="text-md font-bold text-cc">
-                  {{node.scheduleTime}}
-                </div>
-                <div class="text-md mt-1 font-bold text-gray-800 dark:text-zinc-300">
+                <div v-if="node.scheduleTime != '-'" class="text-md font-bold duration-300 list-box-text-highlight"> {{node.scheduleTime}} </div>
+                <div class="text-md mt-1 font-bold duration-300 list-box-text-subject">
                   <!-- 방영태그 -->
-                  <span v-if="node.subjectPrefix">[<b class="text-cc">{{node.subjectPrefix}}</b>] </span>
-                  <!-- 애니제목 -->
+                  <span v-if="node.subjectPrefix">[<span class="duration-300 list-box-text-highlight">{{node.subjectPrefix}}</span>] </span>
+                  <!-- 한글제목 -->
                   {{node.subject}}
                 </div>
-                <!-- 원제 -->
-                <div class="text-xs mt-1" v-if="node.originalSubject">{{node.originalSubject}}</div>
+                <!-- 원어제목 -->
+                <div class="text-xs mt-1 duration-300 list-box-text-originalsubject" v-if="node.originalSubject">{{node.originalSubject}}</div>
               </div>
               <!-- 태그박스 -->
-              <div class="mt-1 space-x-1 space-y-2 text-gray-800 dark:text-zinc-300">
-                <span class="as-tag-xs" v-for="tag in node.tags" :key="tag">{{tag}}</span>
-                <span class="as-tag-xs" v-for="tag in node.genres.split(/,/g)" :key="tag"><router-link :to="`/anime?q=%23${encodeURIComponent(tag)}`">{{tag}}</router-link></span>
-                <span class="as-tag-xs" v-if="node.website"><a :href="node.website" target="_blank" class="fas fa-home"></a></span>
-                <span class="as-tag-xs" v-if="node.twitter"><a :href="node.twitter" target="_blank" class="fa-brands fa-x-twitter"></a></span>
-                <span class="as-tag-xs" v-if="node.captionCount"><span class="fas fa-closed-captioning">&nbsp; {{node.captionCount}}</span></span>
+              <div class="mt-1 space-x-1 space-y-2">
+                <span class="rounded-[2px] shadow-sm inline-block text-xs border px-[5px] py-[3px] duration-300 list-box-tag" v-for="tag in node.tags" :key="tag">{{tag}}</span>
+                <span class="rounded-[2px] shadow-sm inline-block text-xs border px-[5px] py-[3px] duration-300 list-box-tag" v-for="tag in node.genres.split(/,/g)" :key="tag"><router-link :to="`/anime?q=%23${encodeURIComponent(tag)}`">{{tag}}</router-link></span>
+                <span class="rounded-[2px] shadow-sm inline-block text-xs border px-[5px] py-[3px] duration-300 list-box-tag" v-if="node.website"><a :href="node.website" target="_blank" class="fas fa-home"></a></span>
+                <span class="rounded-[2px] shadow-sm inline-block text-xs border px-[5px] py-[3px] duration-300 list-box-tag" v-if="node.twitter"><a :href="node.twitter" target="_blank" class="fa-brands fa-x-twitter"></a></span>
+                <span class="rounded-[2px] shadow-sm inline-block text-xs border px-[5px] py-[3px] duration-300 list-box-tag" v-if="node.captionCount"><span class="fas fa-closed-captioning">&nbsp; {{node.captionCount}}</span></span>
               </div>
             </div>
           </div>
@@ -50,30 +48,30 @@
 
       <!-- 팝업 -->
       <transition name="fade">
-        <div class="fixed inset-0 animate-fadeIn backdrop-blur-sm bg-gray-800/10" v-if="animeNow != null">
-          <div class="box min-[460px]:w-[450px] mt-[150px] mb-0 mx-auto p-4 rounded-md shadow-lg text-base font-semibold text-center bg-zinc-50/85 dark:bg-zinc-900/85 text-gray-800 dark:text-zinc-300">
+        <div class="fixed inset-0 backdrop-blur-sm bg-gray-800/10" v-if="animeNow != null">
+          <div class="popup min-[460px]:w-[450px] mt-[150px] mb-0 mx-auto p-4 rounded-md shadow-lg text-base font-semibold text-center bg-zinc-50/85 dark:bg-zinc-900/85 text-gray-800 dark:text-zinc-300">
             <!-- 제목 -->
             <div class="border-b border-gray-200 dark:border-zinc-800 pb-3">
-              <a target="_blank" :href="`/anime?animeNo=${animeNow.animeNo}`" class="hover:opacity-80">
+              <a target="_blank" :href="`/anime?animeNo=${animeNow.animeNo}`" class="duration-300 hover:opacity-80">
                 <!-- 한글제목 -->
                 <div class="text-xl font-bold">
                   {{animeNow.subject}}
                 </div>
-                <!-- 원워제목 -->
+                <!-- 원어제목 -->
                 <div class="text-xs mt-1">
                   {{animeNow.originalSubject}}
                 </div>
               </a>
             </div>
-            <!-- 요일 -->
-            <div class="mt-1 space-x-1 space-y-2 text-gray-800 dark:text-zinc-300 border-b pb-3 border-gray-200 dark:border-zinc-800 ">
-              <span class="as-tag-xs" v-for="tag in animeNow.tags" :key="tag">{{tag}}</span>
+            <!-- 태그 -->
+            <div class="mt-1 space-x-1 space-y-2 border-b pb-3 border-gray-200 dark:border-zinc-800 ">
+              <span class="rounded-[2px] shadow-sm inline-block text-xs border px-[5px] py-[3px] duration-300 bg-[#e6edf3] border-[#e6edf3] text-[#595f6e] dark:bg-[#171a24] dark:border-[#171a24] dark:text-[#eee] hover:bg-[#c6cdd3] hover:border-[#c6cdd3] dark:hover:bg-[#35363a] dark:hover:border-[#35363a]" v-for="tag in animeNow.tags" :key="tag">{{tag}}</span>
             </div>
             <!-- 자막제작자 목록 -->
             <div class="mt-3">
               <div class="mt-3 text-[15px]" v-for="node in captionList" :key="`${node.name}`">
                 <div v-if="node.website !== ''">
-                  <a :href="node.website" target="_blank" class="block hover:opacity-80">
+                  <a :href="node.website" target="_blank" class="block duration-300 hover:opacity-80">
                     <span>{{node.episodeText}}</span> <span>{{node.name}}</span> <span>{{node.updDtText}}</span>
                   </a>
                 </div>
@@ -83,21 +81,21 @@
               </div>
             </div>
             <!-- 자막제작자 없음 -->
-            <div v-if="captionList.length === 0" class="text-[15px] font-normal leading-10 mt-0 mb-px mx-0 pt-10 pb-[50px] px-0">자막 제작자가 없습니다.</div>
+            <div v-if="captionList.length === 0" class="text-[15px] font-normal leading-10 pt-10 pb-[50px] px-0">자막 제작자가 없습니다.</div>
           </div>
         </div>
       </transition>
 
       <!-- 서버상태 체크 -->
       <div v-if="ajaxState.state == 'loading'" class="h-screen w-screen fixed flex items-center top-0 z-30 backdrop-blur-[2px] bg-white/20 dark:bg-black/10">
-        <div class="w-screen text-center my-8 opacity-50">
-          <div><i class="opacity-50 text-[100px] fa-solid fa-gear as-fa-spin"></i></div>
+        <div class="w-screen text-center my-8 opacity-80">
+          <div><i class="opacity-80 text-[100px] fa-solid fa-gear as-fa-spin"></i></div>
           <div class="text-4xl my-12">loading...</div>
         </div>
       </div>
       <div v-else-if="ajaxState.state == 'error'" class="h-screen w-screen fixed flex items-center top-0 z-30 backdrop-blur-[2px] bg-white/20 dark:bg-black/10">
         <div class="w-screen text-center my-8">
-          <div><i class="fa-solid fa-screwdriver-wrench opacity-50 text-[100px]"></i></div>
+          <div><i class="fa-solid fa-screwdriver-wrench opacity-80 text-[100px]"></i></div>
           <div class="text-4xl mt-12 mb-8">서버 연결 실패</div>
           <div class="text-md opacity-80 leading-[2]">
             현재 애니시아 서버에 연결할 수 없습니다.
@@ -139,7 +137,7 @@ function getCaptionList(anime: Anime) {
   });
 }
 function evtClickClosePopup(event: MouseEvent) {
-  if (animeNow.value != null && (event.target as HTMLElement).closest('body,.box')?.tagName == 'BODY') {
+  if (animeNow.value != null && (event.target as HTMLElement).closest('body,.popup')?.tagName == 'BODY') {
     animeNow.value = null;
   }
 }
@@ -172,24 +170,108 @@ onMounted(() => {
   getAnimeList(new Date().getDay());
   (window as any).colorMode = applyColorMode;
   window.addEventListener('keydown', evtKeyClosePopup, true);
-  const theme = location.hash.length > 1 ? location.hash : 'ffffff2563eb0000003b82f6';
-  // custom theme
+  // 커스텀 테마
+  const theme = location.hash.length > 1 ? location.hash : 'ffffff00000027272aa1a1aa0369a1e5e7ebffffff0000009ca3af4b5563e4e4e71f1f22ffffff00000027272aa1a1aad4d4d827272affffff000000e4e4e71f1f22ffffff000000d4d4d827272a2563eb3b82f61f2937d4d4d827272aa1a1aa2563eb3b82f61f2937d4d4d827272aa1a1aae6edf3171a24595f6eeeeeeec6cdd335363a595f6eeeeeee';
   ((window as any).repaint = ((colors: string) => {
     let c: string[] = colors.match(/[0-9a-f]{6}/ig) || [];
-    // 16진수 색상 코드가 4개가 아닌 경우 기본값 사용
-    if (c.filter((e: string) => /^[0-9a-f]{6}$/i.test(e)).length != 4) {
+    // 16진수 색상 코드가 지정된 갯수가 아니거나 잘못된 경우 기본값 사용
+    if (c.filter((e: string) => /^[0-9a-f]{6}$/i.test(e)).length != 46) {
       c = theme.match(/[0-9a-f]{6}/ig);
     }
-    let cardBgLight = c[0];
-    let cardBoldLight = c[1];
-    let cardBgDark = c[2];
-    let cardBoldDark = c[3];
+    
+    let BgLight = c[0]; //ffffff
+    let BgDark = c[1]; //000000
+
+    let TitleLight = c[2]; //27272a
+    let TitleDark = c[3]; //a1a1aa
+    let TitleHoverLight = c[4]; //0369a1
+    let TitleHoverDark = c[5]; //e5e7eb
+
+    let NavBgLight = c[6]; //ffffff
+    let NavBgDark = c[7]; //000000
+    let NavTextLight = c[8]; //9ca3af
+    let NavTextDark = c[9]; //4b5563
+    let NavBorderLight = c[10]; //e4e4e7
+    let NavBorderDark = c[11]; //1f1f22
+
+    let NavBgPickLight = c[12]; //ffffff
+    let NavBgPickDark = c[13]; //000000
+    let NavTextPickLight = c[14]; //27272a
+    let NavTextPickDark = c[15]; //a1a1aa
+    let NavBorderPickLight = c[16]; //d4d4d8
+    let NavBorderPickDark = c[17]; //27272a
+
+    let ListBgLight = c[18]; //ffffff
+    let ListBgDark = c[19]; //000000
+    let ListBorderLight = c[20]; //e4e4e7
+    let ListBorderDark = c[21]; //1f1f22
+
+    let ListBgPickLight = c[22]; //ffffff
+    let ListBgPickDark = c[23]; //000000
+    let ListBorderPickLight = c[24]; //d4d4d8
+    let ListBorderPickDark = c[25]; //27272a
+
+    let ListTextHighlightLight = c[26]; //2563eb
+    let ListTextHighlightDark = c[27]; //3b82f6
+    let ListTextSubjectLight = c[28]; //1f2937
+    let ListTextSubjectDark = c[29]; //d4d4d8
+    let ListTextOriginalSubjectLight = c[30]; //27272a
+    let ListTextOriginalSubjectDark = c[31]; //a1a1aa
+
+    let ListTextHighlightPickLight = c[32]; //2563eb
+    let ListTextHighlightPickDark = c[33]; //3b82f6
+    let ListTextSubjectPickLight = c[34]; //1f2937
+    let ListTextSubjectPickDark = c[35]; //d4d4d8
+    let ListTextOriginalSubjectPickLight = c[36]; //27272a
+    let ListTextOriginalSubjectPickDark = c[37]; //a1a1aa
+
+    let ListTagBgLight = c[38]; //e6edf3
+    let ListTagBgDark = c[39]; //171a24
+    let ListTagTextLight = c[40]; //595f6e
+    let ListTagTextDark = c[41]; //eeeeee
+
+    let ListTagBgPickLight = c[42]; //c6cdd3
+    let ListTagBgPickDark = c[43]; //35363a
+    let ListTagTextPickLight = c[44]; //595f6e
+    let ListTagTextPickDark = c[45]; //eeeeee
 
     (document.getElementById('user-style') as any).innerHTML = `<style>
-        #sc2024.light { background: #${cardBgLight} }
-        #sc2024.light .text-cc { color: #${cardBoldLight} }
-        #sc2024.dark { background: #${cardBgDark} }
-        #sc2024.dark .text-cc { color: #${cardBoldDark} }
+        #sc2024.light { background: #${BgLight} }
+        #sc2024.light .title-text { color: #${TitleLight} }
+        #sc2024.light .title-text:hover { color: #${TitleHoverLight} }
+
+        #sc2024.light .nav-box { background: #${NavBgLight}; color: #${NavTextLight}; border-color: #${NavBorderLight} }
+        #sc2024.light .nav-box-pick, #sc2024.light .nav-box:hover { background: #${NavBgPickLight}; color: #${NavTextPickLight}; border-color: #${NavBorderPickLight} }
+
+        #sc2024.light .list-box { background: #${ListBgLight}; border-color: #${ListBorderLight} }
+        #sc2024.light .list-box:hover { background: #${ListBgPickLight}; border-color: #${ListBorderPickLight} }
+        #sc2024.light .list-box-text-highlight { color: #${ListTextHighlightLight} }
+        #sc2024.light .list-box-text-highlight:hover { color: #${ListTextHighlightPickLight} }
+        #sc2024.light .list-box-text-subject { color: #${ListTextSubjectLight} }
+        #sc2024.light .list-box-text-subject:hover { color: #${ListTextSubjectPickLight} }
+        #sc2024.light .list-box-text-originalsubject { color: #${ListTextOriginalSubjectLight} }
+        #sc2024.light .list-box-text-originalsubject:hover { color: #${ListTextOriginalSubjectPickLight} }
+        #sc2024.light .list-box-tag { background: #${ListTagBgLight}; color: #${ListTagTextLight}; border-color: #${ListTagBgLight}; }
+        #sc2024.light .list-box-tag:hover { background: #${ListTagBgPickLight}; color: #${ListTagTextPickLight}; border-color: #${ListTagBgPickLight}; }
+
+
+        #sc2024.dark { background: #${BgDark} }
+        #sc2024.dark .title-text { color: #${TitleDark} }
+        #sc2024.dark .title-text:hover { color: #${TitleHoverDark} }
+
+        #sc2024.dark .nav-box { background: #${NavBgDark}; color: #${NavTextDark}; border-color: #${NavBorderDark} }
+        #sc2024.dark .nav-box-pick, #sc2024.dark .nav-box:hover { background: #${NavBgPickDark}; color: #${NavTextPickDark}; border-color: #${NavBorderPickDark} }
+
+        #sc2024.dark .list-box { background: #${ListBgDark}; border-color: #${ListBorderDark} }
+        #sc2024.dark .list-box:hover { background: #${ListBgPickDark}; border-color: #${ListBorderPickDark} }
+        #sc2024.dark .list-box-text-highlight { color: #${ListTextHighlightDark} }
+        #sc2024.dark .list-box-text-highlight:hover { color: #${ListTextHighlightPickDark} }
+        #sc2024.dark .list-box-text-subject { color: #${ListTextSubjectDark} }
+        #sc2024.dark .list-box-text-subject:hover { color: #${ListTextSubjectPickDark} }
+        #sc2024.dark .list-box-text-originalsubject { color: #${ListTextOriginalSubjectDark} }
+        #sc2024.dark .list-box-text-originalsubject:hover { color: #${ListTextOriginalSubjectPickDark} }
+        #sc2024.dark .list-box-tag { background: #${ListTagBgDark}; color: #${ListTagTextDark}; border-color: #${ListTagBgDark}; }
+        #sc2024.dark .list-box-tag:hover { background: #${ListTagBgPickDark}; color: #${ListTagTextPickDark}; border-color: #${ListTagBgPickDark}; }
         </style>`;
   }))(theme);
 });
@@ -199,8 +281,8 @@ onBeforeUnmount(() => {
 });
 </script>
 
-<!-- 애니메이션 CSS -->
 <style>
+/* 애니메이션 CSS */
 #sc2024 {
   .fade-enter-active, .fade-leave-active { transition: opacity 0.3s; }
   .fade-enter-from, .fade-leave-to { opacity: 0; }

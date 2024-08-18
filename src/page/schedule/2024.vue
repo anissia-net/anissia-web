@@ -49,7 +49,7 @@
       <!-- 팝업 -->
       <transition name="fade">
         <div class="fixed inset-0 backdrop-blur-sm bg-gray-800/10" v-if="animeNow != null">
-          <div class="popup min-[460px]:w-[450px] mt-[150px] mb-0 mx-auto p-4 rounded-md shadow-lg text-base font-semibold text-center bg-zinc-50/85 dark:bg-zinc-900/85 text-gray-800 dark:text-zinc-300">
+          <div class="popup min-[460px]:w-[450px] mt-[50px] sm:mt-[100px] md:mt-[150px] mb-0 mx-auto p-4 rounded-md shadow-lg text-base font-semibold text-center bg-zinc-50/85 dark:bg-zinc-900/85 text-gray-800 dark:text-zinc-300">
             <!-- 제목 -->
             <div class="border-b border-gray-200 dark:border-zinc-800 pb-3">
               <a target="_blank" :href="`/anime?animeNo=${animeNow.animeNo}`" class="duration-300 hover:opacity-80">
@@ -154,7 +154,6 @@ function applyColorMode(mode: string|null) {
       );
     } catch (e) { mode = 'light'; }
   }
-  console.log(mode);
   localStorage.setItem('schedule2024ColorMode', (colorMode.value = mode));
   const sc2024Classes = document.getElementById('sc2024')!!.classList;
   sc2024Classes.remove('light', 'dark');
@@ -178,99 +177,99 @@ onMounted(() => {
       c = theme.match(/[0-9a-f]{6}/ig);
     }
     
-    let BgLight = c[0]; //ffffff
-    let BgDark = c[1]; //000000
+    const bgLight = c[0]; //ffffff
+    const bgDark = c[1]; //000000
 
-    let TitleLight = c[2]; //27272a
-    let TitleDark = c[3]; //a1a1aa
-    let TitleHoverLight = c[4]; //0369a1
-    let TitleHoverDark = c[5]; //e5e7eb
+    const titleLight = c[2]; //27272a
+    const titleDark = c[3]; //a1a1aa
+    const titleHoverLight = c[4]; //0369a1
+    const titleHoverDark = c[5]; //e5e7eb
 
-    let NavBgLight = c[6]; //ffffff
-    let NavBgDark = c[7]; //000000
-    let NavTextLight = c[8]; //9ca3af
-    let NavTextDark = c[9]; //4b5563
-    let NavBorderLight = c[10]; //e4e4e7
-    let NavBorderDark = c[11]; //1f1f22
+    const navBgLight = c[6]; //ffffff
+    const navBgDark = c[7]; //000000
+    const navTextLight = c[8]; //9ca3af
+    const navTextDark = c[9]; //4b5563
+    const navBorderLight = c[10]; //e4e4e7
+    const navBorderDark = c[11]; //1f1f22
 
-    let NavBgPickLight = c[12]; //ffffff
-    let NavBgPickDark = c[13]; //000000
-    let NavTextPickLight = c[14]; //27272a
-    let NavTextPickDark = c[15]; //a1a1aa
-    let NavBorderPickLight = c[16]; //d4d4d8
-    let NavBorderPickDark = c[17]; //27272a
+    const navBgPickLight = c[12]; //ffffff
+    const navBgPickDark = c[13]; //000000
+    const navTextPickLight = c[14]; //27272a
+    const navTextPickDark = c[15]; //a1a1aa
+    const navBorderPickLight = c[16]; //d4d4d8
+    const navBorderPickDark = c[17]; //27272a
 
-    let ListBgLight = c[18]; //ffffff
-    let ListBgDark = c[19]; //000000
-    let ListBorderLight = c[20]; //e4e4e7
-    let ListBorderDark = c[21]; //1f1f22
+    const listBgLight = c[18]; //ffffff
+    const listBgDark = c[19]; //000000
+    const listBorderLight = c[20]; //e4e4e7
+    const listBorderDark = c[21]; //1f1f22
 
-    let ListBgPickLight = c[22]; //ffffff
-    let ListBgPickDark = c[23]; //000000
-    let ListBorderPickLight = c[24]; //d4d4d8
-    let ListBorderPickDark = c[25]; //27272a
+    const listBgPickLight = c[22]; //ffffff
+    const listBgPickDark = c[23]; //000000
+    const listBorderPickLight = c[24]; //d4d4d8
+    const listBorderPickDark = c[25]; //27272a
 
-    let ListTextHighlightLight = c[26]; //2563eb
-    let ListTextHighlightDark = c[27]; //3b82f6
-    let ListTextSubjectLight = c[28]; //1f2937
-    let ListTextSubjectDark = c[29]; //d4d4d8
-    let ListTextOriginalSubjectLight = c[30]; //27272a
-    let ListTextOriginalSubjectDark = c[31]; //a1a1aa
+    const listTextHighlightLight = c[26]; //2563eb
+    const listTextHighlightDark = c[27]; //3b82f6
+    const listTextSubjectLight = c[28]; //1f2937
+    const listTextSubjectDark = c[29]; //d4d4d8
+    const listTextOriginalSubjectLight = c[30]; //27272a
+    const listTextOriginalSubjectDark = c[31]; //a1a1aa
 
-    let ListTextHighlightPickLight = c[32]; //2563eb
-    let ListTextHighlightPickDark = c[33]; //3b82f6
-    let ListTextSubjectPickLight = c[34]; //1f2937
-    let ListTextSubjectPickDark = c[35]; //d4d4d8
-    let ListTextOriginalSubjectPickLight = c[36]; //27272a
-    let ListTextOriginalSubjectPickDark = c[37]; //a1a1aa
+    const listTextHighlightPickLight = c[32]; //2563eb
+    const listTextHighlightPickDark = c[33]; //3b82f6
+    const listTextSubjectPickLight = c[34]; //1f2937
+    const listTextSubjectPickDark = c[35]; //d4d4d8
+    const listTextOriginalSubjectPickLight = c[36]; //27272a
+    const listTextOriginalSubjectPickDark = c[37]; //a1a1aa
 
-    let ListTagBgLight = c[38]; //e6edf3
-    let ListTagBgDark = c[39]; //171a24
-    let ListTagTextLight = c[40]; //595f6e
-    let ListTagTextDark = c[41]; //eeeeee
+    const listTagBgLight = c[38]; //e6edf3
+    const listTagBgDark = c[39]; //171a24
+    const listTagTextLight = c[40]; //595f6e
+    const listTagTextDark = c[41]; //eeeeee
 
-    let ListTagBgPickLight = c[42]; //c6cdd3
-    let ListTagBgPickDark = c[43]; //35363a
-    let ListTagTextPickLight = c[44]; //595f6e
-    let ListTagTextPickDark = c[45]; //eeeeee
+    const listTagBgPickLight = c[42]; //c6cdd3
+    const listTagBgPickDark = c[43]; //35363a
+    const listTagTextPickLight = c[44]; //595f6e
+    const listTagTextPickDark = c[45]; //eeeeee
 
     (document.getElementById('user-style') as any).innerHTML = `<style>
-        #sc2024.light { background: #${BgLight} }
-        #sc2024.light .title-text { color: #${TitleLight} }
-        #sc2024.light .title-text:hover { color: #${TitleHoverLight} }
+        #sc2024.light { background: #${bgLight} }
+        #sc2024.light .title-text { color: #${titleLight} }
+        #sc2024.light .title-text:hover { color: #${titleHoverLight} }
 
-        #sc2024.light .nav-box { background: #${NavBgLight}; color: #${NavTextLight}; border-color: #${NavBorderLight} }
-        #sc2024.light .nav-box-pick, #sc2024.light .nav-box:hover { background: #${NavBgPickLight}; color: #${NavTextPickLight}; border-color: #${NavBorderPickLight} }
+        #sc2024.light .nav-box { background: #${navBgLight}; color: #${navTextLight}; border-color: #${navBorderLight} }
+        #sc2024.light .nav-box-pick, #sc2024.light .nav-box:hover { background: #${navBgPickLight}; color: #${navTextPickLight}; border-color: #${navBorderPickLight} }
 
-        #sc2024.light .list-box { background: #${ListBgLight}; border-color: #${ListBorderLight} }
-        #sc2024.light .list-box:hover { background: #${ListBgPickLight}; border-color: #${ListBorderPickLight} }
-        #sc2024.light .list-box-text-highlight { color: #${ListTextHighlightLight} }
-        #sc2024.light .list-box-text-highlight:hover { color: #${ListTextHighlightPickLight} }
-        #sc2024.light .list-box-text-subject { color: #${ListTextSubjectLight} }
-        #sc2024.light .list-box-text-subject:hover { color: #${ListTextSubjectPickLight} }
-        #sc2024.light .list-box-text-originalsubject { color: #${ListTextOriginalSubjectLight} }
-        #sc2024.light .list-box-text-originalsubject:hover { color: #${ListTextOriginalSubjectPickLight} }
-        #sc2024.light .list-box-tag { background: #${ListTagBgLight}; color: #${ListTagTextLight}; border-color: #${ListTagBgLight}; }
-        #sc2024.light .list-box-tag:hover { background: #${ListTagBgPickLight}; color: #${ListTagTextPickLight}; border-color: #${ListTagBgPickLight}; }
+        #sc2024.light .list-box { background: #${listBgLight}; border-color: #${listBorderLight} }
+        #sc2024.light .list-box:hover { background: #${listBgPickLight}; border-color: #${listBorderPickLight} }
+        #sc2024.light .list-box-text-highlight { color: #${listTextHighlightLight} }
+        #sc2024.light .list-box-text-highlight:hover { color: #${listTextHighlightPickLight} }
+        #sc2024.light .list-box-text-subject { color: #${listTextSubjectLight} }
+        #sc2024.light .list-box-text-subject:hover { color: #${listTextSubjectPickLight} }
+        #sc2024.light .list-box-text-originalsubject { color: #${listTextOriginalSubjectLight} }
+        #sc2024.light .list-box-text-originalsubject:hover { color: #${listTextOriginalSubjectPickLight} }
+        #sc2024.light .list-box-tag { background: #${listTagBgLight}; color: #${listTagTextLight}; border-color: #${listTagBgLight}; }
+        #sc2024.light .list-box-tag:hover { background: #${listTagBgPickLight}; color: #${listTagTextPickLight}; border-color: #${listTagBgPickLight}; }
 
 
-        #sc2024.dark { background: #${BgDark} }
-        #sc2024.dark .title-text { color: #${TitleDark} }
-        #sc2024.dark .title-text:hover { color: #${TitleHoverDark} }
+        #sc2024.dark { background: #${bgDark} }
+        #sc2024.dark .title-text { color: #${titleDark} }
+        #sc2024.dark .title-text:hover { color: #${titleHoverDark} }
 
-        #sc2024.dark .nav-box { background: #${NavBgDark}; color: #${NavTextDark}; border-color: #${NavBorderDark} }
-        #sc2024.dark .nav-box-pick, #sc2024.dark .nav-box:hover { background: #${NavBgPickDark}; color: #${NavTextPickDark}; border-color: #${NavBorderPickDark} }
+        #sc2024.dark .nav-box { background: #${navBgDark}; color: #${navTextDark}; border-color: #${navBorderDark} }
+        #sc2024.dark .nav-box-pick, #sc2024.dark .nav-box:hover { background: #${navBgPickDark}; color: #${navTextPickDark}; border-color: #${navBorderPickDark} }
 
-        #sc2024.dark .list-box { background: #${ListBgDark}; border-color: #${ListBorderDark} }
-        #sc2024.dark .list-box:hover { background: #${ListBgPickDark}; border-color: #${ListBorderPickDark} }
-        #sc2024.dark .list-box-text-highlight { color: #${ListTextHighlightDark} }
-        #sc2024.dark .list-box-text-highlight:hover { color: #${ListTextHighlightPickDark} }
-        #sc2024.dark .list-box-text-subject { color: #${ListTextSubjectDark} }
-        #sc2024.dark .list-box-text-subject:hover { color: #${ListTextSubjectPickDark} }
-        #sc2024.dark .list-box-text-originalsubject { color: #${ListTextOriginalSubjectDark} }
-        #sc2024.dark .list-box-text-originalsubject:hover { color: #${ListTextOriginalSubjectPickDark} }
-        #sc2024.dark .list-box-tag { background: #${ListTagBgDark}; color: #${ListTagTextDark}; border-color: #${ListTagBgDark}; }
-        #sc2024.dark .list-box-tag:hover { background: #${ListTagBgPickDark}; color: #${ListTagTextPickDark}; border-color: #${ListTagBgPickDark}; }
+        #sc2024.dark .list-box { background: #${listBgDark}; border-color: #${listBorderDark} }
+        #sc2024.dark .list-box:hover { background: #${listBgPickDark}; border-color: #${listBorderPickDark} }
+        #sc2024.dark .list-box-text-highlight { color: #${listTextHighlightDark} }
+        #sc2024.dark .list-box-text-highlight:hover { color: #${listTextHighlightPickDark} }
+        #sc2024.dark .list-box-text-subject { color: #${listTextSubjectDark} }
+        #sc2024.dark .list-box-text-subject:hover { color: #${listTextSubjectPickDark} }
+        #sc2024.dark .list-box-text-originalsubject { color: #${listTextOriginalSubjectDark} }
+        #sc2024.dark .list-box-text-originalsubject:hover { color: #${listTextOriginalSubjectPickDark} }
+        #sc2024.dark .list-box-tag { background: #${listTagBgDark}; color: #${listTagTextDark}; border-color: #${listTagBgDark}; }
+        #sc2024.dark .list-box-tag:hover { background: #${listTagBgPickDark}; color: #${listTagTextPickDark}; border-color: #${listTagBgPickDark}; }
         </style>`;
   }))(theme);
 });

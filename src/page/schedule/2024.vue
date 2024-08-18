@@ -155,9 +155,12 @@ function applyColorMode(mode: string|null) {
     } catch (e) { mode = 'light'; }
   }
   localStorage.setItem('schedule2024ColorMode', (colorMode.value = mode));
-  const sc2024Classes = document.getElementById('sc2024')!!.classList;
-  sc2024Classes.remove('light', 'dark');
-  sc2024Classes.add(colorMode.value);
+  const sc2024Classes = [document.getElementById('sc2024'), document.documentElement];
+  sc2024Classes.forEach(sc2024Classes => {
+    const classes = sc2024Classes.classList;
+    classes.remove('light', 'dark');
+    classes.add(colorMode.value);
+  });
 }
 function toggleColorMode() {
   applyColorMode(colorMode.value == 'light' ? 'dark' : 'light');

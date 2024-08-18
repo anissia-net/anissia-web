@@ -21,13 +21,13 @@
       <div class="md:w-64">
         <label class="sub-title">편성표 타입</label>
         <div class="w-full rounded-md shadow-sm">
-          <button type="button" @click="setType('card')" class="w-full mt-2 rounded-l-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'card' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+          <button type="button" @click="setType('card')" class="w-full mt-2 rounded-t-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'card' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
             카드 타입
           </button>
-          <button type="button" @click="setType('list')" class="w-full mt-2 rounded-l-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'list' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+          <button type="button" @click="setType('list')" class="w-full p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'list' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
             리스트 타입
           </button>
-          <button type="button" @click="setType('img')" class="w-full mt-2 rounded-r-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'img' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+          <button type="button" @click="setType('img')" class="w-full rounded-b-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'img' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
             이미지 (블로그)
           </button>
         </div>
@@ -38,22 +38,135 @@
               <div class="color-unit-box" @click="e => openCp(e, 'cardBgLight')" :style="`background:#${asd.cardBgLight}`"></div>
               <div class="color-unit-box" @click="e => openCp(e, 'cardBgDark')" :style="`background:#${asd.cardBgDark}`"></div>
             </div>
-            <label class="sub-title">강조 (시간/날짜)</label>
+
+            <label class="sub-title">타이틀 글자 (기본 / 활성)</label>
             <div class="flex space-x-2">
-              <div class="color-unit-box" @click="e => openCp(e, 'cardBoldLight')" :style="`background:#${asd.cardBoldLight}`"></div>
-              <div class="color-unit-box" @click="e => openCp(e, 'cardBoldDark')" :style="`background:#${asd.cardBoldDark}`"></div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardTitleLight')" :style="`background:#${asd.cardTitleLight}`"></div>
+                <div @click="e => openCp(e, 'cardTitleHoverLight')" :style="`background:#${asd.cardTitleHoverLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardTitleDark')" :style="`background:#${asd.cardTitleDark}`"></div>
+                <div @click="e => openCp(e, 'cardTitleHoverDark')" :style="`background:#${asd.cardTitleHoverDark}`"></div>
+              </div>
             </div>
+
+            <label class="sub-title">요일 - 기본 (배경 / 글자 / 테두리)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardNavBgLight')" :style="`background:#${asd.cardNavBgLight}`"></div>
+                <div @click="e => openCp(e, 'cardNavTextLight')" :style="`background:#${asd.cardNavTextLight}`"></div>
+                <div @click="e => openCp(e, 'cardNavBorderLight')" :style="`background:#${asd.cardNavBorderLight}`"></div>
+              </div>
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardNavBgDark')" :style="`background:#${asd.cardNavBgDark}`"></div>
+                <div @click="e => openCp(e, 'cardNavTextDark')" :style="`background:#${asd.cardNavTextDark}`"></div>
+                <div @click="e => openCp(e, 'cardNavBorderDark')" :style="`background:#${asd.cardNavBorderDark}`"></div>
+              </div>
+            </div>
+
+            <label class="sub-title">요일 - 활성 (배경 / 글자 / 테두리)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardNavBgPickLight')" :style="`background:#${asd.cardNavBgPickLight}`"></div>
+                <div @click="e => openCp(e, 'cardNavTextPickLight')" :style="`background:#${asd.cardNavTextPickLight}`"></div>
+                <div @click="e => openCp(e, 'cardNavBorderPickLight')" :style="`background:#${asd.cardNavBorderPickLight}`"></div>
+              </div>
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardNavBgPickDark')" :style="`background:#${asd.cardNavBgPickDark}`"></div>
+                <div @click="e => openCp(e, 'cardNavTextPickDark')" :style="`background:#${asd.cardNavTextPickDark}`"></div>
+                <div @click="e => openCp(e, 'cardNavBorderPickDark')" :style="`background:#${asd.cardNavBorderPickDark}`"></div>
+              </div>
+            </div>
+
+            <label class="sub-title">목록 - 카드 기본 (배경 / 테두리)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListBgLight')" :style="`background:#${asd.cardListBgLight}`"></div>
+                <div @click="e => openCp(e, 'cardListBorderLight')" :style="`background:#${asd.cardListBorderLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListBgDark')" :style="`background:#${asd.cardListBgDark}`"></div>
+                <div @click="e => openCp(e, 'cardListBorderDark')" :style="`background:#${asd.cardListBorderDark}`"></div>
+              </div>
+            </div>
+
+            <label class="sub-title">목록 - 카드 활성 (배경 / 테두리)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListBgPickLight')" :style="`background:#${asd.cardListBgPickLight}`"></div>
+                <div @click="e => openCp(e, 'cardListBorderPickLight')" :style="`background:#${asd.cardListBorderPickLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListBgPickDark')" :style="`background:#${asd.cardListBgPickDark}`"></div>
+                <div @click="e => openCp(e, 'cardListBorderPickDark')" :style="`background:#${asd.cardListBorderPickDark}`"></div>
+              </div>
+            </div>
+
+            <label class="sub-title">목록 - 글자 (접두어 / 한글제목 / 원어제목)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardListTextHighlightLight')" :style="`background:#${asd.cardListTextHighlightLight}`"></div>
+                <div @click="e => openCp(e, 'cardListTextSubjectLight')" :style="`background:#${asd.cardListTextSubjectLight}`"></div>
+                <div @click="e => openCp(e, 'cardListTextOriginalSubjectLight')" :style="`background:#${asd.cardListTextOriginalSubjectLight}`"></div>
+              </div>
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardListTextHighlightDark')" :style="`background:#${asd.cardListTextHighlightDark}`"></div>
+                <div @click="e => openCp(e, 'cardListTextSubjectDark')" :style="`background:#${asd.cardListTextSubjectDark}`"></div>
+                <div @click="e => openCp(e, 'cardListTextOriginalSubjectDark')" :style="`background:#${asd.cardListTextOriginalSubjectDark}`"></div>
+              </div>
+            </div>
+
+            <label class="sub-title">목록 - 글자 활성 (접두어 / 한글제목 / 원어제목)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardListTextHighlightPickLight')" :style="`background:#${asd.cardListTextHighlightPickLight}`"></div>
+                <div @click="e => openCp(e, 'cardListTextSubjectPickLight')" :style="`background:#${asd.cardListTextSubjectPickLight}`"></div>
+                <div @click="e => openCp(e, 'cardListTextOriginalSubjectPickLight')" :style="`background:#${asd.cardListTextOriginalSubjectPickLight}`"></div>
+              </div>
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardListTextHighlightPickDark')" :style="`background:#${asd.cardListTextHighlightPickDark}`"></div>
+                <div @click="e => openCp(e, 'cardListTextSubjectPickDark')" :style="`background:#${asd.cardListTextSubjectPickDark}`"></div>
+                <div @click="e => openCp(e, 'cardListTextOriginalSubjectPickDark')" :style="`background:#${asd.cardListTextOriginalSubjectPickDark}`"></div>
+              </div>
+            </div>
+
+            <label class="sub-title">목록 - 태그 (배경 / 글자)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListTagBgLight')" :style="`background:#${asd.cardListTagBgLight}`"></div>
+                <div @click="e => openCp(e, 'cardListTagTextLight')" :style="`background:#${asd.cardListTagTextLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListTagBgDark')" :style="`background:#${asd.cardListTagBgDark}`"></div>
+                <div @click="e => openCp(e, 'cardListTagTextDark')" :style="`background:#${asd.cardListTagTextDark}`"></div>
+              </div>
+            </div>
+
+            <label class="sub-title">목록 - 태그 활성 (배경 / 글자)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListTagBgPickLight')" :style="`background:#${asd.cardListTagBgPickLight}`"></div>
+                <div @click="e => openCp(e, 'cardListTagTextPickLight')" :style="`background:#${asd.cardListTagTextPickLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListTagBgPickDark')" :style="`background:#${asd.cardListTagBgPickDark}`"></div>
+                <div @click="e => openCp(e, 'cardListTagTextPickDark')" :style="`background:#${asd.cardListTagTextPickDark}`"></div>
+              </div>
+            </div>
+
           </div>
+          
           <label class="sub-title">모양</label>
           <div class="flex items-center space-x-2 mb-2">
             <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-left-right"></i></span>
-            <input type="range" v-model="asd.cardWidth" min="180" max="900" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700 shadow-sm">
-            <input type="number" v-model="asd.cardWidth" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white shadow-sm" maxlength="3" />
+            <input type="range" v-model="asd.cardWidth" min="240" max="900" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700">
+            <input type="number" v-model="asd.cardWidth" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white" maxlength="3" />
           </div>
           <div class="flex items-center space-x-2 mb-2">
             <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-up-down"></i></span>
-            <input type="range" v-model="asd.cardHeight" min="240" max="780" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700 shadow-sm">
-            <input type="number" v-model="asd.cardHeight" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white shadow-sm" maxlength="3" />
+            <input type="range" v-model="asd.cardHeight" min="300" max="880" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700">
+            <input type="number" v-model="asd.cardHeight" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white" maxlength="3" />
           </div>
           <label class="sub-title">HTML 코드</label>
           <textarea readonly :value="cardCode" class="p-2 h-[120px] md:h-[162px] as-input-text !text-[12px] font-mono"></textarea>
@@ -134,13 +247,13 @@
           <label class="sub-title">모양</label>
           <div class="flex items-center space-x-2 mb-2">
             <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-left-right"></i></span>
-            <input type="range" v-model="asd.listWidth" min="180" max="900" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700 shadow-sm">
-            <input type="number" v-model="asd.listWidth" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white shadow-sm" maxlength="3" />
+            <input type="range" v-model="asd.listWidth" min="180" max="900" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700">
+            <input type="number" v-model="asd.listWidth" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white" maxlength="3" />
           </div>
           <div class="flex items-center space-x-2 mb-2">
             <span class="ml-3 w-5 text-sm font-medium text-gray-900 dark:text-zinc-300 text-center"><i class="fa-solid fa-up-down"></i></span>
-            <input type="range" v-model="asd.listHeight" min="240" max="780" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700 shadow-sm">
-            <input type="number" v-model="asd.listHeight" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white shadow-sm" maxlength="3" />
+            <input type="range" v-model="asd.listHeight" min="240" max="780" step="10" class="shadow-sm flex-1 w-full h-2 bg-gray-200 rounded-md appearance-none cursor-pointer dark:bg-gray-700">
+            <input type="number" v-model="asd.listHeight" class="shadow-sm block w-[48px] text-center text-zinc-900 outline-0 bg-zinc-50 rounded-md border border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white" maxlength="3" />
           </div>
           <label class="sub-title">HTML 코드</label>
           <textarea readonly :value="listCode" class="p-2 h-[120px] md:h-[162px] as-input-text !text-[12px] font-mono"></textarea>
@@ -346,10 +459,28 @@ const asd = ref({
 
   // CARD - color - light mode
   cardBgLight: 'ffffff',
-  cardBoldLight: 'cb3434',
+  cardTitleLight: '27272a',
+  cardTitleHoverLight: '0369a1',
+  cardNavBgLight: 'ffffff', cardNavTextLight: '9ca3af', cardNavBorderLight: 'e4e4e7',
+  cardNavBgPickLight: 'ffffff', cardNavTextPickLight: '27272a', cardNavBorderPickLight: 'd4d4d8',
+  cardListBgLight: 'ffffff', cardListBorderLight: 'e4e4e7',
+  cardListBgPickLight: 'ffffff', cardListBorderPickLight: 'd4d4d8',
+  cardListTextHighlightLight: '2563eb', cardListTextSubjectLight: '1f2937', cardListTextOriginalSubjectLight: '27272a',
+  cardListTextHighlightPickLight: '2563eb', cardListTextSubjectPickLight: '1f2937', cardListTextOriginalSubjectPickLight: '27272a',
+  cardListTagBgLight: 'e6edf3', cardListTagTextLight: '595f6e',
+  cardListTagBgPickLight: 'c6cdd3', cardListTagTextPickLight: '595f6e',
   // CARD - color - dark mode
   cardBgDark: '000000',
-  cardBoldDark: '3a7da3',
+  cardTitleDark: 'a1a1aa',
+  cardTitleHoverDark: 'e5e7eb',
+  cardNavBgDark: '000000', cardNavTextDark: '4b5563', cardNavBorderDark: '1f1f22',
+  cardNavBgPickDark: '000000', cardNavTextPickDark: 'a1a1aa', cardNavBorderPickDark: '27272a',
+  cardListBgDark: '000000', cardListBorderDark: '1f1f22',
+  cardListBgPickDark: '000000', cardListBorderPickDark: '27272a',
+  cardListTextHighlightDark: '3b82f6', cardListTextSubjectDark: 'd4d4d8', cardListTextOriginalSubjectDark: 'a1a1aa',
+  cardListTextHighlightPickDark: '3b82f6', cardListTextSubjectPickDark: 'd4d4d8', cardListTextOriginalSubjectPickDark: 'a1a1aa',
+  cardListTagBgDark: '171a24', cardListTagTextDark: 'eeeeee',
+  cardListTagBgPickDark: '35363a', cardListTagTextPickDark: 'eeeeee',
   // CARD - size
   cardWidth: 800, cardHeight: 640,
 
@@ -382,9 +513,16 @@ const cardFrameRef = ref(null) as any;
 const cardMaxWidth = computed(() => Math.min(maxWidth.value, asd.value.cardWidth));
 const cardCode = computed(() => `<iframe src="${location.origin + '/schedule/2024#' + cardSrc.value}" width="${asd.value.cardWidth}" height="${asd.value.cardHeight}" frameborder="0"></iframe>`);
 const cardSrc = computed(() =>
-    asd.value.cardBgLight + asd.value.cardBoldLight +
-    asd.value.cardBgDark + asd.value.cardBoldDark
-);
+    asd.value.cardBgLight + asd.value.cardBgDark +
+    asd.value.cardTitleLight + asd.value.cardTitleDark + asd.value.cardTitleHoverLight + asd.value.cardTitleHoverDark +
+    asd.value.cardNavBgLight + asd.value.cardNavBgDark + asd.value.cardNavTextLight + asd.value.cardNavTextDark + asd.value.cardNavBorderLight + asd.value.cardNavBorderDark +
+    asd.value.cardNavBgPickLight + asd.value.cardNavBgPickDark + asd.value.cardNavTextPickLight + asd.value.cardNavTextPickDark + asd.value.cardNavBorderPickLight + asd.value.cardNavBorderPickDark +
+    asd.value.cardListBgLight + asd.value.cardListBgDark + asd.value.cardListBorderLight + asd.value.cardListBorderDark +
+    asd.value.cardListBgPickLight + asd.value.cardListBgPickDark + asd.value.cardListBorderPickLight + asd.value.cardListBorderPickDark +
+    asd.value.cardListTextHighlightLight + asd.value.cardListTextHighlightDark + asd.value.cardListTextSubjectLight + asd.value.cardListTextSubjectDark + asd.value.cardListTextOriginalSubjectLight + asd.value.cardListTextOriginalSubjectDark +
+    asd.value.cardListTextHighlightPickLight + asd.value.cardListTextHighlightPickDark + asd.value.cardListTextSubjectPickLight + asd.value.cardListTextSubjectPickDark + asd.value.cardListTextOriginalSubjectPickLight + asd.value.cardListTextOriginalSubjectPickDark +
+    asd.value.cardListTagBgLight + asd.value.cardListTagBgDark + asd.value.cardListTagTextLight + asd.value.cardListTagTextDark +
+    asd.value.cardListTagBgPickLight + asd.value.cardListTagBgPickDark + asd.value.cardListTagTextPickLight + asd.value.cardListTagTextPickDark);
 
 const maxWidth = ref(0);
 const containerRef = ref(null) as any;
@@ -492,6 +630,23 @@ onUnmounted(() => {
       @apply flex-1 rounded-l-[3px]
     }
     &:nth-child(2) {
+      @apply flex-1 rounded-r-[3px]
+    }
+  }
+}
+
+.color-unit-box-3 {
+  @apply
+  flex-1 rounded-[3px] border shadow-sm h-[40px]
+  border-zinc-300 dark:border-zinc-800;
+  > div {
+    &:nth-child(1) {
+      @apply flex-1 rounded-l-[3px]
+    }
+    &:nth-child(2) {
+      @apply flex-1
+    }
+    &:nth-child(3) {
       @apply flex-1 rounded-r-[3px]
     }
   }

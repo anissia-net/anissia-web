@@ -20,14 +20,14 @@
 
       <div class="md:w-64">
         <label class="sub-title">편성표 타입</label>
-        <div class="w-full rounded-md shadow-sm">
-          <button type="button" @click="setType('card')" class="w-full mt-2 rounded-t-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'card' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+        <div class="max-[767px]:flex md:w-full rounded-md shadow-sm">
+          <button type="button" @click="setType('card')" class="flex-1 md:w-full max-[767px]:rounded-l-lg md:rounded-t-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'card' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
             카드 타입
           </button>
-          <button type="button" @click="setType('list')" class="w-full p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'list' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+          <button type="button" @click="setType('list')" class="flex-1 md:w-full p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'list' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
             리스트 타입
           </button>
-          <button type="button" @click="setType('img')" class="w-full rounded-b-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'img' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
+          <button type="button" @click="setType('img')" class="flex-1 md:w-full max-[767px]:rounded-r-lg md:rounded-b-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.type == 'img' ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
             이미지 (블로그)
           </button>
         </div>

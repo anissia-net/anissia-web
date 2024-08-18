@@ -125,14 +125,16 @@ function doQuery() {
     return;
   }
 
-  activePanelRemote.addNotice(line).then(result => {
-    if (result.code == 'ok') {
-      page.value = 0;
-      load();
-    } else {
-      toast.error(result.message);
-    }
-  });
+  if (confirm('내용을 작성하시겠습니까?')) {
+    activePanelRemote.addNotice(line).then(result => {
+      if (result.code == 'ok') {
+        page.value = 0;
+        load();
+      } else {
+        toast.error(result.message);
+      }
+    });
+  }
 }
 
 isAdminMode.value = props.mode == 'admin';

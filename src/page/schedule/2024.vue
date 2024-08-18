@@ -149,17 +149,16 @@ function evtKeyClosePopup(event: KeyboardEvent) {
 function applyColorMode(mode: string|null) {
   if (mode == null) {
     try {
-      mode = (localStorage.getItem('schedule2024ColorMode') as string | null) || 'light';
+      mode = (localStorage.getItem('schedule2024ColorMode') as string | null) || (
+          matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      );
     } catch (e) { mode = 'light'; }
   }
   console.log(mode);
   localStorage.setItem('schedule2024ColorMode', (colorMode.value = mode));
-  const bodyClasses = document.documentElement.classList;
   const sc2024Classes = document.getElementById('sc2024')!!.classList;
   sc2024Classes.remove('light', 'dark');
-  bodyClasses.remove('light', 'dark');
   sc2024Classes.add(colorMode.value);
-  bodyClasses.add(colorMode.value);
 }
 function toggleColorMode() {
   applyColorMode(colorMode.value == 'light' ? 'dark' : 'light');

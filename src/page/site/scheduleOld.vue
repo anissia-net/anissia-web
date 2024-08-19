@@ -32,16 +32,6 @@
           </button>
         </div>
         <div v-if="asd.type == 'card'">
-          <label class="sub-title">커스텀 모드</label>
-          <div class="flex md:w-full rounded-md shadow-sm">
-            <button type="button" @click="asd.cardSimpleMode = true" class="flex-1 md:w-full rounded-l-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="asd.cardSimpleMode ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
-              간편
-            </button>
-            <button type="button" @click="asd.cardSimpleMode = false" class="flex-1 md:w-full rounded-r-lg p-2 text-sm border border-gray-200 dark:border-zinc-800 dark:bg-zinc-900" :class="!asd.cardSimpleMode ? 'bg-white text-blue-700 dark:text-zinc-300' : 'bg-gray-50 text-gray-500 dark:opacity-60 dark:text-neutral-500'">
-              자세히
-            </button>
-          </div>
-
           <div class="select-none">
             <label class="sub-title">배경</label>
             <div class="flex space-x-2">
@@ -61,84 +51,55 @@
               </div>
             </div>
 
-            <div v-if="asd.cardSimpleMode">
-              <label class="sub-title">타일 - 기본 (배경 / 글자)</label>
-              <div class="flex space-x-2">
-                <div class="flex color-unit-box-3">
-                  <div @click="e => openCp(e, 'cardNavBgLight')" :style="`background:#${asd.cardNavBgLight}`"></div>
-                  <div @click="e => openCp(e, 'cardNavTextLight')" :style="`background:#${asd.cardNavTextLight}`"></div>
-                </div>
-                <div class="flex color-unit-box-3">
-                  <div @click="e => openCp(e, 'cardNavBgDark')" :style="`background:#${asd.cardNavBgDark}`"></div>
-                  <div @click="e => openCp(e, 'cardNavTextDark')" :style="`background:#${asd.cardNavTextDark}`"></div>
-                </div>
+            <label class="sub-title">요일 - 기본 (배경 / 글자 / 테두리)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardNavBgLight')" :style="`background:#${asd.cardNavBgLight}`"></div>
+                <div @click="e => openCp(e, 'cardNavTextLight')" :style="`background:#${asd.cardNavTextLight}`"></div>
+                <div @click="e => openCp(e, 'cardNavBorderLight')" :style="`background:#${asd.cardNavBorderLight}`"></div>
               </div>
-
-              <label class="sub-title">타일 - 활성 (배경 / 글자)</label>
-              <div class="flex space-x-2">
-                <div class="flex color-unit-box-3">
-                  <div @click="e => openCp(e, 'cardNavBgPickLight')" :style="`background:#${asd.cardNavBgPickLight}`"></div>
-                  <div @click="e => openCp(e, 'cardNavTextPickLight')" :style="`background:#${asd.cardNavTextPickLight}`"></div>
-                </div>
-                <div class="flex color-unit-box-3">
-                  <div @click="e => openCp(e, 'cardNavBgPickDark')" :style="`background:#${asd.cardNavBgPickDark}`"></div>
-                  <div @click="e => openCp(e, 'cardNavTextPickDark')" :style="`background:#${asd.cardNavTextPickDark}`"></div>
-                </div>
-              </div>
-            </div>
-            <div v-else>
-              <label class="sub-title">요일 - 기본 (배경 / 글자 / 테두리)</label>
-              <div class="flex space-x-2">
-                <div class="flex color-unit-box-3">
-                  <div @click="e => openCp(e, 'cardNavBgLight')" :style="`background:#${asd.cardNavBgLight}`"></div>
-                  <div @click="e => openCp(e, 'cardNavTextLight')" :style="`background:#${asd.cardNavTextLight}`"></div>
-                  <div @click="e => openCp(e, 'cardNavBorderLight')" :style="`background:#${asd.cardNavBorderLight}`"></div>
-                </div>
-                <div class="flex color-unit-box-3">
-                  <div @click="e => openCp(e, 'cardNavBgDark')" :style="`background:#${asd.cardNavBgDark}`"></div>
-                  <div @click="e => openCp(e, 'cardNavTextDark')" :style="`background:#${asd.cardNavTextDark}`"></div>
-                  <div @click="e => openCp(e, 'cardNavBorderDark')" :style="`background:#${asd.cardNavBorderDark}`"></div>
-                </div>
-              </div>
-
-              <label class="sub-title">요일 - 활성 (배경 / 글자 / 테두리)</label>
-              <div class="flex space-x-2">
-                <div class="flex color-unit-box-3">
-                  <div @click="e => openCp(e, 'cardNavBgPickLight')" :style="`background:#${asd.cardNavBgPickLight}`"></div>
-                  <div @click="e => openCp(e, 'cardNavTextPickLight')" :style="`background:#${asd.cardNavTextPickLight}`"></div>
-                  <div @click="e => openCp(e, 'cardNavBorderPickLight')" :style="`background:#${asd.cardNavBorderPickLight}`"></div>
-                </div>
-                <div class="flex color-unit-box-3">
-                  <div @click="e => openCp(e, 'cardNavBgPickDark')" :style="`background:#${asd.cardNavBgPickDark}`"></div>
-                  <div @click="e => openCp(e, 'cardNavTextPickDark')" :style="`background:#${asd.cardNavTextPickDark}`"></div>
-                  <div @click="e => openCp(e, 'cardNavBorderPickDark')" :style="`background:#${asd.cardNavBorderPickDark}`"></div>
-                </div>
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardNavBgDark')" :style="`background:#${asd.cardNavBgDark}`"></div>
+                <div @click="e => openCp(e, 'cardNavTextDark')" :style="`background:#${asd.cardNavTextDark}`"></div>
+                <div @click="e => openCp(e, 'cardNavBorderDark')" :style="`background:#${asd.cardNavBorderDark}`"></div>
               </div>
             </div>
 
-            <div v-if="!asd.cardSimpleMode">
-              <label class="sub-title">목록 - 카드 기본 (배경 / 테두리)</label>
-              <div class="flex space-x-2">
-                <div class="flex color-unit-box">
-                  <div @click="e => openCp(e, 'cardListBgLight')" :style="`background:#${asd.cardListBgLight}`"></div>
-                  <div @click="e => openCp(e, 'cardListBorderLight')" :style="`background:#${asd.cardListBorderLight}`"></div>
-                </div>
-                <div class="flex color-unit-box">
-                  <div @click="e => openCp(e, 'cardListBgDark')" :style="`background:#${asd.cardListBgDark}`"></div>
-                  <div @click="e => openCp(e, 'cardListBorderDark')" :style="`background:#${asd.cardListBorderDark}`"></div>
-                </div>
+            <label class="sub-title">요일 - 활성 (배경 / 글자 / 테두리)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardNavBgPickLight')" :style="`background:#${asd.cardNavBgPickLight}`"></div>
+                <div @click="e => openCp(e, 'cardNavTextPickLight')" :style="`background:#${asd.cardNavTextPickLight}`"></div>
+                <div @click="e => openCp(e, 'cardNavBorderPickLight')" :style="`background:#${asd.cardNavBorderPickLight}`"></div>
               </div>
+              <div class="flex color-unit-box-3">
+                <div @click="e => openCp(e, 'cardNavBgPickDark')" :style="`background:#${asd.cardNavBgPickDark}`"></div>
+                <div @click="e => openCp(e, 'cardNavTextPickDark')" :style="`background:#${asd.cardNavTextPickDark}`"></div>
+                <div @click="e => openCp(e, 'cardNavBorderPickDark')" :style="`background:#${asd.cardNavBorderPickDark}`"></div>
+              </div>
+            </div>
 
-              <label class="sub-title">목록 - 카드 활성 (배경 / 테두리)</label>
-              <div class="flex space-x-2">
-                <div class="flex color-unit-box">
-                  <div @click="e => openCp(e, 'cardListBgPickLight')" :style="`background:#${asd.cardListBgPickLight}`"></div>
-                  <div @click="e => openCp(e, 'cardListBorderPickLight')" :style="`background:#${asd.cardListBorderPickLight}`"></div>
-                </div>
-                <div class="flex color-unit-box">
-                  <div @click="e => openCp(e, 'cardListBgPickDark')" :style="`background:#${asd.cardListBgPickDark}`"></div>
-                  <div @click="e => openCp(e, 'cardListBorderPickDark')" :style="`background:#${asd.cardListBorderPickDark}`"></div>
-                </div>
+            <label class="sub-title">목록 - 카드 기본 (배경 / 테두리)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListBgLight')" :style="`background:#${asd.cardListBgLight}`"></div>
+                <div @click="e => openCp(e, 'cardListBorderLight')" :style="`background:#${asd.cardListBorderLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListBgDark')" :style="`background:#${asd.cardListBgDark}`"></div>
+                <div @click="e => openCp(e, 'cardListBorderDark')" :style="`background:#${asd.cardListBorderDark}`"></div>
+              </div>
+            </div>
+
+            <label class="sub-title">목록 - 카드 활성 (배경 / 테두리)</label>
+            <div class="flex space-x-2">
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListBgPickLight')" :style="`background:#${asd.cardListBgPickLight}`"></div>
+                <div @click="e => openCp(e, 'cardListBorderPickLight')" :style="`background:#${asd.cardListBorderPickLight}`"></div>
+              </div>
+              <div class="flex color-unit-box">
+                <div @click="e => openCp(e, 'cardListBgPickDark')" :style="`background:#${asd.cardListBgPickDark}`"></div>
+                <div @click="e => openCp(e, 'cardListBorderPickDark')" :style="`background:#${asd.cardListBorderPickDark}`"></div>
               </div>
             </div>
 
@@ -496,8 +457,6 @@ const asd = ref({
   // TYPE - list, img
   type: 'card',
 
-  // CARD
-  cardSimpleMode: true,
   // CARD - color - light mode
   cardBgLight: 'ffffff',
   cardTitleLight: '27272a',
@@ -636,39 +595,9 @@ function openCp(event: MouseEvent, target: string) {
   }
 }
 
-function onCpPick(color: any) {
-  const asv = asd.value as any;
-  const target = cpTarget.value;
-  const colorMode = target.endsWith('Dark') ? 'Dark' : 'Light';
-
-  // 카드 타입 + 심플 커스텀 모드
-  if (asv.type == 'card' && asv.cardSimpleMode) {
-    const borderColor = calcColor(color, colorMode == 'Light' ? -40 : 40);
-    console.log(color, borderColor);
-
-    switch (target.substring(0, target.length - colorMode.length)) {
-      case 'cardNavBg':
-        asv['cardListBg'+colorMode] = color;
-        asv['cardNavBorder'+colorMode] = asv['cardListBorder'+colorMode] = borderColor;
-        break;
-      case 'cardNavBgPick':
-        asv['cardListBgPick'+colorMode] = color;
-        asv['cardNavBorderPick'+colorMode] = asv['cardListBorderPick'+colorMode] = borderColor;
-        break;
-    }
-  }
-
-  asv[target] = color;
+function onCpPick(e: any) {
+  (asd.value as any)[cpTarget.value] = e;
   drawHtml();
-}
-
-// 색상코드를 offset 만큼 밝기조절 예 calcColor('444444', 4) = '484848'
-function calcColor(color: string, offset: number) {
-  const r = Math.min(Math.max(parseInt(color.substring(0, 2), 16) + offset, 0), 255);
-  const g = Math.min(Math.max(parseInt(color.substring(2, 4), 16) + offset, 0), 255);
-  const b = Math.min(Math.max(parseInt(color.substring(4, 6), 16) + offset, 0), 255);
-  console.log(color, r, g, b);
-  return ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
 }
 
 function onCpClose(event: Event) {

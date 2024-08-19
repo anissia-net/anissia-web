@@ -3,7 +3,7 @@
   <div class="container m-auto px-4 duration-300">
 
     <div class="flex justify-between space-x-2 sm:space-x-3 md:space-x-4">
-      <div v-for="(week, idx) in weekList" @click="getAnimeList(idx)" class="flex-auto text-center font-bold text-md md:text-lg py-2 as-box" :class="({'text-gray-400 dark:text-gray-600': idx != weekNow})">{{week}}</div>
+      <div v-for="(week, idx) in weekList" @click="getAnimeList(idx)" class="flex-auto text-center font-bold cursor-pointer text-md md:text-lg py-2 as-box" :class="({'text-gray-400 dark:text-gray-600': idx != weekNow})">{{week}}</div>
     </div>
 
     <div class="mt-4">

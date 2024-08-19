@@ -11,6 +11,7 @@ import sc2009 from '../page/schedule/2009.vue'
 import siteLayout from '../page/site/layout.vue'
 import home from '../page/site/home.vue'
 import schedule from '../page/site/schedule.vue'
+import scheduleOld from '../page/site/scheduleOld.vue'
 import anime from '../page/site/anime.vue'
 import translatorApply from '../page/site/translatorApply.vue'
 import captionRecent from '../page/site/captionRecent.vue'
@@ -30,6 +31,7 @@ import adminCaption from '../page/admin/caption.vue'
 
 const defaultTitle = import.meta.env.VITE_TITLE;
 const trackingId = import.meta.env.VITE_GA_TRACKING_ID;
+const env = import.meta.env.VITE_ENV;
 
 (window as any)['dataLayer'] = (window as any)['dataLayer'] || [];
 (window as any)['gtag'] = function() { (window as any)['dataLayer'].push(arguments); }
@@ -51,7 +53,7 @@ const router = createRouter({
       path: '/', component: siteLayout,
       children: [
         { path: '/', component: home, meta: { title: '애니시아' } },
-        { path: '/schedule', component: schedule, meta: { title: '애니편성표 - 애니시아' } },
+        { path: '/schedule', component: (env != 'production' ? schedule : scheduleOld), meta: { title: '애니편성표 - 애니시아' } },
         { path: '/anime', component: anime, meta: { title: '애니정보 - 애니시아' } },
         { path: '/caption/recent', component: captionRecent, meta: { title: '최근자막 - 애니시아' } },
         { path: '/translator/apply', component: translatorApply, meta: { title: '자막제작자 신청 - 애니시아' } },

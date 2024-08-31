@@ -4,7 +4,7 @@ import sessionRemote from "./sessionRemote";
 import LoginInfo from "../LoginInfo";
 import Result from "../../../common/Result";
 import {Router} from "vue-router";
-import {Locate} from "raon";
+import {cookies, Locate} from "raon";
 
 class SessionService {
 
@@ -119,11 +119,11 @@ class SessionService {
     }
 
     public getJwt(): string {
-        return document.cookie.split(/\s*;\s*/)?.find(e => e.startsWith('jwt='))?.substring(4) || '';
+        return cookies.get('jwt');
     }
 
     private deleteJwt() {
-        document.cookie = `jwt=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+        cookies.del('jwt');
     }
 
     private applyLoginInfo(loginInfoResult: Result<LoginInfo>): boolean {
@@ -132,7 +132,7 @@ class SessionService {
             if (loginInfoResult.success) {
                 const data = loginInfoResult.data!!;
                 if (data.jwt) {
-                    document.cookie = `jwt=${data.jwt};path=/`;
+                    cookies.set('jwt', data.jwt);
                 }
                 if (data.token) {
                     localStorage.setItem('auth-token', data.token);

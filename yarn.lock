@@ -814,7 +814,7 @@ __metadata:
     vue: "npm:^3.5.10"
     vue-accessible-color-picker: "npm:^5.0.1"
     vue-router: "npm:^4.4.5"
-    vue-toastification: "npm:^1.7.14"
+    vue-toastification: "npm:^2.0.0-rc.5"
     vue-tsc: "npm:^2.1.6"
   languageName: unknown
   linkType: soft
@@ -3430,12 +3430,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-toastification@npm:^1.7.14":
-  version: 1.7.14
-  resolution: "vue-toastification@npm:1.7.14"
+"vue-toastification@npm:^2.0.0-rc.5":
+  version: 2.0.0-rc.5
+  resolution: "vue-toastification@npm:2.0.0-rc.5"
   peerDependencies:
-    vue: ^2.0.0
-  checksum: 10/c1563dbaa3c7ba336ea5ac8530c33c7e1555cf86900c6594f102c515183b266ada72a1b80d4abba41b60db5ae9b289f40da94236908782fe44281173d87dab77
+    vue: ^3.0.2
+  checksum: 10/da2698e8a24f3de99269d71327879c389236179225dca9112d1de971fcd2e809d83670e1195f3c59a232f8b53c5625b93d573e809da7cb587527b5d339ec9bdb
   languageName: node
   linkType: hard
 

@@ -19,7 +19,7 @@
     "raon": "^1.0.9",
     "tailwindcss": "^3.4.13",
     "vite-plugin-html": "^3.2.2",
-    "vue": "^3.5.9",
+    "vue": "^3.5.10",
     "vue-accessible-color-picker": "^5.0.1",
     "vue-router": "^4.4.5",
     "vue-toastification": "^1.7.14"

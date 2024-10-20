@@ -812,7 +812,7 @@ __metadata:
     vite: "npm:^5.4.9"
     vite-plugin-html: "npm:^3.2.2"
     vue: "npm:^3.5.12"
-    vue-accessible-color-picker: "npm:^5.0.1"
+    vue-accessible-color-picker: "npm:^5.1.0"
     vue-router: "npm:^4.4.5"
     vue-toastification: "npm:^2.0.0-rc.5"
     vue-tsc: "npm:^2.1.6"
@@ -3394,12 +3394,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-accessible-color-picker@npm:^5.0.1":
-  version: 5.0.1
-  resolution: "vue-accessible-color-picker@npm:5.0.1"
+"vue-accessible-color-picker@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "vue-accessible-color-picker@npm:5.1.0"
   peerDependencies:
     vue: ^3.2.x
-  checksum: 10/efb6ed95147a006ca81f565fc31c8361faaf204de5ac9c3683fa5fc99e3e04bed9486e84785ccbdb73b3515af99a6e3f670cc6bb41d8dbc81a3093614d375e32
+  checksum: 10/e163573a728e4be9cc5759d8ce32e239774bd54d865d7e0c0af2d311ab5ae0cc74000041dbab12f16570a2d68fb8f638e7f985a3364865ecd18af84753edc2d1
   languageName: node
   linkType: hard
 

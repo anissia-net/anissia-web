@@ -20,7 +20,7 @@
     "tailwindcss": "^3.4.14",
     "vite-plugin-html": "^3.2.2",
     "vue": "^3.5.12",
-    "vue-accessible-color-picker": "^5.0.1",
+    "vue-accessible-color-picker": "^5.1.0",
     "vue-router": "^4.4.5",
     "vue-toastification": "^2.0.0-rc.5"
   },

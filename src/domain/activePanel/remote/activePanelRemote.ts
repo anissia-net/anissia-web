@@ -12,8 +12,8 @@ class ActivePanelRemote {
             .then(data => PageData.cast(data, e => Object.assign(new ActivePanelListItem(), e)));
     }
 
-    public addNotice(query: string): Promise<Result<void>> {
-        return ajax.post(`${api}/active-panel/notice`, {query: query.trim()});
+    public doCommand(query: string): Promise<Result<void>> {
+        return ajax.post(`${api}/active-panel/command`, {query: query.trim()});
     }
 }
 

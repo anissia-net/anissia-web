@@ -126,7 +126,7 @@ function doQuery() {
   }
 
   if (confirm('내용을 작성하시겠습니까?')) {
-    activePanelRemote.addNotice(line).then(result => {
+    activePanelRemote.doCommand(line).then(result => {
       if (result.code == 'ok') {
         page.value = 0;
         load();

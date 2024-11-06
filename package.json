@@ -13,7 +13,7 @@
     "@types/markdown-it": "^14.1.2",
     "autoprefixer": "^10.4.20",
     "markdown-it": "^14.1.0",
-    "pinia": "^2.2.5",
+    "pinia": "^2.2.6",
     "postcss": "^8.4.47",
     "postcss-nested": "^7.0.2",
     "raon": "^1.0.9",

@@ -14,10 +14,10 @@
     "autoprefixer": "^10.4.20",
     "markdown-it": "^14.1.0",
     "pinia": "^2.2.6",
-    "postcss": "^8.4.47",
+    "postcss": "^8.4.49",
     "postcss-nested": "^7.0.2",
     "raon": "^1.0.9",
-    "tailwindcss": "^3.4.14",
+    "tailwindcss": "^3.4.15",
     "vite-plugin-html": "^3.2.2",
     "vue": "^3.5.12",
     "vue-accessible-color-picker": "^5.1.0",
@@ -25,10 +25,10 @@
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.4",
+    "@vitejs/plugin-vue": "^5.2.0",
     "postcss-import": "^16.1.0",
     "typescript": "^5.6.3",
-    "vite": "^5.4.10",
+    "vite": "^5.4.11",
     "vue-tsc": "^2.1.10"
   },
   "packageManager": "yarn@4.5.0",

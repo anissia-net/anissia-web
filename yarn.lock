@@ -796,7 +796,7 @@ __metadata:
     "@vitejs/plugin-vue": "npm:^5.2.1"
     autoprefixer: "npm:^10.4.20"
     markdown-it: "npm:^14.1.0"
-    pinia: "npm:^2.2.7"
+    pinia: "npm:^2.2.8"
     postcss: "npm:^8.4.49"
     postcss-import: "npm:^16.1.0"
     postcss-nested: "npm:^7.0.2"
@@ -2614,9 +2614,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia@npm:^2.2.7":
-  version: 2.2.7
-  resolution: "pinia@npm:2.2.7"
+"pinia@npm:^2.2.8":
+  version: 2.2.8
+  resolution: "pinia@npm:2.2.8"
   dependencies:
     "@vue/devtools-api": "npm:^6.6.3"
     vue-demi: "npm:^0.14.10"
@@ -2629,7 +2629,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10/6ffb40b4a40477e4e04785528aa0ccd560266f5becb3eceaae527b7a1a4b4685b180dbf37ebeb87b40128adc478f6af5e38dc92cc46e11a1d81d0c7b68b1df1b
+  checksum: 10/c2d534e46442d5033604a37fe83a34068c89eab021962b27330a394b69afddc77abdd743fc9f9a40ea0103e46d210f78099665a0a1aee68b93a6b85dda35202b
   languageName: node
   linkType: hard
 

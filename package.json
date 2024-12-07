@@ -13,7 +13,7 @@
     "@types/markdown-it": "^14.1.2",
     "autoprefixer": "^10.4.20",
     "markdown-it": "^14.1.0",
-    "pinia": "^2.2.8",
+    "pinia": "^2.3.0",
     "postcss": "^8.4.49",
     "postcss-nested": "^7.0.2",
     "raon": "^1.0.9",
@@ -28,7 +28,7 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "postcss-import": "^16.1.0",
     "typescript": "^5.7.2",
-    "vite": "^6.0.2",
+    "vite": "^6.0.3",
     "vue-tsc": "^2.1.10"
   },
   "packageManager": "yarn@4.5.0",

@@ -796,14 +796,14 @@ __metadata:
     "@vitejs/plugin-vue": "npm:^5.2.1"
     autoprefixer: "npm:^10.4.20"
     markdown-it: "npm:^14.1.0"
-    pinia: "npm:^2.2.8"
+    pinia: "npm:^2.3.0"
     postcss: "npm:^8.4.49"
     postcss-import: "npm:^16.1.0"
     postcss-nested: "npm:^7.0.2"
     raon: "npm:^1.0.9"
     tailwindcss: "npm:^3.4.16"
     typescript: "npm:^5.7.2"
-    vite: "npm:^6.0.2"
+    vite: "npm:^6.0.3"
     vite-plugin-html: "npm:^3.2.2"
     vue: "npm:^3.5.13"
     vue-accessible-color-picker: "npm:^5.1.0"
@@ -2614,22 +2614,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia@npm:^2.2.8":
-  version: 2.2.8
-  resolution: "pinia@npm:2.2.8"
+"pinia@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "pinia@npm:2.3.0"
   dependencies:
     "@vue/devtools-api": "npm:^6.6.3"
     vue-demi: "npm:^0.14.10"
   peerDependencies:
-    "@vue/composition-api": ^1.4.0
     typescript: ">=4.4.4"
-    vue: ^2.6.14 || ^3.5.11
+    vue: ^2.7.0 || ^3.5.11
   peerDependenciesMeta:
-    "@vue/composition-api":
-      optional: true
     typescript:
       optional: true
-  checksum: 10/c2d534e46442d5033604a37fe83a34068c89eab021962b27330a394b69afddc77abdd743fc9f9a40ea0103e46d210f78099665a0a1aee68b93a6b85dda35202b
+  checksum: 10/16c219c6249330065e0b32adaccfccfbd94a9ec794630c6747c3bff662e03f6ebb4fbb6c01a28a7e79ecb20a7c4b8d9d3ebf04aa7ddd80a6b6db6ad223a44aba
   languageName: node
   linkType: hard
 
@@ -3412,9 +3409,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^6.0.2":
-  version: 6.0.2
-  resolution: "vite@npm:6.0.2"
+"vite@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "vite@npm:6.0.3"
   dependencies:
     esbuild: "npm:^0.24.0"
     fsevents: "npm:~2.3.3"
@@ -3460,7 +3457,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10/24fea725676da1812ec0f073d1748a09f6fd8552a86b9b2b3002326d8cb8ada72e0abfe0837b00077412dc5bbd1773aec38d1fc3462709b0ecc1512332b5d2a0
+  checksum: 10/eca0949b8cbc887e78977515d8fc22eaa2d03425d60a0a422f2db1da9d26bd1b431b2815a273c798e8e3fe176a99e105c3d87b0ba615ca19b8bf19e0334d807a
   languageName: node
   linkType: hard
 

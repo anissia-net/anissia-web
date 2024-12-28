@@ -28,7 +28,7 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "postcss-import": "^16.1.0",
     "typescript": "^5.7.2",
-    "vite": "^6.0.5",
+    "vite": "^6.0.6",
     "vue-tsc": "^2.2.0"
   },
   "packageManager": "yarn@4.5.3",

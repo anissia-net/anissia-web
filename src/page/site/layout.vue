@@ -71,8 +71,8 @@
         <div class="text-4xl mt-12 mb-8">서버 연결 실패</div>
         <div class="text-md opacity-80 leading-[2]">
           현재 애니시아 서버에 연결할 수 없습니다.
-          <br/>
-          빠르게 정상화 하도록 하겠습니다.
+          <br/>빠르게 정상화 하도록 하겠습니다.
+          <br/>문의 : auth@anissia.net
         </div>
       </div>
     </div>

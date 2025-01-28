@@ -117,15 +117,17 @@ function load() {
 }
 
 function doQuery() {
-  const line = query.value;
+  const line: string = query.value;
   query.value = '';
 
   if (line.trim() == '/도움말') {
     openHelp.value = true;
     return;
+  } else if (!line) {
+    return;
   }
 
-  if (confirm('내용을 작성하시겠습니까?')) {
+  if (line.startsWith('/') || confirm('내용을 작성하시겠습니까?')) {
     activePanelRemote.doCommand(line).then(result => {
       if (result.code == 'ok') {
         page.value = 0;

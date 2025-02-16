@@ -14,6 +14,7 @@ export default class Anime {
     public time = '00:00';
     public twitter = '';
     public website = '';
+    public note = '';
     public week = '8';
     public captions: AnimeCaption[] = [];
 
@@ -33,9 +34,6 @@ export default class Anime {
     public editEndDateYear = '';
     public editEndDateMonth = '';
     public editEndDateDate = '';
-
-    // note
-    public note = '';
 
     public get tags(): string[] {
         if (this._tags.length) {

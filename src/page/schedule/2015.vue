@@ -8,9 +8,11 @@
       </div>
     </div>
     <table class="nav">
-      <tr>
-        <th v-for="(name, idx) in weekList" :key="name" @click="getAnimeList(idx)" :class="{'sel': (weekNow == idx)}">{{name}}</th>
-      </tr>
+      <tbody>
+        <tr>
+          <th v-for="(name, idx) in weekList" :key="name" @click="getAnimeList(idx)" :class="{'sel': (weekNow == idx)}">{{name}}</th>
+        </tr>
+      </tbody>
     </table>
     <div class="main">
       <table class="list">
@@ -51,7 +53,9 @@
     </div>
     <div id="user-style"></div>
     <div id="sc2015-theme-error" style="display:none">
-      <table><tr><td>애니편성표의 커스텀코드가 잘못되었습니다.<br/><br/><a href="/schedule" target="_blank">애니시아</a>에서 재설정 하시기 바랍니다.</td></tr></table>
+      <table>
+        <tbody><tr><td>애니편성표의 커스텀코드가 잘못되었습니다.<br/><br/><a href="/schedule" target="_blank">애니시아</a>에서 재설정 하시기 바랍니다.</td></tr></tbody>
+      </table>
     </div>
   </div>
 </template>

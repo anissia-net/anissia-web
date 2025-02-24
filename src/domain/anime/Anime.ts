@@ -18,7 +18,7 @@ export default class Anime {
     public week = '8';
     public captions: AnimeCaption[] = [];
 
-    private _tags: string[] = [];
+    private tags: string[] = [];
 
     // agenda
     public agendaNo = 0;
@@ -34,24 +34,6 @@ export default class Anime {
     public editEndDateYear = '';
     public editEndDateMonth = '';
     public editEndDateDate = '';
-
-    public get tags(): string[] {
-        if (this._tags.length) {
-            return this._tags;
-        }
-        const t = [this.period];
-
-        if (!this.pureWeek) {
-            t.push(this.weekText);
-        } else if (['ON', 'OFF'].indexOf(this.status) != -1 && this.week) {
-            t.push("매주 (" + this.weekText + ") " + this.timeText);
-            if (this.status == 'OFF') {
-                t.push('금주결방');
-            }
-        }
-
-        return this._tags = t.filter(e => e.trim());
-    }
 
     public bindEdit(): Anime {
         this.editGenres = this.genres.split(",").filter(e => e);
@@ -114,6 +96,20 @@ export default class Anime {
     }
 
     public static assign(data: any): Anime {
-        return Object.assign(new Anime(), data);
+        const anime = Object.assign(new Anime(), data);
+
+        // 태그 생성
+        const tags = [anime.period];
+        if (!anime.pureWeek) {
+            tags.push(anime.weekText);
+        } else if (['ON', 'OFF'].indexOf(anime.status) != -1 && anime.week) {
+            tags.push("매주 (" + anime.weekText + ") " + anime.timeText);
+            if (anime.status == 'OFF') {
+                tags.push('금주결방');
+            }
+        }
+        anime.tags = tags.filter(e => (e || '').trim());
+
+        return anime;
     }
 }
